@@ -804,21 +804,92 @@ pre .c { color: #445566; font-style: italic; }
       </div>
 
       <div class="hr"></div>
-      <span class="label">Form Inputs</span>
-      <div style="background:var(--off-white); border-radius:10px; padding:clamp(16px,3vw,24px);">
-        <div class="form-group">
-          <label class="form-lbl">Full Name</label>
-          <input class="form-inp" type="text" placeholder="Your full name" readonly>
+      <span class="label">Form Strategy — Two Paths, Two Intents</span>
+      <p class="body muted sm" style="margin-bottom:16px; margin-top:6px;">Patients self-select based on readiness. High-intent leads take the Full Assessment (5 min, deep qualification). Price-shoppers take Quick Pricing (2 min, wide funnel). Both feed GHL with different tags — Karen calls Path A first.</p>
+
+      <!-- FORM CARD 1: QUALIFICATION -->
+      <div style="border:2px solid var(--deep-teal); border-radius:12px; overflow:hidden; margin-bottom:14px; background:#fff;">
+        <div style="background:var(--deep-teal); padding:16px 20px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+            <div>
+              <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--light-blue); margin-bottom:4px;">Path A · High Intent</div>
+              <div style="font-family:var(--headline); font-size:22px; font-weight:500; color:#fff; line-height:1.1;">See If You Qualify</div>
+            </div>
+            <span style="background:var(--coral); color:#fff; font-size:10px; font-weight:700; letter-spacing:1px; padding:5px 12px; border-radius:99px; text-transform:uppercase; white-space:nowrap;">Priority Lead</span>
+          </div>
+          <p style="font-size:12px; color:rgba(255,255,255,0.65); margin-top:8px;">5-min Full Assessment · Tagged: New High Intent Lead in GHL</p>
         </div>
-        <div class="form-group">
-          <label class="form-lbl">Phone Number</label>
-          <input class="form-inp" type="tel" placeholder="(479) 555-0100" readonly>
+        <div style="padding:18px 20px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px; padding:10px 14px; background:var(--off-white); border-radius:8px;">
+            <span style="font-size:18px; flex-shrink:0;">🦷</span>
+            <div>
+              <div style="font-size:13px; font-weight:600; color:var(--deep-teal);">How many teeth are you missing?</div>
+              <div style="font-size:11px; color:rgba(51,51,51,0.5); margin-top:2px;">Step 1 of 5 · Smile Assessment</div>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px;">
+            <div style="border:1.5px solid rgba(52,100,125,0.22); border-radius:8px; padding:11px 14px; font-size:13px; color:var(--charcoal); display:flex; align-items:center; gap:8px;">
+              <div style="width:16px;height:16px;border-radius:50%;border:2px solid rgba(52,100,125,0.3);flex-shrink:0;"></div>All upper teeth
+            </div>
+            <div style="border:2px solid var(--mid-blue); border-radius:8px; padding:11px 14px; font-size:13px; color:var(--mid-blue); font-weight:600; display:flex; align-items:center; gap:8px; background:rgba(103,149,189,0.07);">
+              <div style="width:16px;height:16px;border-radius:50%;border:2px solid var(--mid-blue);flex-shrink:0;display:flex;align-items:center;justify-content:center;"><div style="width:8px;height:8px;border-radius:50%;background:var(--mid-blue);"></div></div>All lower teeth
+            </div>
+            <div style="border:1.5px solid rgba(52,100,125,0.22); border-radius:8px; padding:11px 14px; font-size:13px; color:var(--charcoal); display:flex; align-items:center; gap:8px;">
+              <div style="width:16px;height:16px;border-radius:50%;border:2px solid rgba(52,100,125,0.3);flex-shrink:0;"></div>Both arches
+            </div>
+            <div style="border:1.5px solid rgba(52,100,125,0.22); border-radius:8px; padding:11px 14px; font-size:13px; color:var(--charcoal); display:flex; align-items:center; gap:8px;">
+              <div style="width:16px;height:16px;border-radius:50%;border:2px solid rgba(52,100,125,0.3);flex-shrink:0;"></div>Several teeth
+            </div>
+          </div>
+          <button class="btn btn-primary" style="width:100%; text-align:center; display:block;">Continue → Step 2 of 5</button>
+          <p style="font-size:11px; color:rgba(51,51,51,0.4); text-align:center; margin-top:8px;">Free · No commitment · 5 minutes</p>
         </div>
-        <div class="form-group">
-          <label class="form-lbl">How can we help?</label>
-          <textarea class="form-inp" rows="3" placeholder="Describe your situation..." readonly style="resize:none;"></textarea>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+        <div style="flex:1; height:1px; background:rgba(52,100,125,0.12);"></div>
+        <span style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(51,51,51,0.35);">or</span>
+        <div style="flex:1; height:1px; background:rgba(52,100,125,0.12);"></div>
+      </div>
+
+      <!-- FORM CARD 2: GET PRICING -->
+      <div style="border:1.5px solid rgba(103,149,189,0.3); border-radius:12px; overflow:hidden; background:#fff;">
+        <div style="background:var(--off-white); padding:16px 20px; border-bottom:1px solid rgba(52,100,125,0.08);">
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+            <div>
+              <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--mid-blue); margin-bottom:4px;">Path B · Price Shopper</div>
+              <div style="font-family:var(--headline); font-size:22px; font-weight:500; color:var(--deep-teal); line-height:1.1;">Get Pricing Info</div>
+            </div>
+            <span style="background:var(--mid-blue); color:#fff; font-size:10px; font-weight:700; letter-spacing:1px; padding:5px 12px; border-radius:99px; text-transform:uppercase; white-space:nowrap;">Quick · 2 min</span>
+          </div>
+          <p style="font-size:12px; color:rgba(51,51,51,0.5); margin-top:8px;">Wide funnel · Tagged: New Lead · Callback within 5 min</p>
         </div>
-        <span class="btn btn-primary" style="width:100%; text-align:center; display:block;">Send My Request</span>
+        <div style="padding:18px 20px;">
+          <div class="form-group">
+            <label class="form-lbl">First Name</label>
+            <input class="form-inp" type="text" placeholder="Your first name" readonly>
+          </div>
+          <div class="form-group">
+            <label class="form-lbl">Phone Number</label>
+            <input class="form-inp" type="tel" placeholder="(479) 555-0100" readonly>
+          </div>
+          <div style="margin-bottom:14px;">
+            <label class="form-lbl" style="display:block; margin-bottom:6px;">How many teeth are you missing?</label>
+            <select class="form-inp" style="appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236795BD' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:36px;" disabled>
+              <option>Select an option...</option>
+              <option>Full arch (upper or lower)</option>
+              <option>Both upper &amp; lower</option>
+              <option>Several missing teeth</option>
+            </select>
+          </div>
+          <button class="btn btn-outline" style="width:100%; text-align:center; display:block; font-size:14px;">Send Me Pricing →</button>
+          <p style="font-size:11px; color:rgba(51,51,51,0.4); text-align:center; margin-top:8px;">No spam · Pricing info sent within 1 hour</p>
+        </div>
+      </div>
+
+      <div style="background:rgba(52,100,125,0.05); border-left:3px solid var(--mid-blue); border-radius:0 8px 8px 0; padding:12px 16px; margin-top:14px;">
+        <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--mid-blue); margin-bottom:5px;">Conversion Strategy</div>
+        <p class="body muted sm">"See If You Qualify" outperforms "Book a Consultation" in full-arch ads — it lowers perceived commitment. Patients afraid of being sold to find qualifying safer than booking. Path A tagged <code>New High Intent Lead</code>; Path B as <code>New Lead</code>.</p>
       </div>
     </div>
 
