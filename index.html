@@ -355,9 +355,11 @@ img { display: block; max-width: 100%; }
 .section-rule { margin: 14px auto 0; }
 
 .ba-grid {
-  max-width: var(--max); margin: 0 auto;
+  max-width: 1280px; margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  align-items: stretch;
   gap: clamp(16px, 2.5vw, 28px);
 }
 .ba-card {
@@ -1046,32 +1048,20 @@ footer {
     </div>
 
     <div class="ba-card gold-card fade d3">
-      <div style="background:#c9a84c;color:#fff;font-size:11px;font-weight:600;letter-spacing:0.5px;padding:7px 14px;text-align:center;">✦ Totally Customizable — Gold &amp; Designer Details Available</div>
-
-      <!-- Row 1: Before vs After -->
       <div class="ba-images">
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before6.webp" alt="Before - Custom All-on-X" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before6.webp" alt="Before - Custom Gold All-on-X" loading="lazy">
           <span class="ba-badge before">Before</span>
         </div>
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after6.webp" alt="After - Custom All-on-X" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after6.webp" alt="After - Custom Gold All-on-X" loading="lazy">
           <span class="ba-badge after">After</span>
         </div>
         <div class="ba-divider"></div>
       </div>
-
-      <!-- Row 2: Close-up detail -->
-      <div style="position:relative; border-top:2px solid #c9a84c;">
-        <div class="ba-img-wrap" style="aspect-ratio:16/7;">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after6-2.webp" alt="Close-up - Custom Gold All-on-X Detail" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;">
-        </div>
-        <span class="ba-badge after" style="background:#c9a84c; bottom:10px; left:50%; transform:translateX(-50%); white-space:nowrap;">✦ Close-up Detail</span>
-      </div>
-
       <div class="ba-info">
-        <div class="ba-name">Custom All-on-X</div>
-        <div class="ba-detail">Fully Customizable Restoration · Rogers, AR</div>
+        <div class="ba-name">Custom Gold All-on-X</div>
+        <div class="ba-detail">✦ Fully Customizable · Rogers, AR</div>
         <div class="ba-stars">★★★★★</div>
       </div>
     </div>
@@ -1439,22 +1429,6 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
 
   window.addEventListener('resize', resize);
   requestAnimationFrame(init);
-})();
-
-/* ── HERO MARQUEE PARALLAX ── */
-(function() {
-  const hero = document.querySelector('.hero');
-  const track = document.getElementById('heroMarqueeTrack');
-  if (!track || !hero) return;
-  let baseSpeed = 40; // seconds for full loop
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    const heroH = hero.offsetHeight;
-    const progress = Math.min(scrollY / heroH, 1);
-    // Speed up as you scroll: 40s → 26s
-    const speed = baseSpeed - (progress * 14);
-    track.style.animationDuration = speed + 's';
-  }, { passive: true });
 })();
 
 /* ── FORM SUBMIT ── */
