@@ -3,1393 +3,1231 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NoviSmile — Brand Identity System</title>
+<title>NoviSmile — Dental Implants · Rogers, Arkansas</title>
+<meta name="description" content="Full arch dental implants in Rogers, Arkansas. One surgeon. No handoffs. Free consultation available.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <style>
-/* ===================== RESET & ROOT ===================== */
+/* ── RESET ───────────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
-  font-family: 'DM Sans', Arial, sans-serif;
-  background: #ffffff;
-  color: #333333;
-  line-height: 1.6;
+  font-family: 'DM Sans', sans-serif;
+  background: #fff;
+  color: #2e2e2e;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
+img { display: block; max-width: 100%; }
 
-/* ===================== TOKENS ===================== */
+/* ── TOKENS ──────────────────────────────────── */
 :root {
-  --deep-teal: #34647D;
-  --mid-blue: #6795BD;
-  --light-blue: #A5BFD3;
-  --off-white: #F4F6F6;
-  --light-grey: #f3f3f3;
-  --charcoal: #333333;
-  --white: #ffffff;
-  --dark-navy: #1a2860;
-  --coral: #ED676D;
-  --headline: 'Cormorant', Georgia, serif;
-  --body: 'DM Sans', Arial, sans-serif;
-  --max: 1170px;
-  --pad: clamp(16px, 5vw, 48px);
+  --teal:      #34647D;
+  --blue:      #6795BD;
+  --lblue:     #A5BFD3;
+  --offwhite:  #F4F6F6;
+  --grey:      #f0f0f0;
+  --charcoal:  #2e2e2e;
+  --muted:     rgba(46,46,46,0.55);
+  --white:     #ffffff;
+  --coral:     #ED676D;
+  --navy:      #1a2860;
+  --h:         'Cormorant', Georgia, serif;
+  --b:         'DM Sans', sans-serif;
+  --pad:       clamp(20px, 5vw, 60px);
+  --max:       1100px;
+  --r:         10px;
 }
 
-/* ===================== NAV ===================== */
-.nav {
-  position: sticky; top: 0; z-index: 200;
-  background: var(--deep-teal);
-  display: flex; align-items: center;
-  padding: 0 var(--pad);
-  gap: 0;
-  min-height: 52px;
-}
-.nav-brand {
-  font-family: var(--headline);
-  font-size: clamp(15px, 2.5vw, 19px);
-  font-weight: 600;
-  color: #fff;
-  white-space: nowrap;
-  padding-right: 20px;
-  margin-right: 16px;
-  border-right: 1px solid rgba(255,255,255,0.2);
-  flex-shrink: 0;
-}
-.nav-links {
-  display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; flex: 1;
-}
-.nav-links::-webkit-scrollbar { display: none; }
-.nav-links a {
-  color: rgba(255,255,255,0.72);
-  text-decoration: none;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  padding: 16px 12px;
-  white-space: nowrap;
-  transition: color .2s;
-  border-bottom: 2px solid transparent;
-}
-.nav-links a:hover, .nav-links a.active { color: #fff; border-bottom-color: var(--mid-blue); }
-.nav-cta {
-  flex-shrink: 0;
-  margin-left: 12px;
-  background: var(--mid-blue);
-  color: #fff;
-  font-family: var(--body);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  padding: 8px 16px;
-  border: none; cursor: pointer;
-  text-transform: uppercase;
-  white-space: nowrap;
-  transition: background .2s;
-}
-.nav-cta:hover { background: var(--light-blue); color: var(--deep-teal); }
-
-/* ===================== MARQUEE ===================== */
-.marquee-wrap {
-  background: var(--mid-blue);
-  overflow: hidden;
-  white-space: nowrap;
-  padding: 10px 0;
-  position: relative;
-}
-.marquee-track {
-  display: inline-flex;
-  gap: 0;
-  animation: marquee-scroll 28s linear infinite;
-}
-.marquee-wrap:hover .marquee-track { animation-play-state: paused; }
-.marquee-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0 32px;
-  font-family: var(--headline);
-  font-size: clamp(13px, 2vw, 16px);
-  font-weight: 500;
-  color: #fff;
-  letter-spacing: 0.5px;
-}
-.marquee-dot {
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.5);
-  flex-shrink: 0;
-}
-@keyframes marquee-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* ===================== COVER ===================== */
-.cover {
-  background: var(--deep-teal);
-  padding: clamp(60px, 10vw, 120px) var(--pad) clamp(50px, 8vw, 100px);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.cover::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(103,149,189,0.18) 0%, transparent 65%),
-              radial-gradient(ellipse at 75% 20%, rgba(165,191,211,0.12) 0%, transparent 50%);
-  pointer-events: none;
-}
-.cover-label {
-  font-size: 11px; font-weight: 600; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--light-blue);
-  margin-bottom: 20px;
-}
-.cover-title {
-  font-family: var(--headline);
-  font-size: clamp(52px, 11vw, 110px);
-  font-weight: 400; line-height: 0.95;
-  color: #fff; position: relative; z-index: 1;
-  margin-bottom: 8px;
-}
-.cover-title em { color: var(--light-blue); font-style: italic; }
-.cover-sub {
-  font-family: var(--headline);
-  font-size: clamp(16px, 3vw, 22px);
-  font-weight: 300; color: rgba(255,255,255,0.65);
-  margin-top: 16px; margin-bottom: 32px;
-  letter-spacing: 1px;
-}
-.cover-divider {
-  width: 60px; height: 2px;
-  background: var(--mid-blue);
-  margin: 0 auto 28px;
-}
-.cover-meta { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 1.5px; text-transform: uppercase; }
-
-/* ===================== SECTION HEADERS ===================== */
-.sec-header {
-  background: var(--off-white);
-  border-bottom: 2px solid var(--mid-blue);
-  padding: 14px var(--pad);
-}
-.sec-header-inner {
-  max-width: var(--max); margin: 0 auto;
-  display: flex; align-items: center; gap: 16px;
-}
-.sec-num {
-  font-family: var(--headline);
-  font-size: clamp(32px, 5vw, 46px);
-  font-weight: 300; color: var(--light-blue);
-  line-height: 1; flex-shrink: 0;
-}
-.sec-title-block h2 {
-  font-family: var(--headline);
-  font-size: clamp(18px, 3vw, 24px);
-  font-weight: 500; color: var(--deep-teal);
-}
-.sec-title-block p { font-size: 12px; color: rgba(51,51,51,0.55); margin-top: 2px; }
-
-/* ===================== SECTIONS ===================== */
-.section {
-  max-width: var(--max); margin: 0 auto;
-  padding: clamp(40px, 7vw, 80px) var(--pad);
-}
-.section-full {
-  padding: clamp(40px, 7vw, 80px) var(--pad);
-}
-.section-full .inner { max-width: var(--max); margin: 0 auto; }
-.bg-teal   { background: var(--deep-teal); }
-.bg-offwht { background: var(--off-white); }
-.bg-lgrey  { background: var(--light-grey); }
-.bg-navy   { background: var(--dark-navy); }
-
-/* ===================== LABELS ===================== */
+/* ── UTILITIES ───────────────────────────────── */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
 .label {
   font-size: 10px; font-weight: 700;
   letter-spacing: 2.5px; text-transform: uppercase;
-  color: var(--mid-blue); margin-bottom: 10px;
-  display: block;
+  color: var(--blue); display: block;
 }
-.label.on-dark { color: rgba(255,255,255,0.55); }
-.label.center  { text-align: center; }
+.label.light { color: rgba(255,255,255,0.6); }
+.rule { width: 48px; height: 2px; background: var(--blue); }
+.rule.white { background: rgba(255,255,255,0.4); }
 
-/* ===================== HEADINGS ===================== */
-.h-display {
-  font-family: var(--headline);
-  font-size: clamp(32px, 5.5vw, 62px);
-  font-weight: 400; line-height: 1.05;
-  color: var(--deep-teal);
+/* fade-up on scroll */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
 }
-.h-display.on-dark { color: #fff; }
-.h-display.center  { text-align: center; }
-.h-card {
-  font-family: var(--headline);
-  font-size: clamp(20px, 2.5vw, 27px);
-  font-weight: 500; color: var(--deep-teal);
-  line-height: 1.2; margin-bottom: 8px;
-}
-.h-card.on-dark { color: #fff; }
-.h-sub {
-  font-family: var(--headline);
-  font-size: clamp(16px, 2vw, 20px);
-  font-weight: 400; color: var(--mid-blue);
-}
+.fade.in { opacity: 1; transform: translateY(0); }
+.fade.d1 { transition-delay: .1s; }
+.fade.d2 { transition-delay: .2s; }
+.fade.d3 { transition-delay: .3s; }
+.fade.d4 { transition-delay: .4s; }
 
-/* ===================== BODY TEXT ===================== */
-.body { font-size: 14px; font-weight: 400; line-height: 1.65; color: var(--charcoal); }
-.body.muted { color: rgba(51,51,51,0.62); }
-.body.on-dark { color: rgba(255,255,255,0.82); }
-.body.sm { font-size: 13px; }
-
-/* ===================== DIVIDER ===================== */
-.rule { width: 60px; height: 2px; background: var(--mid-blue); }
-.rule.center { margin: 0 auto; }
-.rule.white  { background: rgba(255,255,255,0.45); }
-.rule.mt     { margin-top: 20px; }
-.rule.mb     { margin-bottom: 20px; }
-.hr { border: none; border-top: 1px solid rgba(52,100,125,0.12); margin: 28px 0; }
-
-/* ===================== GRID ===================== */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px,3vw,32px); }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px,2.5vw,28px); }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px,2vw,22px); }
-@media (max-width: 900px) {
-  .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
+/* ── NAV ─────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid rgba(52,100,125,0.1);
+  padding: 14px var(--pad);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
 }
-@media (max-width: 560px) {
-  .grid-2 { grid-template-columns: 1fr; }
-  .grid-3, .grid-4 { grid-template-columns: 1fr; }
+.nav-logo img { height: 36px; width: auto; }
+.nav-cta {
+  background: var(--teal); color: #fff;
+  font-family: var(--b); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  padding: 10px 20px; border: none; cursor: pointer;
+  text-decoration: none; white-space: nowrap;
+  transition: background .2s;
 }
-
-/* ===================== BUTTONS ===================== */
-.btn {
-  display: inline-block; text-decoration: none;
-  font-family: var(--body); font-size: 13px; font-weight: 700;
-  letter-spacing: 0.4px; cursor: pointer; border: none;
-  transition: background .2s, color .2s, transform .1s;
-  padding: 13px 26px;
+.nav-cta:hover { background: var(--blue); }
+.nav-phone {
+  font-size: 13px; font-weight: 600;
+  color: var(--teal); text-decoration: none;
+  white-space: nowrap;
 }
-.btn:active { transform: scale(0.98); }
-.btn-primary { background: var(--mid-blue); color: #fff; }
-.btn-primary:hover { background: var(--deep-teal); }
-.btn-outline { background: transparent; color: var(--mid-blue); border: 1.5px solid var(--mid-blue); font-family: var(--headline); font-size: 15px; }
-.btn-outline:hover { background: var(--mid-blue); color: #fff; }
-.btn-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.5); font-family: var(--headline); font-size: 15px; }
-.btn-ghost:hover { background: rgba(255,255,255,0.12); }
-.btn-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+@media (max-width: 480px) { .nav-phone { display: none; } }
 
-/* ===================== CARDS ===================== */
-.card {
+/* ── TRUST BAR ───────────────────────────────── */
+.trust-bar {
+  background: var(--teal);
+  padding: 9px var(--pad);
+  display: flex; align-items: center; justify-content: center;
+  gap: clamp(12px, 3vw, 36px);
+  flex-wrap: wrap;
+}
+.trust-item {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.5px; color: rgba(255,255,255,0.85);
+  display: flex; align-items: center; gap: 7px;
+  white-space: nowrap;
+}
+.trust-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.35); }
+
+/* ── HERO ────────────────────────────────────── */
+.hero {
+  background: var(--offwhite);
+  padding: clamp(50px, 8vw, 100px) var(--pad);
+}
+.hero-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+.hero-eyebrow { margin-bottom: 16px; }
+.hero-h1 {
+  font-family: var(--h);
+  font-size: clamp(42px, 6.5vw, 78px);
+  font-weight: 400; line-height: 1.0;
+  color: var(--teal); margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+.hero-h1 em { font-style: italic; color: var(--blue); }
+.hero-rule { margin-bottom: 22px; }
+.hero-sub {
+  font-size: clamp(14px, 1.8vw, 16px);
+  color: var(--muted); line-height: 1.7;
+  max-width: 460px; margin-bottom: 32px;
+}
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* hero form card */
+.hero-form {
   background: var(--white);
   border: 1px solid rgba(52,100,125,0.15);
-  border-radius: 10px; padding: clamp(18px,3vw,28px);
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(52,100,125,0.1);
+}
+.hero-form-header {
+  background: var(--teal);
+  padding: 20px 24px;
+}
+.hero-form-header h3 {
+  font-family: var(--h);
+  font-size: 22px; font-weight: 500; color: #fff;
+  margin-top: 6px; line-height: 1.15;
+}
+.hero-form-body { padding: 22px 24px; }
+.f-group { margin-bottom: 14px; }
+.f-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--teal); display: block; margin-bottom: 5px;
+}
+.f-input {
+  width: 100%; font-family: var(--b); font-size: 14px;
+  padding: 11px 14px;
+  border: 1.5px solid rgba(52,100,125,0.2);
+  background: var(--offwhite); color: var(--charcoal);
+  border-radius: 0; outline: none;
+  transition: border-color .2s, background .2s;
+}
+.f-input:focus { border-color: var(--blue); background: #fff; }
+.f-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236795BD' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px; cursor: pointer;
+}
+.f-submit {
+  width: 100%;
+  background: var(--teal); color: #fff;
+  font-family: var(--b); font-size: 14px; font-weight: 700;
+  letter-spacing: 0.5px; padding: 14px;
+  border: none; cursor: pointer;
+  transition: background .2s, transform .1s;
+  margin-top: 4px;
+}
+.f-submit:hover { background: var(--blue); }
+.f-submit:active { transform: scale(0.99); }
+.f-note {
+  font-size: 11px; color: var(--muted);
+  text-align: center; margin-top: 10px;
+}
+.form-tabs {
+  display: flex; border-bottom: 1px solid rgba(52,100,125,0.12);
+  margin-bottom: 18px;
+}
+.form-tab {
+  flex: 1; padding: 10px 8px; text-align: center;
+  font-size: 12px; font-weight: 600;
+  color: var(--muted); cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  user-select: none;
+}
+.form-tab.active { color: var(--teal); border-bottom-color: var(--teal); }
+.form-panel { display: none; }
+.form-panel.active { display: block; }
+
+@media (max-width: 800px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-form { max-width: 480px; }
+}
+
+/* ── BUTTONS ─────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: var(--teal); color: #fff;
+  font-family: var(--b); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.4px; padding: 13px 26px;
+  border: none; cursor: pointer; text-decoration: none;
+  transition: background .2s;
+}
+.btn-primary:hover { background: var(--blue); }
+.btn-outline {
+  display: inline-block;
+  background: transparent; color: var(--teal);
+  font-family: var(--h); font-size: 16px; font-weight: 500;
+  padding: 12px 22px;
+  border: 1.5px solid rgba(52,100,125,0.35);
+  cursor: pointer; text-decoration: none;
+  transition: border-color .2s, color .2s;
+}
+.btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ── STATS STRIP ─────────────────────────────── */
+.stats {
+  background: var(--teal);
+  padding: clamp(28px, 4vw, 48px) var(--pad);
+}
+.stats-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+.stat-num {
+  font-family: var(--h);
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 400; color: #fff; line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+@media (max-width: 600px) {
+  .stats-inner { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── INTRO ───────────────────────────────────── */
+.intro {
+  padding: clamp(56px, 8vw, 100px) var(--pad);
+  background: var(--white);
+}
+.intro-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: center;
+}
+.intro-eyebrow { margin-bottom: 16px; }
+.intro-h2 {
+  font-family: var(--h);
+  font-size: clamp(30px, 4.5vw, 52px);
+  font-weight: 400; line-height: 1.05;
+  color: var(--teal); margin-bottom: 20px;
+}
+.intro-h2 em { font-style: italic; color: var(--blue); }
+.intro-body {
+  font-size: 14px; color: var(--muted);
+  line-height: 1.75; margin-bottom: 24px;
+}
+.check-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.check-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--charcoal); line-height: 1.5;
+}
+.check-icon {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--teal); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; flex-shrink: 0; margin-top: 1px;
+}
+.intro-image-block {
+  position: relative;
+}
+.intro-image-placeholder {
+  width: 100%; aspect-ratio: 4/3;
+  background: var(--offwhite);
+  border-radius: var(--r);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 10px;
+  color: var(--lblue); font-size: 13px; font-weight: 500;
+  border: none;
+}
+.intro-accent {
+  position: absolute;
+  bottom: -16px; right: -16px;
+  background: var(--teal);
+  color: #fff; border-radius: var(--r);
+  padding: 16px 20px; text-align: center;
+  box-shadow: 0 8px 24px rgba(52,100,125,0.2);
+}
+.intro-accent-num {
+  font-family: var(--h);
+  font-size: 30px; font-weight: 400; line-height: 1;
+}
+.intro-accent-txt {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: rgba(255,255,255,0.65); margin-top: 4px;
+}
+@media (max-width: 700px) {
+  .intro-inner { grid-template-columns: 1fr; }
+  .intro-image-block { order: -1; }
+  .intro-accent { right: 0; }
+}
+
+/* ── BEFORE/AFTER ────────────────────────────── */
+.ba-section {
+  background: var(--offwhite);
+  padding: clamp(56px, 8vw, 100px) var(--pad);
+}
+.section-header { text-align: center; margin-bottom: clamp(32px, 5vw, 52px); }
+.section-h2 {
+  font-family: var(--h);
+  font-size: clamp(28px, 4vw, 50px);
+  font-weight: 400; line-height: 1.05;
+  color: var(--teal); margin-top: 12px;
+}
+.section-h2 em { font-style: italic; color: var(--blue); }
+.section-rule { margin: 14px auto 0; }
+
+.ba-grid {
+  max-width: var(--max); margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.5vw, 28px);
+}
+.ba-card {
+  background: var(--white);
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid rgba(52,100,125,0.1);
   transition: box-shadow .25s, transform .2s;
 }
-.card:hover {
-  box-shadow: 0 10px 36px rgba(52,100,125,0.12);
+.ba-card.gold-card {
+  border: 1.5px solid #c9a84c;
+}
+.ba-card.gold-card .ba-badge.after {
+  background: #c9a84c;
+}
+.ba-card:hover {
+  box-shadow: 0 12px 40px rgba(52,100,125,0.12);
   transform: translateY(-2px);
 }
-.card-teal {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 10px; padding: clamp(18px,3vw,28px);
-}
-
-/* ===================== COLOR SWATCHES ===================== */
-.swatch { border-radius: 8px; overflow: hidden; border: 1px solid rgba(0,0,0,0.08); }
-.swatch-color { height: 72px; width: 100%; }
-.swatch-info { background: #fff; padding: 10px 12px; }
-.swatch-name { font-weight: 600; font-size: 13px; color: var(--charcoal); }
-.swatch-hex  { font-family: monospace; font-size: 11px; color: rgba(51,51,51,0.55); margin-top: 2px; }
-.swatch-role { font-size: 11px; color: var(--mid-blue); margin-top: 3px; font-weight: 500; }
-
-/* ===================== TYPE SPECIMEN ===================== */
-.specimen {
-  border-left: 3px solid var(--mid-blue);
-  padding: 14px 20px;
-  margin-bottom: 16px;
-  background: var(--off-white);
-  border-radius: 0 8px 8px 0;
-}
-.specimen-meta {
-  font-size: 10px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--mid-blue); margin-bottom: 8px;
-}
-
-/* ===================== FORM ===================== */
-.form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
-.form-lbl { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--deep-teal); }
-.form-inp {
-  font-family: var(--body); font-size: 14px;
-  padding: 11px 14px;
-  border: 1.5px solid rgba(52,100,125,0.22);
-  background: #fff; color: var(--charcoal);
-  border-radius: 0; outline: none;
-  transition: border-color .2s;
-  width: 100%;
-}
-.form-inp:focus { border-color: var(--mid-blue); }
-
-/* ===================== HERO DEMO ===================== */
-.hero-demo {
-  background: var(--deep-teal);
-  border-radius: 12px;
-  min-height: clamp(280px, 40vw, 420px);
+.ba-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
   position: relative;
-  display: flex; align-items: flex-end;
-  padding: clamp(24px, 4vw, 48px);
-  isolation: isolate;
 }
-.hero-demo::before { display: none; }
-.hero-video-bg {
-  position: absolute; inset: 0;
+.ba-img-wrap { position: relative; aspect-ratio: 1; overflow: hidden; background: var(--grey); }
+.ba-img-wrap img {
   width: 100%; height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-  z-index: 0;
-  display: block;
+  object-fit: cover; object-position: top 20%;
+  transition: transform .4s ease;
 }
-.hero-overlay {
-  position: absolute; inset: 0;
-  border-radius: 12px;
-  z-index: 1;
-  background: linear-gradient(
-    to right,
-    rgba(20, 35, 70, 0.80) 0%,
-    rgba(52, 100, 125, 0.60) 50%,
-    rgba(0, 0, 0, 0.45) 100%
-  );
-  pointer-events: none;
+.ba-card:hover .ba-img-wrap img { transform: scale(1.03); }
+.ba-badge {
+  position: absolute; bottom: 7px; left: 7px;
+  font-size: 9px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; padding: 3px 8px;
+  border-radius: 3px; z-index: 1;
 }
-.hero-demo-content { position: relative; z-index: 2; max-width: 560px; }
+.ba-badge.before { background: rgba(0,0,0,0.55); color: #fff; }
+.ba-badge.after  { background: var(--teal); color: #fff; }
+.ba-divider {
+  position: absolute; top: 0; bottom: 0;
+  left: 50%; width: 2px;
+  background: var(--white); z-index: 2;
+}
+.ba-info { padding: 16px 18px; }
+.ba-name {
+  font-family: var(--h);
+  font-size: 18px; font-weight: 500; color: var(--teal);
+  margin-bottom: 3px;
+}
+.ba-detail { font-size: 12px; color: var(--muted); }
+.ba-stars { color: var(--coral); font-size: 12px; margin-top: 8px; }
 
-/* ===================== TESTIMONIAL ===================== */
-.testimonial {
-  background: var(--off-white);
-  border-radius: 10px;
-  padding: clamp(20px,3vw,32px);
-  border-left: 4px solid var(--mid-blue);
+/* placeholder cards */
+.ba-placeholder {
+  aspect-ratio: 1;
+  background: var(--grey);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 6px; color: var(--lblue);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.ba-placeholder svg { opacity: 0.4; }
+
+@media (max-width: 800px) { .ba-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .ba-grid { grid-template-columns: 1fr; } }
+
+/* ── PROCESS ─────────────────────────────────── */
+.process {
+  background: var(--white);
+  padding: clamp(56px, 8vw, 100px) var(--pad);
+}
+.process-inner { max-width: var(--max); margin: 0 auto; }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 3vw, 32px);
+  margin-top: clamp(32px, 5vw, 52px);
   position: relative;
 }
-.testimonial::before {
-  content: '"';
-  font-family: var(--headline);
-  font-size: 72px;
-  color: var(--mid-blue);
-  opacity: 0.25;
-  position: absolute; top: 8px; left: 18px;
-  line-height: 1;
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 22px; left: 10%;
+  width: 80%; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(103,149,189,0.3), transparent);
 }
-.testimonial-text {
+.step { position: relative; text-align: center; }
+.step-num {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--teal); color: #fff;
+  font-family: var(--h); font-size: 20px; font-weight: 400;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px; position: relative; z-index: 1;
+}
+.step-title {
+  font-family: var(--h);
+  font-size: 18px; font-weight: 500;
+  color: var(--teal); margin-bottom: 8px;
+}
+.step-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+@media (max-width: 700px) {
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .process-steps::before { display: none; }
+}
+@media (max-width: 400px) { .process-steps { grid-template-columns: 1fr; } }
+
+/* ── TESTIMONIALS ────────────────────────────── */
+.testimonials {
+  background: var(--offwhite);
+  padding: clamp(56px, 8vw, 100px) var(--pad);
+}
+.testi-grid {
+  max-width: var(--max); margin: clamp(32px,5vw,52px) auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 2.5vw, 24px);
+}
+.testi-card {
+  background: var(--white);
+  border-radius: var(--r);
+  padding: clamp(20px, 3vw, 28px);
+  border-left: 3px solid var(--blue);
+  position: relative;
+}
+.testi-card::before {
+  content: '\201C';
+  font-family: var(--h);
+  font-size: 60px; line-height: 1;
+  color: var(--blue); opacity: 0.18;
+  position: absolute; top: 10px; left: 16px;
+}
+.testi-text {
   font-size: 14px; font-style: italic;
-  padding-top: 28px; position: relative; z-index: 1;
-  margin-bottom: 18px; color: var(--charcoal);
-  line-height: 1.65;
+  color: var(--charcoal); line-height: 1.7;
+  padding-top: 22px; margin-bottom: 16px;
+  position: relative; z-index: 1;
 }
-.testimonial-author { display: flex; align-items: center; gap: 10px; }
-.avatar {
-  width: 36px; height: 36px; border-radius: 50%;
+.testi-author { display: flex; align-items: center; gap: 10px; }
+.testi-avatar {
+  width: 34px; height: 34px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-size: 13px; font-weight: 700; color: #fff; flex-shrink: 0;
 }
-.stars { color: var(--coral); font-size: 13px; margin-top: 8px; }
+.testi-name { font-size: 13px; font-weight: 600; color: var(--teal); }
+.testi-loc  { font-size: 11px; color: var(--muted); margin-top: 1px; }
+.testi-stars { color: var(--coral); font-size: 12px; margin-top: 8px; }
+@media (max-width: 800px) { .testi-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .testi-grid { grid-template-columns: 1fr; } }
 
-/* ===================== FAQ INTERACTIVE ===================== */
+/* ── FINANCING ───────────────────────────────── */
+.financing {
+  background: var(--teal);
+  padding: clamp(48px, 7vw, 80px) var(--pad);
+}
+.financing-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 72px);
+  align-items: center;
+}
+.fin-h2 {
+  font-family: var(--h);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 400; color: #fff;
+  line-height: 1.05; margin-top: 12px;
+}
+.fin-h2 em { color: var(--lblue); font-style: italic; }
+.fin-sub {
+  font-size: 14px; color: rgba(255,255,255,0.72);
+  line-height: 1.7; margin: 16px 0 28px;
+}
+.fin-cards { display: flex; flex-direction: column; gap: 12px; }
+.fin-card {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--r);
+  padding: 16px 18px;
+  display: flex; align-items: center; gap: 14px;
+}
+.fin-icon {
+  font-size: 22px; flex-shrink: 0;
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.fin-card-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 3px; }
+.fin-card-sub { font-size: 12px; color: rgba(255,255,255,0.6); }
+@media (max-width: 700px) {
+  .financing-inner { grid-template-columns: 1fr; }
+}
+
+/* ── FAQ ─────────────────────────────────────── */
+.faq-section {
+  background: var(--white);
+  padding: clamp(56px, 8vw, 100px) var(--pad);
+}
+.faq-inner { max-width: 720px; margin: 0 auto; }
+.faq-list { margin-top: clamp(28px, 4vw, 44px); display: flex; flex-direction: column; gap: 8px; }
 .faq-item {
-  border: 1.5px solid rgba(203,213,224,0.8);
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 8px;
+  border: 1.5px solid rgba(52,100,125,0.15);
+  border-radius: var(--r); overflow: hidden;
   transition: border-color .2s;
 }
-.faq-item.open { border-color: var(--mid-blue); }
+.faq-item.open { border-color: var(--blue); }
 .faq-q {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 16px 20px; cursor: pointer;
-  font-family: var(--headline); font-size: clamp(15px,2vw,18px);
-  color: var(--charcoal); gap: 12px;
-  user-select: none;
+  padding: 16px 20px; cursor: pointer; gap: 12px;
+  font-family: var(--h); font-size: clamp(15px, 2vw, 18px);
+  color: var(--charcoal); user-select: none;
 }
-.faq-q:hover { color: var(--deep-teal); }
-.faq-item.open .faq-q { color: var(--mid-blue); }
+.faq-q:hover { color: var(--teal); }
+.faq-item.open .faq-q { color: var(--blue); }
 .faq-chevron {
-  font-size: 18px; color: var(--mid-blue); flex-shrink: 0;
-  transition: transform .3s;
+  font-size: 18px; color: var(--blue);
+  flex-shrink: 0; transition: transform .3s;
 }
 .faq-item.open .faq-chevron { transform: rotate(90deg); }
 .faq-a {
   max-height: 0; overflow: hidden;
-  transition: max-height .35s ease, padding .3s ease;
+  transition: max-height .35s ease, padding .3s;
   padding: 0 20px;
-  font-size: 14px; color: rgba(51,51,51,0.75);
-  line-height: 1.65;
+  font-size: 14px; color: var(--muted); line-height: 1.7;
 }
-.faq-a.open {
-  max-height: 300px;
-  padding: 0 20px 18px;
+.faq-a.open { max-height: 300px; padding: 0 20px 18px; }
+
+/* ── FINAL CTA ───────────────────────────────── */
+.final-cta {
+  background: var(--offwhite);
+  padding: clamp(56px, 8vw, 100px) var(--pad);
+  text-align: center;
 }
-
-/* ===================== NAV DEMO ===================== */
-.nav-demo { border-radius: 10px; overflow: hidden; border: 1px solid rgba(52,100,125,0.12); }
-.nav-demo-bar {
-  background: #fff; padding: 13px 20px;
-  display: flex; align-items: center; justify-content: space-between;
-  border-bottom: 1px solid rgba(52,100,125,0.1);
-  flex-wrap: wrap; gap: 10px;
+.final-cta-inner { max-width: 620px; margin: 0 auto; }
+.final-cta-h2 {
+  font-family: var(--h);
+  font-size: clamp(30px, 5vw, 58px);
+  font-weight: 400; color: var(--teal);
+  line-height: 1.05; margin-top: 12px; margin-bottom: 16px;
 }
-.nav-demo-logo { font-family: var(--headline); font-size: 19px; font-weight: 500; color: var(--deep-teal); }
-.nav-demo-links { display: flex; gap: 18px; flex-wrap: wrap; }
-.nav-demo-links span { font-size: 12px; font-weight: 500; color: rgba(51,51,51,0.65); }
-.nav-demo-strip { background: var(--off-white); padding: 10px 20px; text-align: center; font-size: 12px; color: var(--deep-teal); font-weight: 500; }
-
-/* ===================== SPACING VIZ ===================== */
-.sp-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-.sp-box { background: var(--mid-blue); opacity: 0.6; height: 12px; border-radius: 2px; flex-shrink: 0; }
-.sp-label { font-family: monospace; font-size: 12px; color: rgba(51,51,51,0.65); white-space: nowrap; }
-
-/* ===================== RADIUS VIZ ===================== */
-.rx-row { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
-.rx-box { width: 38px; height: 38px; background: var(--mid-blue); opacity: 0.65; flex-shrink: 0; }
-.rx-label { font-size: 12px; color: rgba(51,51,51,0.65); }
-
-/* ===================== CODE ===================== */
-code { font-family: 'Courier New', monospace; font-size: 12px; background: var(--off-white); padding: 2px 6px; border-radius: 3px; color: var(--deep-teal); }
-pre {
-  background: #152230; color: #a5bfd3;
-  padding: clamp(14px,3vw,22px);
-  border-radius: 10px;
-  font-family: 'Courier New', monospace;
-  font-size: clamp(11px,1.5vw,13px);
-  line-height: 1.9; overflow-x: auto;
-  margin-top: 10px;
+.final-cta-h2 em { color: var(--blue); font-style: italic; }
+.final-cta-sub {
+  font-size: 14px; color: var(--muted);
+  line-height: 1.7; margin-bottom: 32px;
 }
-pre .k { color: #6795bd; }
-pre .v { color: #e8f0f6; }
-pre .c { color: #445566; font-style: italic; }
+.cta-pair { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
-/* ===================== USAGE BAR ===================== */
-.ubar { height: 7px; background: rgba(52,100,125,0.1); border-radius: 99px; overflow: hidden; margin: 4px 0 12px; }
-.ubar-fill { height: 100%; border-radius: 99px; }
-
-/* ===================== PILLS / TAGS ===================== */
-.tag { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 99px; background: var(--off-white); color: var(--deep-teal); border: 1px solid rgba(52,100,125,0.18); display: inline-block; }
-.pill { background: var(--deep-teal); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 4px 12px; border-radius: 99px; text-transform: uppercase; display: inline-block; }
-.pill-blue { background: var(--mid-blue); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 99px; text-transform: uppercase; display: inline-block; margin-left: 8px; }
-.tags-row { display: flex; flex-wrap: wrap; gap: 7px; }
-
-/* ===================== ICON BADGE ===================== */
-.icon-badge { width: 44px; height: 44px; background: var(--off-white); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 14px; }
-
-/* ===================== PRINCIPLE NUMBER ===================== */
-.pnum { font-family: var(--headline); font-size: 48px; font-weight: 300; color: var(--light-blue); line-height: 1; margin-bottom: 10px; }
-
-/* ===================== SCROLL REVEAL ===================== */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .65s ease, transform .65s ease;
+/* ── FOOTER ──────────────────────────────────── */
+footer {
+  background: var(--navy);
+  padding: clamp(28px, 4vw, 44px) var(--pad);
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+.footer-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 16px;
 }
-
-/* ===================== MOBILE SPECIFIC ===================== */
-@media (max-width: 640px) {
-  .nav-cta { display: none; }
-  .cover-title { font-size: clamp(46px, 14vw, 72px); }
-  .hero-demo { min-height: 260px; }
+.footer-logo img { height: 28px; width: auto; filter: brightness(0) invert(1); opacity: 0.7; }
+.footer-copy {
+  font-size: 11px; color: rgba(255,255,255,0.35);
+  letter-spacing: 0.5px;
 }
-
-/* ===================== ACCESSIBILITY ===================== */
-:focus-visible { outline: 2px solid var(--mid-blue); outline-offset: 3px; }
-
-/* ===================== PRINT ===================== */
-@media print {
-  .nav, .marquee-wrap { display: none; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a {
+  font-size: 11px; color: rgba(255,255,255,0.45);
+  text-decoration: none; transition: color .2s;
 }
-
-/* table utility */
-.tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
-.tbl th { padding: 9px 12px; text-align: left; font-weight: 600; color: var(--deep-teal); border-bottom: 1px solid rgba(52,100,125,0.18); background: var(--off-white); }
-.tbl td { padding: 8px 12px; border-bottom: 1px solid rgba(0,0,0,0.05); color: var(--charcoal); }
-.tbl td:last-child { color: rgba(51,51,51,0.55); }
-@media (max-width: 500px) { .tbl th:nth-child(3), .tbl td:nth-child(3) { display: none; } }
-
-.mt8  { margin-top: 8px; }
-.mt16 { margin-top: 16px; }
-.mt24 { margin-top: 24px; }
-.mt32 { margin-top: 32px; }
-.mb16 { margin-bottom: 16px; }
-.mb24 { margin-bottom: 24px; }
-.center { text-align: center; }
-.flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.footer-links a:hover { color: rgba(255,255,255,0.8); }
 </style>
 </head>
 <body>
 
-<!-- ===== STICKY NAV ===== -->
-<nav class="nav" role="navigation" aria-label="Brand guide navigation">
-  <div class="nav-brand"><img src="https://github.com/skylar-ship-it/Novi-Smile/blob/main/logo.png.webp?raw=true" alt="NoviSmile" style="height:28px; width:auto; display:block; filter:brightness(0) invert(1);"></div>
-  <div class="nav-links">
-    <a href="#brand-overview">Overview</a>
-    <a href="#typography">Typography</a>
-    <a href="#colors">Colors</a>
-    <a href="#ui-system">UI System</a>
-    <a href="#web-direction">Web</a>
-    <a href="#psychology">Psychology</a>
-    <a href="#creative">Creative</a>
-    <a href="#code">Code</a>
+<!-- ── NAV ── -->
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="https://github.com/skylar-ship-it/Novi-Smile/blob/main/logo.png.webp?raw=true" alt="NoviSmile">
   </div>
-  <button class="nav-cta" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+  <div class="nav-right">
+    <a class="nav-phone" href="tel:8554589911">(855) 458-9911</a>
+    <a class="nav-cta" href="#consult">Free Consultation</a>
+  </div>
 </nav>
 
-<!-- ===== MARQUEE ===== -->
-<div class="marquee-wrap" role="marquee" aria-label="Brand highlights">
-  <div class="marquee-track" id="marqueeTrack">
-    <!-- Items injected by JS for seamless loop -->
-  </div>
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="trust-item">★★★★★ 900+ Reviews</div>
+  <div class="trust-dot"></div>
+  <div class="trust-item">30+ Years Experience</div>
+  <div class="trust-dot"></div>
+  <div class="trust-item">Rogers, Arkansas</div>
+  <div class="trust-dot"></div>
+  <div class="trust-item">One Surgeon · No Handoffs</div>
 </div>
 
-<!-- ===== COVER ===== -->
-<div class="cover" id="top">
-  <p class="cover-label">Brand Identity System · Version 1.0</p>
-  <div style="margin:0 auto 16px; display:flex; justify-content:center; position:relative; z-index:1;">
-    <img src="https://github.com/skylar-ship-it/Novi-Smile/blob/main/logo.png.webp?raw=true" alt="NoviSmile Logo" style="height:clamp(80px,14vw,140px); width:auto; filter:brightness(0) invert(1); drop-shadow(0 4px 24px rgba(0,0,0,0.3));">
-  </div>
-  <h1 class="cover-title" style="font-size:clamp(18px,3vw,28px); font-weight:400; letter-spacing:3px; text-transform:uppercase; opacity:0.75; margin-top:0;">Rogers, Arkansas</h1>
-  <p class="cover-sub" style="font-size:clamp(13px,2vw,17px);">Dental Implant &amp; Surgery Center</p>
-  <div class="cover-divider"></div>
-  <p class="body sm" style="color:rgba(255,255,255,0.55); max-width:420px; margin:0 auto 16px;">Rogers, Arkansas</p>
-  <div class="tags-row" style="justify-content:center; gap:8px;">
-    <span class="tag" style="background:rgba(255,255,255,0.1); color:#fff; border-color:rgba(255,255,255,0.2);">Dr. Scott Frank</span>
-    <span class="tag" style="background:rgba(255,255,255,0.1); color:#fff; border-color:rgba(255,255,255,0.2);">900+ Google Reviews</span>
-    <span class="tag" style="background:rgba(255,255,255,0.1); color:#fff; border-color:rgba(255,255,255,0.2);">One Surgeon · No Handoffs</span>
-  </div>
-  <p class="cover-meta" style="margin-top:32px;">Design system based on 10X Scale CRM aesthetic · Extracted &amp; reinterpreted 2026</p>
-</div>
-
-<!-- ===== 01 BRAND OVERVIEW ===== -->
-<div class="sec-header" id="brand-overview">
-  <div class="sec-header-inner">
-    <div class="sec-num">01</div>
-    <div class="sec-title-block">
-      <h2>Brand Identity Overview</h2>
-      <p>Personality · Emotional positioning · Core principles</p>
-    </div>
-  </div>
-</div>
-
-<div class="section reveal">
-  <div class="grid-3 mb24">
-    <div class="card">
-      <span class="label">Personality</span>
-      <h3 class="h-card">Precise. Warm. Authoritative.</h3>
-      <div class="hr"></div>
-      <div class="tags-row">
-        <span class="tag">Premium</span>
-        <span class="tag">Clinical</span>
-        <span class="tag">Empathetic</span>
-      </div>
-    </div>
-    <div class="card">
-      <span class="label">Emotional Hook</span>
-      <h3 class="h-card">Relief. Hope. Dignity restored.</h3>
-      <div class="hr"></div>
-      <p class="body sm" style="font-style:italic; color:var(--mid-blue);">"You're closer than you think."</p>
-    </div>
-    <div class="card">
-      <span class="label">Visual Perception</span>
-      <h3 class="h-card">Private clinic — not a chain.</h3>
-      <div class="hr"></div>
-      <div class="tags-row">
-        <span class="tag">≠ ClearChoice</span>
-        <span class="tag">One Surgeon</span>
-        <span class="tag">No Handoffs</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid-3">
-    <div style="background:var(--deep-teal); border-radius:10px; padding:clamp(18px,3vw,28px);">
-      <div class="pnum">01</div>
-      <h4 class="h-card on-dark mt8">Luxury Restraint</h4>
-      <p class="body on-dark sm mt8">No aggressive CTAs, no clutter. White space is confidence.</p>
-    </div>
-    <div style="background:var(--deep-teal); border-radius:10px; padding:clamp(18px,3vw,28px);">
-      <div class="pnum">02</div>
-      <h4 class="h-card on-dark mt8">Clinical Credibility</h4>
-      <p class="body on-dark sm mt8">Every design choice feels like it came from a surgeon — precise, not decorative.</p>
-    </div>
-    <div style="background:var(--deep-teal); border-radius:10px; padding:clamp(18px,3vw,28px);">
-      <div class="pnum">03</div>
-      <h4 class="h-card on-dark mt8">Human Warmth</h4>
-      <p class="body on-dark sm mt8">Dr. Frank as a person, not a logo. Real patients. Real outcomes.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ===== 02 TYPOGRAPHY ===== -->
-<div class="sec-header" id="typography">
-  <div class="sec-header-inner">
-    <div class="sec-num">02</div>
-    <div class="sec-title-block">
-      <h2>Typography System</h2>
-      <p>Fonts · Hierarchy · Sizes · Weights · Pairings</p>
-    </div>
-  </div>
-</div>
-
-<div class="section reveal">
-  <div class="grid-2" style="gap:clamp(24px,5vw,56px); align-items:start;">
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
     <div>
-      <span class="label">Primary Headline Font</span>
-      <div style="font-family:var(--headline); font-size:clamp(38px,6vw,58px); font-weight:400; color:var(--deep-teal); line-height:1; margin-bottom:8px;">Cormorant</div>
-      <p class="body muted sm mb24">Refined editorial serif. All display headings, section titles, blockquotes, and emotional callouts. Weights 300–600 in use. Carries the brand's gravitas.</p>
-
-      <div class="specimen">
-        <div class="specimen-meta">H1 Hero — 65–90px / Weight 400</div>
-        <div style="font-family:var(--headline); font-size:clamp(36px,6vw,52px); font-weight:400; line-height:1; color:var(--deep-teal);">Don't settle<br><em>any longer.</em></div>
+      <div class="hero-eyebrow fade">
+        <span class="label">Full-Arch Dental Implants · Rogers, AR</span>
       </div>
-      <div class="specimen">
-        <div class="specimen-meta">H2 Section — 42–60px / Weight 400</div>
-        <div style="font-family:var(--headline); font-size:clamp(26px,4vw,38px); font-weight:400; color:var(--deep-teal);">Your smile <strong style="color:var(--mid-blue);">starts here.</strong></div>
-      </div>
-      <div class="specimen">
-        <div class="specimen-meta">H3 Card — 24–30px / Weight 500</div>
-        <div style="font-family:var(--headline); font-size:clamp(20px,3vw,26px); font-weight:500; color:var(--deep-teal);">Full Arch Reconstruction</div>
-      </div>
-      <div class="specimen">
-        <div class="specimen-meta">Sub-heading — 20–23px / Weight 400</div>
-        <div style="font-family:var(--headline); font-size:clamp(16px,2.5vw,21px); font-weight:400; color:var(--mid-blue);">Changing lives. One smile at a time.</div>
+      <h1 class="hero-h1 fade d1">
+        Don't settle<br><em>any longer.</em>
+      </h1>
+      <div class="rule hero-rule fade d2"></div>
+      <p class="hero-sub fade d2">
+        Restore your smile at NoviSmile Rogers — Northwest Arkansas's full-arch implant specialists. One surgeon, one practice, permanent results.
+      </p>
+      <div class="hero-ctas fade d3">
+        <a href="#consult" class="btn-primary">See If You Qualify</a>
+        <a href="#ba" class="btn-outline">View Results</a>
       </div>
     </div>
 
-    <div>
-      <span class="label">Secondary Body Font</span>
-      <div style="font-family:var(--body); font-size:clamp(32px,5vw,50px); font-weight:500; color:var(--deep-teal); line-height:1; margin-bottom:8px;">DM Sans</div>
-      <p class="body muted sm mb24">Modern, geometric sans-serif. All body copy, buttons, labels, captions, and UI. The rational voice to Cormorant's emotional one.</p>
-
-      <div class="specimen">
-        <div class="specimen-meta">Buttons — 13–14px / Weight 700</div>
-        <div class="btn-row">
-          <span class="btn btn-primary">Schedule Free Consultation</span>
-          <span class="btn btn-outline">Get Appointment</span>
+    <!-- FORM CARD -->
+    <div class="hero-form fade d2" id="consult">
+      <div class="hero-form-header">
+        <span class="label light">Free · No commitment</span>
+        <h3>Start your smile<br>assessment today.</h3>
+      </div>
+      <div class="hero-form-body">
+        <div class="form-tabs">
+          <div class="form-tab active" onclick="switchTab('qualify', this)">See If I Qualify</div>
+          <div class="form-tab" onclick="switchTab('pricing', this)">Get Pricing</div>
         </div>
-      </div>
-      <div class="specimen">
-        <div class="specimen-meta">Body Copy — 14–15px / Weight 400</div>
-        <p class="body">Dr. Scott Frank brings his proven full-arch methodology to Rogers, Arkansas. Thousands of procedures completed. One surgeon from consultation through final restoration — no handoffs, ever.</p>
-      </div>
-      <div class="specimen">
-        <div class="specimen-meta">Caption / Label — 10–11px / Weight 700 / Uppercase</div>
-        <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
-          <span class="label" style="margin:0;">Schedule Today</span>
-          <span class="label" style="margin:0; color:var(--charcoal);">Patient Stories</span>
-          <span class="label" style="margin:0; color:var(--deep-teal);">Over 95% Success Rate</span>
+
+        <!-- TAB: QUALIFY -->
+        <div class="form-panel active" id="panel-qualify">
+          <div class="f-group">
+            <label class="f-label">How many teeth are you missing?</label>
+            <select class="f-input f-select">
+              <option value="">Select an option...</option>
+              <option>All upper teeth (full arch)</option>
+              <option>All lower teeth (full arch)</option>
+              <option>Both upper &amp; lower</option>
+              <option>Several missing teeth</option>
+            </select>
+          </div>
+          <div class="f-group">
+            <label class="f-label">Your Name</label>
+            <input class="f-input" type="text" placeholder="First and last name">
+          </div>
+          <div class="f-group">
+            <label class="f-label">Phone Number</label>
+            <input class="f-input" type="tel" placeholder="(855) 458-9911">
+          </div>
+          <button class="f-submit" onclick="handleSubmit()">Check My Eligibility →</button>
+          <p class="f-note">Free · 5 minutes · No commitment required</p>
         </div>
-      </div>
 
-      <div class="hr"></div>
-      <span class="label">Type Scale</span>
-      <table class="tbl mt8">
-        <thead><tr><th>Token</th><th>Size</th><th>Font · Weight</th></tr></thead>
-        <tbody>
-          <tr><td>hero</td><td>65–90px</td><td>Cormorant 400</td></tr>
-          <tr><td>display</td><td>42–60px</td><td>Cormorant 400</td></tr>
-          <tr><td>heading</td><td>26–30px</td><td>Cormorant 500</td></tr>
-          <tr><td>subhead</td><td>20–23px</td><td>Cormorant 400</td></tr>
-          <tr><td>body</td><td>14–15px</td><td>DM Sans 400</td></tr>
-          <tr><td>button</td><td>13–14px</td><td>DM Sans 700</td></tr>
-          <tr><td>label</td><td>10–11px</td><td>DM Sans 700</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<!-- ===== 03 COLORS ===== -->
-<div class="sec-header" id="colors">
-  <div class="sec-header-inner">
-    <div class="sec-num">03</div>
-    <div class="sec-title-block">
-      <h2>Color Palette</h2>
-      <p>Primary · Secondary · Accent · Usage ratios · Rules</p>
-    </div>
-  </div>
-</div>
-
-<div class="section reveal">
-  <span class="label mb16">Primary Colors — ~65% of visual surface</span>
-  <div class="grid-4 mb24">
-    <div class="swatch"><div class="swatch-color" style="background:#34647D;"></div><div class="swatch-info"><div class="swatch-name">Deep Teal</div><div class="swatch-hex">#34647D</div><div class="swatch-role">Hero BG · Section BG · Dividers</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#6795BD;"></div><div class="swatch-info"><div class="swatch-name">Mid Blue</div><div class="swatch-hex">#6795BD</div><div class="swatch-role">Primary CTA · Accent · Links</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#A5BFD3;"></div><div class="swatch-info"><div class="swatch-name">Light Blue</div><div class="swatch-hex">#A5BFD3</div><div class="swatch-role">Secondary CTA · Hover states</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#F4F6F6; border:1px solid #e0e0e0;"></div><div class="swatch-info"><div class="swatch-name">Off-White</div><div class="swatch-hex">#F4F6F6</div><div class="swatch-role">Card BG · Feature sections</div></div></div>
-  </div>
-
-  <span class="label mb16">Supporting Colors — ~30%</span>
-  <div class="grid-4 mb24">
-    <div class="swatch"><div class="swatch-color" style="background:#333333;"></div><div class="swatch-info"><div class="swatch-name">Charcoal</div><div class="swatch-hex">#333333</div><div class="swatch-role">Body text · UI copy</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#f3f3f3; border:1px solid #e0e0e0;"></div><div class="swatch-info"><div class="swatch-name">Light Grey</div><div class="swatch-hex">#F3F3F3</div><div class="swatch-role">Alt section backgrounds</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#1a2860;"></div><div class="swatch-info"><div class="swatch-name">Dark Navy</div><div class="swatch-hex">#1A2860</div><div class="swatch-role">Footer bars · Deep overlays</div></div></div>
-    <div class="swatch"><div class="swatch-color" style="background:#ffffff; border:1px solid #ddd;"></div><div class="swatch-info"><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF</div><div class="swatch-role">Cards · Text on dark</div></div></div>
-  </div>
-
-  <span class="label mb16">Accent — Use sparingly ≤5%</span>
-  <div style="display:grid; grid-template-columns:clamp(140px,25%,200px) 1fr; gap:20px; align-items:center; margin-bottom:28px;">
-    <div class="swatch"><div class="swatch-color" style="background:#ED676D;"></div><div class="swatch-info"><div class="swatch-name">Warm Coral</div><div class="swatch-hex">#ED676D</div><div class="swatch-role">Alerts · Social proof pop</div></div></div>
-    <p class="body muted sm">Reserved for high-priority callouts only: star ratings, urgency banners, social proof badges. One coral element per page maximum. Never used for body text or large fills.</p>
-  </div>
-
-  <div class="hr"></div>
-  <div class="grid-2" style="gap:clamp(20px,4vw,40px);">
-    <div>
-      <span class="label mb16">Usage Breakdown</span>
-      <div class="flex-between mb8"><span style="font-size:13px; font-weight:500; color:var(--deep-teal);">Deep Teal (#34647D)</span><span class="body sm muted">35%</span></div>
-      <div class="ubar"><div class="ubar-fill" style="width:35%; background:#34647D;"></div></div>
-      <div class="flex-between mb8"><span style="font-size:13px; font-weight:500;">Off-White + Light Grey</span><span class="body sm muted">28%</span></div>
-      <div class="ubar"><div class="ubar-fill" style="width:28%; background:#D0D8DA;"></div></div>
-      <div class="flex-between mb8"><span style="font-size:13px; font-weight:500;">White (cards, body)</span><span class="body sm muted">22%</span></div>
-      <div class="ubar"><div class="ubar-fill" style="width:22%; background:#CCC;"></div></div>
-      <div class="flex-between mb8"><span style="font-size:13px; font-weight:500; color:var(--mid-blue);">Mid Blue (#6795BD)</span><span class="body sm muted">10%</span></div>
-      <div class="ubar"><div class="ubar-fill" style="width:10%; background:#6795BD;"></div></div>
-      <div class="flex-between mb8"><span style="font-size:13px; font-weight:500; color:var(--coral);">Warm Coral (#ED676D)</span><span class="body sm muted">≤5%</span></div>
-      <div class="ubar"><div class="ubar-fill" style="width:5%; background:#ED676D;"></div></div>
-    </div>
-    <div style="background:var(--deep-teal); border-radius:10px; padding:clamp(18px,3vw,28px);">
-      <span class="label on-dark mb16">On-Brand Color Rules</span>
-      <ul style="list-style:none; display:flex; flex-direction:column; gap:10px;">
-        <li style="display:flex; gap:10px;"><span style="color:var(--light-blue); flex-shrink:0;">→</span><span class="body on-dark sm">Never place Mid Blue text on Deep Teal — insufficient contrast</span></li>
-        <li style="display:flex; gap:10px;"><span style="color:var(--light-blue); flex-shrink:0;">→</span><span class="body on-dark sm">White text on Deep Teal is always valid (#34647D)</span></li>
-        <li style="display:flex; gap:10px;"><span style="color:var(--light-blue); flex-shrink:0;">→</span><span class="body on-dark sm">Charcoal body text only on white or off-white backgrounds</span></li>
-        <li style="display:flex; gap:10px;"><span style="color:var(--light-blue); flex-shrink:0;">→</span><span class="body on-dark sm">Sections alternate: Teal → Off-White → White → Teal</span></li>
-        <li style="display:flex; gap:10px;"><span style="color:var(--light-blue); flex-shrink:0;">→</span><span class="body on-dark sm">Coral is never used for body text or large backgrounds</span></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- ===== 04 UI SYSTEM ===== -->
-<div class="sec-header" id="ui-system">
-  <div class="sec-header-inner">
-    <div class="sec-num">04</div>
-    <div class="sec-title-block">
-      <h2>UI Design System</h2>
-      <p>Buttons · Forms · Cards · Spacing · Radius · Borders</p>
-    </div>
-  </div>
-</div>
-
-<div class="section reveal">
-  <div class="grid-2" style="gap:clamp(24px,5vw,52px); align-items:start;">
-    <div>
-      <span class="label">Buttons</span>
-      <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:20px;">
-        <div><span class="btn btn-primary">Schedule Free Consultation</span><span class="pill-blue">Primary CTA</span></div>
-        <div><span class="btn btn-outline">Get an Appointment</span><span class="pill-blue" style="margin-left:8px;">Outline</span></div>
-        <div style="background:var(--deep-teal); padding:12px 16px; border-radius:8px; display:inline-flex; align-items:center; gap:10px;">
-          <span class="btn btn-ghost">Call Today</span><span style="font-size:10px; color:rgba(255,255,255,0.5);">Ghost on Dark</span>
-        </div>
-        <div><span style="font-family:var(--headline); font-size:15px; font-weight:700; color:var(--mid-blue); text-decoration:underline; text-underline-offset:4px;">Learn More →</span><span style="font-size:11px; color:rgba(51,51,51,0.5); margin-left:8px;">Text Link</span></div>
-      </div>
-      <div style="background:var(--off-white); border-radius:8px; padding:14px 16px; font-size:12px; color:var(--charcoal);">
-        <strong style="color:var(--deep-teal);">Button Rules:</strong> Zero border-radius on primary CTAs. Font weight 700. Letter-spacing 0.4px. Padding 12–16px vertical · 24–30px horizontal. No gradient fills ever.
-      </div>
-
-      <div class="hr"></div>
-      <span class="label">Form Strategy — Two Paths, Two Intents</span>
-      <p class="body muted sm" style="margin-bottom:16px; margin-top:6px;">Patients self-select based on readiness. High-intent leads take the Full Assessment (5 min, deep qualification). Price-shoppers take Quick Pricing (2 min, wide funnel). Both feed GHL with different tags — Karen calls Path A first.</p>
-
-      <!-- FORM CARD 1: QUALIFICATION -->
-      <div style="border:2px solid var(--deep-teal); border-radius:12px; overflow:hidden; margin-bottom:14px; background:#fff;">
-        <div style="background:var(--deep-teal); padding:16px 20px;">
-          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
-            <div>
-              <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--light-blue); margin-bottom:4px;">Path A · High Intent</div>
-              <div style="font-family:var(--headline); font-size:22px; font-weight:500; color:#fff; line-height:1.1;">See If You Qualify</div>
-            </div>
-            <span style="background:var(--coral); color:#fff; font-size:10px; font-weight:700; letter-spacing:1px; padding:5px 12px; border-radius:99px; text-transform:uppercase; white-space:nowrap;">Priority Lead</span>
+        <!-- TAB: PRICING -->
+        <div class="form-panel" id="panel-pricing">
+          <div class="f-group">
+            <label class="f-label">First Name</label>
+            <input class="f-input" type="text" placeholder="Your first name">
           </div>
-          <p style="font-size:12px; color:rgba(255,255,255,0.65); margin-top:8px;">5-min Full Assessment · Tagged: New High Intent Lead in GHL</p>
-        </div>
-        <div style="padding:18px 20px;">
-          <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px; padding:10px 14px; background:var(--off-white); border-radius:8px;">
-            <span style="font-size:18px; flex-shrink:0;">🦷</span>
-            <div>
-              <div style="font-size:13px; font-weight:600; color:var(--deep-teal);">How many teeth are you missing?</div>
-              <div style="font-size:11px; color:rgba(51,51,51,0.5); margin-top:2px;">Step 1 of 5 · Smile Assessment</div>
-            </div>
+          <div class="f-group">
+            <label class="f-label">Phone Number</label>
+            <input class="f-input" type="tel" placeholder="(855) 458-9911">
           </div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px;">
-            <div style="border:1.5px solid rgba(52,100,125,0.22); border-radius:8px; padding:11px 14px; font-size:13px; color:var(--charcoal); display:flex; align-items:center; gap:8px;">
-              <div style="width:16px;height:16px;border-radius:50%;border:2px solid rgba(52,100,125,0.3);flex-shrink:0;"></div>All upper teeth
-            </div>
-            <div style="border:2px solid var(--mid-blue); border-radius:8px; padding:11px 14px; font-size:13px; color:var(--mid-blue); font-weight:600; display:flex; align-items:center; gap:8px; background:rgba(103,149,189,0.07);">
-              <div style="width:16px;height:16px;border-radius:50%;border:2px solid var(--mid-blue);flex-shrink:0;display:flex;align-items:center;justify-content:center;"><div style="width:8px;height:8px;border-radius:50%;background:var(--mid-blue);"></div></div>All lower teeth
-            </div>
-            <div style="border:1.5px solid rgba(52,100,125,0.22); border-radius:8px; padding:11px 14px; font-size:13px; color:var(--charcoal); display:flex; align-items:center; gap:8px;">
-              <div style="width:16px;height:16px;border-radius:50%;border:2px solid rgba(52,100,125,0.3);flex-shrink:0;"></div>Both arches
-            </div>
-            <div style="border:1.5px solid rgba(52,100,125,0.22); border-radius:8px; padding:11px 14px; font-size:13px; color:var(--charcoal); display:flex; align-items:center; gap:8px;">
-              <div style="width:16px;height:16px;border-radius:50%;border:2px solid rgba(52,100,125,0.3);flex-shrink:0;"></div>Several teeth
-            </div>
-          </div>
-          <button class="btn btn-primary" style="width:100%; text-align:center; display:block;">Continue → Step 2 of 5</button>
-          <p style="font-size:11px; color:rgba(51,51,51,0.4); text-align:center; margin-top:8px;">Free · No commitment · 5 minutes</p>
-        </div>
-      </div>
-
-      <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
-        <div style="flex:1; height:1px; background:rgba(52,100,125,0.12);"></div>
-        <span style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(51,51,51,0.35);">or</span>
-        <div style="flex:1; height:1px; background:rgba(52,100,125,0.12);"></div>
-      </div>
-
-      <!-- FORM CARD 2: GET PRICING -->
-      <div style="border:1.5px solid rgba(103,149,189,0.3); border-radius:12px; overflow:hidden; background:#fff;">
-        <div style="background:var(--off-white); padding:16px 20px; border-bottom:1px solid rgba(52,100,125,0.08);">
-          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
-            <div>
-              <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--mid-blue); margin-bottom:4px;">Path B · Price Shopper</div>
-              <div style="font-family:var(--headline); font-size:22px; font-weight:500; color:var(--deep-teal); line-height:1.1;">Get Pricing Info</div>
-            </div>
-            <span style="background:var(--mid-blue); color:#fff; font-size:10px; font-weight:700; letter-spacing:1px; padding:5px 12px; border-radius:99px; text-transform:uppercase; white-space:nowrap;">Quick · 2 min</span>
-          </div>
-          <p style="font-size:12px; color:rgba(51,51,51,0.5); margin-top:8px;">Wide funnel · Tagged: New Lead · Callback within 5 min</p>
-        </div>
-        <div style="padding:18px 20px;">
-          <div class="form-group">
-            <label class="form-lbl">First Name</label>
-            <input class="form-inp" type="text" placeholder="Your first name" readonly>
-          </div>
-          <div class="form-group">
-            <label class="form-lbl">Phone Number</label>
-            <input class="form-inp" type="tel" placeholder="(479) 555-0100" readonly>
-          </div>
-          <div style="margin-bottom:14px;">
-            <label class="form-lbl" style="display:block; margin-bottom:6px;">How many teeth are you missing?</label>
-            <select class="form-inp" style="appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236795BD' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:36px;" disabled>
-              <option>Select an option...</option>
+          <div class="f-group">
+            <label class="f-label">Teeth missing?</label>
+            <select class="f-input f-select">
+              <option value="">Select an option...</option>
               <option>Full arch (upper or lower)</option>
               <option>Both upper &amp; lower</option>
               <option>Several missing teeth</option>
             </select>
           </div>
-          <button class="btn btn-outline" style="width:100%; text-align:center; display:block; font-size:14px;">Send Me Pricing →</button>
-          <p style="font-size:11px; color:rgba(51,51,51,0.4); text-align:center; margin-top:8px;">No spam · Pricing info sent within 1 hour</p>
+          <button class="f-submit" onclick="handleSubmit()">Send Me Pricing →</button>
+          <p class="f-note">No spam · Pricing info within 1 hour</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div style="background:rgba(52,100,125,0.05); border-left:3px solid var(--mid-blue); border-radius:0 8px 8px 0; padding:12px 16px; margin-top:14px;">
-        <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--mid-blue); margin-bottom:5px;">Conversion Strategy</div>
-        <p class="body muted sm">"See If You Qualify" outperforms "Book a Consultation" in full-arch ads — it lowers perceived commitment. Patients afraid of being sold to find qualifying safer than booking. Path A tagged <code>New High Intent Lead</code>; Path B as <code>New Lead</code>.</p>
+<!-- ── STATS ── -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="fade">
+      <div class="stat-num">30+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="fade d1">
+      <div class="stat-num">15k+</div>
+      <div class="stat-label">Implants Placed</div>
+    </div>
+    <div class="fade d2">
+      <div class="stat-num">95%+</div>
+      <div class="stat-label">Success Rate</div>
+    </div>
+    <div class="fade d3">
+      <div class="stat-num">900+</div>
+      <div class="stat-label">5-Star Reviews</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── INTRO / WHY US ── -->
+<section class="intro">
+  <div class="intro-inner">
+    <div>
+      <div class="intro-eyebrow fade">
+        <span class="label">Why NoviSmile</span>
+      </div>
+      <h2 class="intro-h2 fade d1">One surgeon.<br><em>Start to finish.</em></h2>
+      <p class="intro-body fade d2">
+        At NoviSmile Rogers, Dr. Scott Frank handles every step of your treatment personally — from your first consultation through final restoration. No handoffs to associates. No surprises.
+      </p>
+      <ul class="check-list fade d2">
+        <li>
+          <span class="check-icon">✓</span>
+          <span>3D-guided surgical planning for precision placement</span>
+        </li>
+        <li>
+          <span class="check-icon">✓</span>
+          <span>Same-day temporary restorations available</span>
+        </li>
+        <li>
+          <span class="check-icon">✓</span>
+          <span>IV sedation — sleep comfortably through your procedure</span>
+        </li>
+        <li>
+          <span class="check-icon">✓</span>
+          <span>CareCredit® &amp; Proceed Finance accepted</span>
+        </li>
+      </ul>
+    </div>
+    <div class="intro-image-block fade d3">
+      <img
+        src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/dr_50.jpg.webp"
+        alt="Dr. Scott Frank — NoviSmile Rogers"
+        loading="lazy"
+        style="width:100%; aspect-ratio:4/3; object-fit:cover; object-position:center top; border-radius:var(--r);">
+      <div class="intro-accent">
+        <div class="intro-accent-num">1</div>
+        <div class="intro-accent-txt">Surgeon.<br>Always.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BEFORE / AFTER ── -->
+<section class="ba-section" id="ba">
+  <div class="section-header fade">
+    <span class="label" style="text-align:center; display:block;">Real Patient Results</span>
+    <h2 class="section-h2">Before &amp; <em>After</em></h2>
+    <div class="rule section-rule"></div>
+  </div>
+
+  <div class="ba-grid" style="row-gap:clamp(16px,3vw,28px);">
+
+    <div class="ba-card fade d1">
+      <div class="ba-images">
+        <div class="ba-img-wrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before1.webp" alt="Before - Isidro M." loading="lazy">
+          <span class="ba-badge before">Before</span>
+        </div>
+        <div class="ba-img-wrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after1.webp" alt="After - Isidro M." loading="lazy">
+          <span class="ba-badge after">After</span>
+        </div>
+        <div class="ba-divider"></div>
+      </div>
+      <div class="ba-info">
+        <div class="ba-name">Isidro M.</div>
+        <div class="ba-detail">Upper & Lower Full Arch · Rogers, AR</div>
+        <div class="ba-stars">★★★★★</div>
       </div>
     </div>
 
-    <div>
-      <span class="label">Card Variants</span>
-      <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:24px;">
-        <div class="card">
-          <div class="icon-badge">🦷</div>
-          <h3 class="h-card">Dental Implants</h3>
-          <p class="body muted sm mt8">Single-tooth or full arch — durable, natural-looking, backed by decades of surgical precision.</p>
-          <div class="mt16"><span class="btn btn-outline" style="font-size:13px; padding:9px 18px;">Learn More</span></div>
+    <div class="ba-card fade d2">
+      <div class="ba-images">
+        <div class="ba-img-wrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before2.webp" alt="Before - Melissa R." loading="lazy">
+          <span class="ba-badge before">Before</span>
         </div>
-        <div style="background:var(--deep-teal); border-radius:10px; padding:clamp(16px,3vw,24px);">
-          <span class="label on-dark">Procedure</span>
-          <h3 class="h-card on-dark mt8">Full Arch Reconstruction</h3>
-          <p class="body on-dark sm mt8">Complete upper or lower arch. Same-day results in many cases. No hospital stays required.</p>
-          <div class="mt16"><span class="btn btn-ghost" style="font-size:13px; padding:9px 18px;">Get Started</span></div>
+        <div class="ba-img-wrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after2.webp" alt="After - Melissa R." loading="lazy">
+          <span class="ba-badge after">After</span>
         </div>
-        <div style="background:#fff; border:1.5px solid rgba(52,100,125,0.2); border-radius:10px; padding:18px; display:flex; align-items:flex-start; gap:14px;">
-          <div style="flex-shrink:0; width:42px; height:42px; background:var(--off-white); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:18px;">💳</div>
-          <div><h4 style="font-family:var(--headline); font-size:17px; color:var(--charcoal); margin-bottom:4px;">CareCredit® Financing</h4><p class="body muted sm">Flexible monthly payment options. Apply in minutes at your consultation.</p></div>
-        </div>
+        <div class="ba-divider"></div>
       </div>
+      <div class="ba-info">
+        <div class="ba-name">Melissa R.</div>
+        <div class="ba-detail">Lower Arch Reconstruction · Rogers, AR</div>
+        <div class="ba-stars">★★★★★</div>
+      </div>
+    </div>
 
-      <div class="hr"></div>
-      <div class="grid-2" style="gap:20px; align-items:start;">
+    <div class="ba-card fade d3">
+      <div class="ba-images">
+        <div class="ba-img-wrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before3.webp" alt="Before - Michael T." loading="lazy">
+          <span class="ba-badge before">Before</span>
+        </div>
+        <div class="ba-img-wrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after3.webp" alt="After - Michael T." loading="lazy">
+          <span class="ba-badge after">After</span>
+        </div>
+        <div class="ba-divider"></div>
+      </div>
+      <div class="ba-info">
+        <div class="ba-name">Michael T.</div>
+        <div class="ba-detail">Upper Arch · Rogers, AR</div>
+        <div class="ba-stars">★★★★★</div>
+      </div>
+    </div>
+
+    <div class="ba-card fade d1">
+      <div class="ba-images">
+        <div class="ba-img-wrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before4.webp" alt="Before - Sandra K." loading="lazy">
+          <span class="ba-badge before">Before</span>
+        </div>
+        <div class="ba-img-wrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after4.webp" alt="After - Sandra K." loading="lazy">
+          <span class="ba-badge after">After</span>
+        </div>
+        <div class="ba-divider"></div>
+      </div>
+      <div class="ba-info">
+        <div class="ba-name">Sandra K.</div>
+        <div class="ba-detail">Full Arch Restoration · Rogers, AR</div>
+        <div class="ba-stars">★★★★★</div>
+      </div>
+    </div>
+
+    <div class="ba-card fade d2">
+      <div class="ba-images">
+        <div class="ba-img-wrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before5.webp" alt="Before - James P." loading="lazy">
+          <span class="ba-badge before">Before</span>
+        </div>
+        <div class="ba-img-wrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after5.webp" alt="After - James P." loading="lazy">
+          <span class="ba-badge after">After</span>
+        </div>
+        <div class="ba-divider"></div>
+      </div>
+      <div class="ba-info">
+        <div class="ba-name">James P.</div>
+        <div class="ba-detail">Upper & Lower Full Arch · Rogers, AR</div>
+        <div class="ba-stars">★★★★★</div>
+      </div>
+    </div>
+
+    <div class="ba-card gold-card fade d3">
+      <div style="background:#c9a84c;color:#fff;font-size:11px;font-weight:600;letter-spacing:0.5px;padding:7px 14px;text-align:center;">✦ Totally Customizable — Gold &amp; Designer Details Available</div><div class="ba-images">
+        <div class="ba-img-wrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before6.webp" alt="Before - Custom All-on-X" loading="lazy">
+          <span class="ba-badge before">Before</span>
+        </div>
+        <div class="ba-img-wrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after6-2.webp" alt="After - Custom All-on-X" loading="lazy">
+          <span class="ba-badge after">After</span>
+        </div>
+        <div class="ba-divider"></div>
+      </div>
+      <div class="ba-info">
+        <div class="ba-name">Custom All-on-X</div>
+        <div class="ba-detail">Fully Customizable Restoration · Rogers, AR</div>
+        <div class="ba-stars">★★★★★</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="process">
+  <div class="process-inner">
+    <div class="section-header fade">
+      <span class="label" style="text-align:center; display:block;">Simple Process</span>
+      <h2 class="section-h2">How it <em>works</em></h2>
+      <div class="rule section-rule"></div>
+    </div>
+    <div class="process-steps">
+      <div class="step fade d1">
+        <div class="step-num">1</div>
+        <div class="step-title">Free Consult</div>
+        <div class="step-body">Meet Dr. Frank. Review your X-rays and 3D scans. Get a full treatment plan with pricing.</div>
+      </div>
+      <div class="step fade d2">
+        <div class="step-num">2</div>
+        <div class="step-title">Custom Plan</div>
+        <div class="step-body">Your implant placement is digitally planned using 3D guided technology for exact precision.</div>
+      </div>
+      <div class="step fade d3">
+        <div class="step-num">3</div>
+        <div class="step-title">Surgery Day</div>
+        <div class="step-body">Relax under IV sedation while Dr. Frank places your implants. Walk out with a temporary smile.</div>
+      </div>
+      <div class="step fade d4">
+        <div class="step-num">4</div>
+        <div class="step-title">Final Smile</div>
+        <div class="step-body">After healing, your permanent restoration is placed. Your new smile is built to last a lifetime.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials">
+  <div class="section-header fade">
+    <span class="label" style="text-align:center; display:block;">Patient Stories</span>
+    <h2 class="section-h2">Real people.<br><em>Real results.</em></h2>
+    <div class="rule section-rule"></div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fade d1">
+      <p class="testi-text">"I walked in without teeth and walked out with a new life. Dr. Frank treated me like family. I can eat a steak again."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:var(--teal);">I</div>
         <div>
-          <span class="label">Radius System</span>
-          <div class="mt8">
-            <div class="rx-row"><div class="rx-box" style="border-radius:0;"></div><span class="rx-label">0px — CTAs, primary buttons</span></div>
-            <div class="rx-row"><div class="rx-box" style="border-radius:4px;"></div><span class="rx-label">4px — Badges, inputs</span></div>
-            <div class="rx-row"><div class="rx-box" style="border-radius:10px;"></div><span class="rx-label">10px — Cards, FAQ items</span></div>
-            <div class="rx-row"><div class="rx-box" style="border-radius:16px;"></div><span class="rx-label">16px — Section frames</span></div>
-            <div class="rx-row"><div class="rx-box" style="border-radius:99px;"></div><span class="rx-label">99px — Pills, tags only</span></div>
-          </div>
+          <div class="testi-name">Isidro M.</div>
+          <div class="testi-loc">Upper &amp; Lower Full Arch · Rogers, AR</div>
         </div>
+      </div>
+      <div class="testi-stars">★★★★★</div>
+    </div>
+    <div class="testi-card fade d2">
+      <p class="testi-text">"I had been suffering for 10 years. Every step was painless and I knew I was in expert hands the whole time."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:var(--blue);">M</div>
         <div>
-          <span class="label">Spacing (8px base)</span>
-          <div class="mt8">
-            <div class="sp-row"><div class="sp-box" style="width:8px;"></div><span class="sp-label">8px — xs</span></div>
-            <div class="sp-row"><div class="sp-box" style="width:16px;"></div><span class="sp-label">16px — sm</span></div>
-            <div class="sp-row"><div class="sp-box" style="width:32px;"></div><span class="sp-label">32px — md</span></div>
-            <div class="sp-row"><div class="sp-box" style="width:48px;"></div><span class="sp-label">48px — lg</span></div>
-            <div class="sp-row"><div class="sp-box" style="width:64px;"></div><span class="sp-label">64px — xl</span></div>
-            <div class="sp-row"><div class="sp-box" style="width:80px; max-width:100%;"></div><span class="sp-label">100px — xxl</span></div>
+          <div class="testi-name">Melissa R.</div>
+          <div class="testi-loc">Lower Arch Reconstruction · Rogers, AR</div>
+        </div>
+      </div>
+      <div class="testi-stars">★★★★★</div>
+    </div>
+    <div class="testi-card fade d3">
+      <p class="testi-text">"One surgeon, one practice, one incredible outcome. The technology is unlike anything else in Arkansas."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:var(--lblue); color:var(--teal);">M</div>
+        <div>
+          <div class="testi-name">Michael T.</div>
+          <div class="testi-loc">Upper Arch · Rogers, AR</div>
+        </div>
+      </div>
+      <div class="testi-stars">★★★★★</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINANCING ── -->
+<section class="financing">
+  <div class="financing-inner">
+    <div class="fade">
+      <span class="label light">Flexible Options</span>
+      <h2 class="fin-h2">Implants that<br>fit your <em>budget.</em></h2>
+      <p class="fin-sub">Don't let cost stand between you and the smile you deserve. We offer flexible financing options to make full-arch implants accessible.</p>
+      <a href="#consult" class="btn-primary" style="background:#fff; color:var(--teal);">Check My Options →</a>
+    </div>
+    <div class="fin-cards fade d2">
+      <div class="fin-card">
+        <div class="fin-icon">💳</div>
+        <div>
+          <div class="fin-card-title">CareCredit®</div>
+          <div class="fin-card-sub">0% interest promotional financing available. Apply in minutes.</div>
+        </div>
+      </div>
+      <div class="fin-card">
+        <div class="fin-icon">📋</div>
+        <div>
+          <div class="fin-card-title">Proceed Finance</div>
+          <div class="fin-card-sub">Extended terms up to 96 months. Low monthly payments.</div>
+        </div>
+      </div>
+      <div class="fin-card">
+        <div class="fin-icon">🤝</div>
+        <div>
+          <div class="fin-card-title">In-House Plans</div>
+          <div class="fin-card-sub">Ask about our custom payment arrangements at your consultation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="section-header fade">
+      <span class="label" style="text-align:center; display:block;">Common Questions</span>
+      <h2 class="section-h2">You asked.<br><em>We answered.</em></h2>
+      <div class="rule section-rule"></div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>What is a full arch dental implant?</span>
+          <span class="faq-chevron">›</span>
+        </div>
+        <div class="faq-a">A full arch implant replaces an entire row of teeth with a fixed, permanent prosthesis supported by 4–6 titanium implants. Unlike dentures, they never slip, require no adhesives, and function exactly like natural teeth.</div>
+      </div>
+      <div class="faq-item fade d1">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Will the surgery be painful?</span>
+          <span class="faq-chevron">›</span>
+        </div>
+        <div class="faq-a">Surgery is performed under IV sedation — you'll feel no pain and most patients have no memory of the procedure at all. Post-op discomfort is manageable with prescribed medication.</div>
+      </div>
+      <div class="faq-item fade d2">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>How long does the full process take?</span>
+          <span class="faq-chevron">›</span>
+        </div>
+        <div class="faq-a">From consultation to final restoration, treatment typically takes 3–6 months. Many patients receive a temporary restoration the same day as surgery.</div>
+      </div>
+      <div class="faq-item fade d3">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>How much do full arch implants cost?</span>
+          <span class="faq-chevron">›</span>
+        </div>
+        <div class="faq-a">Cost varies based on your unique case. The best way to get accurate pricing is a free consultation with Dr. Frank. We also offer flexible financing through CareCredit® and Proceed Finance.</div>
+      </div>
+      <div class="faq-item fade d4">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Am I a candidate for dental implants?</span>
+          <span class="faq-chevron">›</span>
+        </div>
+        <div class="faq-a">Most adults with missing teeth are candidates. Bone density, gum health, and medical history are all reviewed at your free consultation. Dr. Frank will give you a clear answer — no surprises.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <div class="fade">
+      <span class="label" style="text-align:center; display:block;">Rogers, Arkansas</span>
+      <h2 class="final-cta-h2">Your new smile<br>starts <em>today.</em></h2>
+      <p class="final-cta-sub">Free consultations available. No pressure, no obligation — just a conversation with Dr. Frank about what's possible for you.</p>
+      <div class="cta-pair">
+        <a href="#consult" class="btn-primary">See If I Qualify</a>
+        <a href="tel:8554589911" class="btn-outline">Call (855) 458-9911</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LOCATION ── -->
+<section style="background:var(--white); padding:clamp(56px,8vw,100px) var(--pad) 0;">
+  <div class="container">
+    <div class="section-header fade">
+      <span class="label" style="text-align:center; display:block;">Find Us</span>
+      <h2 class="section-h2">Visit our Rogers<br><em>location.</em></h2>
+      <div class="rule section-rule"></div>
+    </div>
+  </div>
+</section>
+
+<div style="background:var(--white); padding:clamp(24px,4vw,48px) var(--pad) clamp(56px,8vw,100px);">
+  <div style="max-width:var(--max); margin:0 auto; display:grid; grid-template-columns:1fr 340px; gap:clamp(24px,4vw,52px); align-items:stretch;" class="loc-grid fade">
+
+    <!-- MAP -->
+    <div style="border-radius:var(--r); overflow:hidden; border:1px solid rgba(52,100,125,0.12); min-height:360px;">
+      <iframe
+        title="NoviSmile Rogers Location"
+        width="100%" height="100%"
+        style="border:0; display:block; min-height:360px;"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=901+S+Promenade+Blvd+Suite+101+Rogers+AR+72758&output=embed&z=15">
+      </iframe>
+    </div>
+
+    <!-- INFO CARD -->
+    <div style="background:var(--offwhite); border-radius:var(--r); padding:clamp(24px,3vw,36px); border:1px solid rgba(52,100,125,0.1); display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
+      <div>
+        <span class="label" style="margin-bottom:12px; display:block;">NoviSmile · Rogers, AR</span>
+        <div style="display:flex; flex-direction:column; gap:18px; margin-top:8px;">
+
+          <div style="display:flex; gap:14px; align-items:flex-start;">
+            <div style="width:36px;height:36px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;">📍</div>
+            <div>
+              <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:4px;">Address</div>
+              <div style="font-size:14px;color:var(--charcoal);line-height:1.7;">901 S Promenade Blvd<br>Suite 101<br>Rogers, AR 72758</div>
+              <a href="https://maps.google.com/?q=901+S+Promenade+Blvd+Suite+101+Rogers+AR+72758"
+                 target="_blank" rel="noopener"
+                 style="font-size:12px;color:var(--blue);font-weight:600;text-decoration:none;display:inline-block;margin-top:6px;">
+                Get Directions →
+              </a>
+            </div>
           </div>
+
+          <div style="height:1px;background:rgba(52,100,125,0.1);"></div>
+
+          <div style="display:flex; gap:14px; align-items:flex-start;">
+            <div style="width:36px;height:36px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;">📞</div>
+            <div>
+              <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:4px;">Phone</div>
+              <a href="tel:8554589911" style="font-family:var(--h);font-size:24px;font-weight:500;color:var(--charcoal);text-decoration:none;">(855) 458-9911</a>
+            </div>
+          </div>
+
+          <div style="height:1px;background:rgba(52,100,125,0.1);"></div>
+
+          <div style="display:flex; gap:14px; align-items:flex-start;">
+            <div style="width:36px;height:36px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;">🕐</div>
+            <div>
+              <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:4px;">Hours</div>
+              <div style="font-size:13px;color:var(--muted);line-height:1.8;">Mon – Fri: 8:00 AM – 5:00 PM<br>Sat – Sun: Closed</div>
+            </div>
+          </div>
+
         </div>
       </div>
+      <a href="#consult" class="btn-primary" style="text-align:center;display:block;">Book Free Consultation</a>
     </div>
+
   </div>
 </div>
 
-<!-- ===== 05 WEB DIRECTION ===== -->
-<div class="sec-header" id="web-direction">
-  <div class="sec-header-inner">
-    <div class="sec-num">05</div>
-    <div class="sec-title-block">
-      <h2>Website Design Direction</h2>
-      <p>Hero · CTAs · Testimonials · Navigation · FAQ · Animation</p>
+<style>
+@media (max-width: 700px) { .loc-grid { grid-template-columns: 1fr !important; } }
+</style>
+
+<!-- ── FOOTER ── -->
+<footer style="background:var(--navy); padding:clamp(28px,4vw,44px) var(--pad);">
+  <div style="max-width:var(--max); margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+    <img src="https://github.com/skylar-ship-it/Novi-Smile/blob/main/logo.png.webp?raw=true" alt="NoviSmile" style="height:28px;width:auto;filter:brightness(0) invert(1);opacity:0.65;">
+    <div style="font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.5px;text-align:center;">
+      © 2026 NoviSmile · 901 S Promenade Blvd, Ste 101, Rogers, AR 72758 · (855) 458-9911
+    </div>
+    <div style="display:flex;gap:20px;">
+      <a href="#" style="font-size:11px;color:rgba(255,255,255,0.4);text-decoration:none;">Privacy Policy</a>
+      <a href="#" style="font-size:11px;color:rgba(255,255,255,0.4);text-decoration:none;">Accessibility</a>
     </div>
   </div>
-</div>
-
-<div class="section reveal">
-  <span class="label mb16">Hero Section</span>
-  <div class="hero-demo mb16">
-    <video class="hero-video-bg" autoplay muted loop playsinline preload="auto" crossorigin="anonymous">
-      <source src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/video.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-demo-content">
-      <img src="https://github.com/skylar-ship-it/Novi-Smile/blob/main/logo.png.webp?raw=true" alt="NoviSmile" style="height:clamp(40px,7vw,60px); width:auto; margin-bottom:16px; display:block; filter:brightness(0) invert(1);">
-      <span class="label on-dark">Full-Arch Dental Implants · Rogers, Arkansas</span>
-      <div style="font-family:var(--headline); font-size:clamp(36px,8vw,72px); font-weight:400; color:#fff; line-height:1.0; margin:10px 0 16px;">Don't settle<br><em style="color:var(--light-blue);">any longer.</em></div>
-      <div style="width:50px;height:2px;background:rgba(255,255,255,0.4);margin-bottom:18px;"></div>
-      <p class="body on-dark sm" style="max-width:420px; margin-bottom:22px;">Restore your smile at NoviSmile Rogers — Northwest Arkansas's full-arch implant specialists. One surgeon, one practice, lifetime results.</p>
-      <div class="btn-row">
-        <span class="btn btn-primary">Schedule Free Consultation</span>
-        <span class="btn btn-ghost">Watch Patient Stories</span>
-      </div>
-    </div>
-
-  </div>
-  <p class="body muted sm mb24">Full-bleed patient/procedure photo or video at 30–50% opacity. Copy is left-aligned, bottom-anchored. Always dual-CTA pattern. Hero text 65px+ desktop, 40px mobile.</p>
-
-  <span class="label mb16">Testimonials</span>
-  <div class="grid-3 mb24">
-    <div class="testimonial">
-      <p class="testimonial-text">"I walked in without teeth and walked out with a new life. Dr. Frank treated me like family. I can eat a steak again."</p>
-      <div class="testimonial-author">
-        <div class="avatar" style="background:var(--mid-blue);">I</div>
-        <div><strong style="font-size:13px; color:var(--deep-teal);">Isidro M.</strong><br><span style="font-size:11px; color:rgba(51,51,51,0.55);">Upper &amp; Lower Full Arch · Rogers, AR</span></div>
-      </div>
-      <div class="stars">★★★★★</div>
-    </div>
-    <div class="testimonial">
-      <p class="testimonial-text">"I had been suffering for 10 years. The team made every step painless — I knew I was in expert hands the whole time."</p>
-      <div class="testimonial-author">
-        <div class="avatar" style="background:var(--deep-teal);">M</div>
-        <div><strong style="font-size:13px; color:var(--deep-teal);">Melissa R.</strong><br><span style="font-size:11px; color:rgba(51,51,51,0.55);">Lower Arch Reconstruction · Rogers, AR</span></div>
-      </div>
-      <div class="stars">★★★★★</div>
-    </div>
-    <div class="testimonial">
-      <p class="testimonial-text">"One surgeon, one practice, one incredible outcome. The technology is unlike anything else in Arkansas."</p>
-      <div class="testimonial-author">
-        <div class="avatar" style="background:var(--light-blue); color:var(--deep-teal);">M</div>
-        <div><strong style="font-size:13px; color:var(--deep-teal);">Michael T.</strong><br><span style="font-size:11px; color:rgba(51,51,51,0.55);">Upper Arch · Rogers, AR</span></div>
-      </div>
-      <div class="stars">★★★★★</div>
-    </div>
-  </div>
-
-  <span class="label mb16">Navigation Bar</span>
-  <div class="nav-demo mb24">
-    <div class="nav-demo-bar">
-      <div class="nav-demo-logo">NoviSmile</div>
-      <div class="nav-demo-links">
-        <span>About Dr. Frank</span>
-        <span>Procedures</span>
-        <span>Patient Stories</span>
-        <span>Financing</span>
-        <span>Locations</span>
-      </div>
-      <span class="btn btn-primary" style="font-size:11px; padding:8px 16px;">Call Today</span>
-    </div>
-    <div class="nav-demo-strip">★★★★★ 900+ Google Reviews · Rogers, AR · (479) 555-0100 · (479) 555-0100</div>
-  </div>
-
-  <span class="label mb16">FAQ — Interactive Demo</span>
-  <div style="max-width:680px; margin-bottom:28px;" id="faqDemo">
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        <span>What is a full arch dental implant?</span>
-        <span class="faq-chevron">›</span>
-      </div>
-      <div class="faq-a">A full arch dental implant replaces an entire row of teeth with a fixed, permanent prosthesis supported by 4–6 titanium implants. Unlike dentures, they never slip, require no adhesives, and function exactly like natural teeth.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        <span>Will the surgery be painful?</span>
-        <span class="faq-chevron">›</span>
-      </div>
-      <div class="faq-a">Dental implant surgery is completed under sedation. You will feel no pain and may sleep lightly through the procedure. Most patients have no memory of their appointment at all.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        <span>How long does the full process take?</span>
-        <span class="faq-chevron">›</span>
-      </div>
-      <div class="faq-a">Treatment ranges from a few months to about a year depending on your unique needs. Many patients can have implants placed shortly after their consultation. In many cases you can wear a temporary restoration while healing.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        <span>What does it cost and do you offer financing?</span>
-        <span class="faq-chevron">›</span>
-      </div>
-      <div class="faq-a">Cost depends on how many teeth are missing and what preparatory procedures are needed. We accept CareCredit® and Proceed Finance, with terms up to 96 months. Our team will walk you through all options at your free consultation.</div>
-    </div>
-  </div>
-
-  <span class="label mb16">Animation Guidance</span>
-  <div class="grid-3">
-    <div class="card"><span class="label">Entrance</span><p class="body muted sm mt8">Sections fade up on scroll: opacity 0→1 + translateY 20px→0. Duration 600ms. Ease cubic-bezier(0.25,0.1,0.25,1). Stagger children 100ms. Never translate more than 30px.</p></div>
-    <div class="card"><span class="label">Hover States</span><p class="body muted sm mt8">Buttons: background 200ms. Cards: translateY(−2px) + shadow on hover 200ms. Nav links: opacity 0.7→1 at 150ms. Video thumbnails: scale(1.02).</p></div>
-    <div class="card"><span class="label">What to Avoid</span><p class="body muted sm mt8">No parallax on medical content. No looping text tickers on critical info. No pop-in modals on page load. No bounce easing. No spinning elements. Premium = controlled calm.</p></div>
-  </div>
-</div>
-
-<!-- ===== 06 PSYCHOLOGY ===== -->
-<div class="sec-header" id="psychology">
-  <div class="sec-header-inner">
-    <div class="sec-num">06</div>
-    <div class="sec-title-block">
-      <h2>Brand Psychology</h2>
-      <p>Why it works · Emotional triggers · Conversion principles</p>
-    </div>
-  </div>
-</div>
-
-<div class="section-full bg-teal">
-  <div class="inner reveal" style="padding:clamp(40px,7vw,80px) var(--pad);">
-    <span class="label on-dark center mb16">Psychological Architecture</span>
-    <h2 class="h-display on-dark center" style="max-width:560px; margin:0 auto;">Every pixel is a trust signal.</h2>
-    <div class="rule center white mt mb" style="margin-top:20px; margin-bottom:32px;"></div>
-    <div class="grid-3">
-      <div class="card-teal">
-        <div class="pnum">01</div>
-        <h3 class="h-card on-dark mt8">Color Psychology</h3>
-        <p class="body on-dark sm mt8">Deep teal (#34647D) signals medical reliability and calm authority — used by Mayo Clinic, Cleveland Clinic. Mid blue (#6795BD) activates conversion without aggression. Together: clinical-but-warm. Patients find this combination physiologically reassuring.</p>
-      </div>
-      <div class="card-teal">
-        <div class="pnum">02</div>
-        <h3 class="h-card on-dark mt8">Typography Trust</h3>
-        <p class="body on-dark sm mt8">Cormorant's editorial serif projects intelligence and permanence — the visual language of specialists. DM Sans grounds it in modernity. The pairing communicates: "We've been doing this for decades and we're at the frontier." Patients read this as expert confidence.</p>
-      </div>
-      <div class="card-teal">
-        <div class="pnum">03</div>
-        <h3 class="h-card on-dark mt8">White Space = Safety</h3>
-        <p class="body on-dark sm mt8">Generous padding signals the practice isn't desperate for patients. Scarcity perception raises perceived value. ClearChoice uses dense layouts; NoviSmile uses open layouts to signal a different category entirely — private practice vs. franchise.</p>
-      </div>
-      <div class="card-teal">
-        <div class="pnum">04</div>
-        <h3 class="h-card on-dark mt8">Video Testimonials</h3>
-        <p class="body on-dark sm mt8">Real patient videos (Isidro, Melissa, Michael) are the single highest-converting element on a full-arch page. They trigger mirror neurons — the prospect visualizes themselves as that person. 30–50% opacity background video creates atmosphere without competing with the CTA.</p>
-      </div>
-      <div class="card-teal">
-        <div class="pnum">05</div>
-        <h3 class="h-card on-dark mt8">The Straight-Edge CTA</h3>
-        <p class="body on-dark sm mt8">Zero border-radius on primary buttons signals decisiveness and clinical precision. Rounded corners = consumer apps. Straight edges = surgical practice. Differentiates from 99% of dental sites using pill-shaped CTAs. Subconscious cue: "This is serious."</p>
-      </div>
-      <div class="card-teal">
-        <div class="pnum">06</div>
-        <h3 class="h-card on-dark mt8">Lowercase Urgency</h3>
-        <p class="body on-dark sm mt8">"don't suffer any longer." is lowercase with a period. It reads like a doctor speaking directly — not a marketer shouting. Intimate and authoritative simultaneously. Triggers emotional resonance far more effectively than ALL CAPS urgency copy.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== 07 CREATIVE DIRECTION ===== -->
-<div class="sec-header" id="creative">
-  <div class="sec-header-inner">
-    <div class="sec-num">07</div>
-    <div class="sec-title-block">
-      <h2>Creative Direction</h2>
-      <p>Photography · Lighting · Composition · Mood · What to avoid</p>
-    </div>
-  </div>
-</div>
-
-<div class="section reveal">
-  <div class="grid-2" style="gap:clamp(24px,5vw,52px); align-items:start;">
-    <div>
-      <span class="label">Photography Style</span>
-      <div style="display:flex; flex-direction:column; gap:12px;">
-        <div class="card" style="padding:18px 20px;">
-          <h4 style="font-family:var(--headline); font-size:17px; color:var(--charcoal); margin-bottom:6px;">Patient Transformation Portraits</h4>
-          <p class="body muted sm">Before/after as emotional journey — not clinical comparison. The "after" shot: patient laughing, eating, or socializing. Warm ambient lighting. Natural moments over clinical neutrality.</p>
-        </div>
-        <div class="card" style="padding:18px 20px;">
-          <h4 style="font-family:var(--headline); font-size:17px; color:var(--charcoal); margin-bottom:6px;">Dr. Frank — Authority &amp; Approachability</h4>
-          <p class="body muted sm">Shot in operatory or clean clinical setting. Scrubs or professional wear. 85mm equivalent focal length. Expression: confident, calm, present — not posed smiling. Thoughtful authority, not marketing glossiness.</p>
-        </div>
-        <div class="card" style="padding:18px 20px;">
-          <h4 style="font-family:var(--headline); font-size:17px; color:var(--charcoal); margin-bottom:6px;">Technology &amp; Practice Spaces</h4>
-          <p class="body muted sm">Wide-angle shots of clean, modern operatories. 3D scanner, dental robot, digital impressions as hero-scale imagery. Cool ambient + warm-white accents. Equipment should feel precise and reassuring, never intimidating.</p>
-        </div>
-      </div>
-    </div>
-    <div>
-      <span class="label">Lighting &amp; Mood Palette</span>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:24px;">
-        <div style="height:72px; border-radius:10px; background:linear-gradient(135deg,#34647D,#6795BD); display:flex; align-items:flex-end; padding:10px;">
-          <span style="font-size:11px; color:rgba(255,255,255,0.85); font-weight:500;">Cool Clinical Light</span>
-        </div>
-        <div style="height:72px; border-radius:10px; background:linear-gradient(135deg,#A5BFD3,#F4F6F6); display:flex; align-items:flex-end; padding:10px;">
-          <span style="font-size:11px; color:var(--deep-teal); font-weight:500;">Soft Ambient Warm</span>
-        </div>
-        <div style="height:72px; border-radius:10px; background:linear-gradient(135deg,#1a2860,#34647D); display:flex; align-items:flex-end; padding:10px;">
-          <span style="font-size:11px; color:rgba(255,255,255,0.85); font-weight:500;">Deep Evening Trust</span>
-        </div>
-        <div style="height:72px; border-radius:10px; background:linear-gradient(135deg,#f3f3f3,#ffffff); border:1px solid rgba(52,100,125,0.1); display:flex; align-items:flex-end; padding:10px;">
-          <span style="font-size:11px; color:var(--charcoal); font-weight:500;">Clean White Studio</span>
-        </div>
-      </div>
-
-      <span class="label">What to Avoid</span>
-      <div style="background:var(--off-white); border-radius:10px; padding:18px 20px;">
-        <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
-          <li style="display:flex; gap:10px; font-size:13px;"><span style="color:var(--coral); flex-shrink:0;">✕</span> Stock photos of "generic smiling models" — feels inauthentic</li>
-          <li style="display:flex; gap:10px; font-size:13px;"><span style="color:var(--coral); flex-shrink:0;">✕</span> Oversaturated, filtered Instagram-style edits</li>
-          <li style="display:flex; gap:10px; font-size:13px;"><span style="color:var(--coral); flex-shrink:0;">✕</span> Extreme close-ups of teeth or mouths without human context</li>
-          <li style="display:flex; gap:10px; font-size:13px;"><span style="color:var(--coral); flex-shrink:0;">✕</span> Harsh operating-room lighting as primary hero imagery</li>
-          <li style="display:flex; gap:10px; font-size:13px;"><span style="color:var(--coral); flex-shrink:0;">✕</span> Cartoonish dental icons or generic clip art</li>
-          <li style="display:flex; gap:10px; font-size:13px;"><span style="color:var(--coral); flex-shrink:0;">✕</span> Purple, orange, or red as primary or accent brand colors</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== 08 CODE ===== -->
-<div class="sec-header" id="code">
-  <div class="sec-header-inner">
-    <div class="sec-num">08</div>
-    <div class="sec-title-block">
-      <h2>Implementation Notes</h2>
-      <p>CSS tokens · Font imports · Accessibility · Breakpoints</p>
-    </div>
-  </div>
-</div>
-
-<div class="section reveal">
-  <div class="grid-2" style="gap:clamp(24px,5vw,52px); align-items:start;">
-    <div>
-      <span class="label">CSS Design Tokens</span>
-      <pre><span class="c">/* NoviSmile — CSS Variables v1.0 */</span>
-<span class="k">:root</span> {
-
-  <span class="c">/* Brand Colors */</span>
-  <span class="k">--ns-deep-teal:</span>    <span class="v">#34647D;</span>
-  <span class="k">--ns-mid-blue:</span>     <span class="v">#6795BD;</span>
-  <span class="k">--ns-light-blue:</span>   <span class="v">#A5BFD3;</span>
-  <span class="k">--ns-off-white:</span>    <span class="v">#F4F6F6;</span>
-  <span class="k">--ns-light-grey:</span>   <span class="v">#F3F3F3;</span>
-  <span class="k">--ns-charcoal:</span>     <span class="v">#333333;</span>
-  <span class="k">--ns-dark-navy:</span>    <span class="v">#1A2860;</span>
-  <span class="k">--ns-coral:</span>        <span class="v">#ED676D;</span>
-
-  <span class="c">/* Typography */</span>
-  <span class="k">--ns-headline:</span>     <span class="v">'Cormorant', Georgia, serif;</span>
-  <span class="k">--ns-body:</span>         <span class="v">'DM Sans', Arial, sans-serif;</span>
-
-  <span class="c">/* Spacing */</span>
-  <span class="k">--ns-xs:</span> <span class="v">8px;</span>
-  <span class="k">--ns-sm:</span> <span class="v">16px;</span>
-  <span class="k">--ns-md:</span> <span class="v">32px;</span>
-  <span class="k">--ns-lg:</span> <span class="v">64px;</span>
-  <span class="k">--ns-xl:</span> <span class="v">100px;</span>
-
-  <span class="c">/* Layout */</span>
-  <span class="k">--ns-max:</span>          <span class="v">1170px;</span>
-  <span class="k">--ns-btn-radius:</span>   <span class="v">0;</span>
-  <span class="k">--ns-card-radius:</span>  <span class="v">10px;</span>
-  <span class="k">--ns-frame-radius:</span> <span class="v">16px;</span>
-}</pre>
-
-      <span class="label mt24">Google Fonts Import</span>
-      <pre><span class="c">&lt;!-- In &lt;head&gt; --&gt;</span>
-<span class="k">&lt;link</span> <span class="v">rel="preconnect"</span>
-  <span class="v">href="https://fonts.googleapis.com"</span><span class="k">&gt;</span>
-<span class="k">&lt;link</span> <span class="v">rel="preconnect"</span>
-  <span class="v">href="https://fonts.gstatic.com"</span>
-  <span class="v">crossorigin</span><span class="k">&gt;</span>
-<span class="k">&lt;link</span>
-  <span class="v">href="https://fonts.googleapis.com
-  /css2?family=Cormorant:ital,wght
-  @0,300;0,400;0,500;0,600;0,700;
-  1,300;1,400;1,500
-  &amp;family=DM+Sans:opsz,wght
-  @9..40,300;9..40,400;9..40,500;
-  9..40,600&amp;display=swap"</span>
-  <span class="v">rel="stylesheet"</span><span class="k">&gt;</span></pre>
-    </div>
-
-    <div>
-      <span class="label">Accessibility Notes</span>
-      <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:24px;">
-        <div style="background:var(--off-white); border-radius:8px; padding:14px 16px; border-left:3px solid var(--mid-blue);">
-          <strong style="font-size:12px; color:var(--deep-teal);">Color Contrast</strong>
-          <p class="body muted sm mt8">White on Deep Teal (#34647D) = 4.68:1 ✓ AA. White on Mid Blue (#6795BD) = 3.01:1 — large text only (18px+). Always verify at contrast-ratio.com before production.</p>
-        </div>
-        <div style="background:var(--off-white); border-radius:8px; padding:14px 16px; border-left:3px solid var(--mid-blue);">
-          <strong style="font-size:12px; color:var(--deep-teal);">Focus States</strong>
-          <p class="body muted sm mt8">All interactive elements: <code>outline: 2px solid #6795BD; outline-offset: 3px;</code> Never use <code>outline: none</code> without a custom replacement.</p>
-        </div>
-        <div style="background:var(--off-white); border-radius:8px; padding:14px 16px; border-left:3px solid var(--mid-blue);">
-          <strong style="font-size:12px; color:var(--deep-teal);">Minimum Sizes</strong>
-          <p class="body muted sm mt8">Body text 14px min. Labels 10px min with increased letter-spacing. No text below 10px. Use clamp() for fluid type scaling across breakpoints.</p>
-        </div>
-        <div style="background:var(--off-white); border-radius:8px; padding:14px 16px; border-left:3px solid var(--mid-blue);">
-          <strong style="font-size:12px; color:var(--deep-teal);">Alt Text &amp; ARIA</strong>
-          <p class="body muted sm mt8">All patient photos need descriptive alt text. Video testimonials require captions. Decorative SVGs use <code>aria-hidden="true"</code>. Forms need <code>&lt;label&gt;</code> elements.</p>
-        </div>
-      </div>
-
-      <span class="label">Responsive Breakpoints</span>
-      <table class="tbl mt8">
-        <thead><tr><th>Breakpoint</th><th>Width</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td>Desktop</td><td>≥1025px</td><td>4-col · full type scale</td></tr>
-          <tr><td>Tablet</td><td>481–1024px</td><td>2-col · reduced hero size</td></tr>
-          <tr><td>Mobile</td><td>≤480px</td><td>1-col · hero 46px · pad 16px</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<!-- ===== FOOTER / VIBE SUMMARY ===== -->
-<div class="section-full bg-teal">
-  <div class="inner reveal" style="padding:clamp(50px,8vw,90px) var(--pad);">
-    <div style="text-align:center; margin-bottom:24px;">
-      <img src="https://github.com/skylar-ship-it/Novi-Smile/blob/main/logo.png.webp?raw=true" alt="NoviSmile" style="height:clamp(48px,8vw,72px); width:auto; filter:brightness(0) invert(1); opacity:0.9;">
-    </div>
-    <span class="label on-dark center mb16">Final Summary</span>
-    <div style="width:50px;height:2px;background:rgba(255,255,255,0.35);margin:0 auto 36px;"></div>
-    <div class="grid-3">
-      <div style="text-align:center; padding:16px;">
-        <div class="pnum" style="text-align:center;">01</div>
-        <h3 class="h-card on-dark mt8">Visual Identity</h3>
-        <p class="body on-dark sm mt8" style="opacity:0.78;">Cormorant + DM Sans. Deep teal / mid blue palette. Zero-radius CTAs. Serif-led editorial headlines. Restrained luxury.</p>
-      </div>
-      <div style="text-align:center; padding:16px;">
-        <div class="pnum" style="text-align:center;">02</div>
-        <h3 class="h-card on-dark mt8">Design System</h3>
-        <p class="body on-dark sm mt8" style="opacity:0.78;">8px spacing base. 5-stop radius scale. Full component library. CSS token set. Accessibility-compliant contrast.</p>
-      </div>
-      <div style="text-align:center; padding:16px;">
-        <div class="pnum" style="text-align:center;">03</div>
-        <h3 class="h-card on-dark mt8">Brand Vibe</h3>
-        <div style="margin-top:16px; display:flex; flex-direction:column; gap:4px; align-items:center;">
-          <div style="font-family:var(--headline); font-size:26px; font-weight:500; color:#fff; letter-spacing:3px;">PRECISE</div>
-          <div style="font-family:var(--headline); font-size:26px; font-weight:500; color:var(--light-blue); letter-spacing:3px;">TRUSTED</div>
-          <div style="font-family:var(--headline); font-size:26px; font-weight:400; color:rgba(255,255,255,0.55); letter-spacing:3px;">ELEVATED</div>
-        </div>
-      </div>
-    </div>
-    <div style="border-top:1px solid rgba(255,255,255,0.13); margin-top:40px; padding-top:24px; text-align:center;">
-      <p style="font-size:11px; color:rgba(255,255,255,0.35); letter-spacing:1.5px; text-transform:uppercase;">NoviSmile — Brand Identity System · Created for Skylar Pulver · Novi Smile Marketing · 2026</p>
-    </div>
-  </div>
-</div>
+</footer>
 
 <script>
-/* ===================== MARQUEE INJECT ===================== */
-const items = [
-  "★ 900+ Google Reviews",
-  "One Surgeon · No Handoffs",
-  "FDA-Approved Implant Robot",
-  "Rogers, AR",
-  "Full Arch in a Single Day",
-  "Free Consultation",
-  "Dr. Scott Frank — 30+ Years Experience",
-  "3D-Guided Surgery",
-  "95%+ Implant Success Rate",
-  "CareCredit® Financing Available",
-  "NoviSmile · Rogers, Arkansas",
-  "Arkansas's Premier Full-Arch Practice"
-];
-
-function buildMarquee() {
-  const track = document.getElementById('marqueeTrack');
-  const doubled = [...items, ...items];
-  track.innerHTML = doubled.map(t =>
-    `<span class="marquee-item"><span>${t}</span><span class="marquee-dot"></span></span>`
-  ).join('');
+/* ── TABS ── */
+function switchTab(tab, el) {
+  document.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('panel-' + tab).classList.add('active');
 }
-buildMarquee();
 
-/* ===================== FAQ TOGGLE ===================== */
+/* ── FAQ ── */
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
-  const answer = item.querySelector('.faq-a');
-  const isOpen = item.classList.contains('open');
-  // Close all
-  document.querySelectorAll('.faq-item').forEach(el => {
-    el.classList.remove('open');
-    el.querySelector('.faq-a').classList.remove('open');
+  const ans  = item.querySelector('.faq-a');
+  const open = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-a').classList.remove('open');
   });
-  // Open clicked if it was closed
-  if (!isOpen) {
-    item.classList.add('open');
-    answer.classList.add('open');
-  }
+  if (!open) { item.classList.add('open'); ans.classList.add('open'); }
 }
 
-/* ===================== SCROLL REVEAL ===================== */
-const revealEls = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
+/* ── SCROLL REVEAL ── */
+const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
+    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-revealEls.forEach(el => observer.observe(el));
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
 
-/* ===================== ACTIVE NAV ===================== */
-const sections = document.querySelectorAll('[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 80) current = s.id;
-  });
-  navLinks.forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-  });
-}, { passive: true });
-
-/* ===================== VIDEO BLOB LOADER ===================== */
-(function() {
-  const vid = document.querySelector('.hero-video-bg');
-  if (!vid) return;
-  const src = vid.querySelector('source').src;
-  // Try direct play first
-  vid.play().catch(() => {
-    // If blocked, fetch as blob to bypass CORS header issues
-    fetch(src)
-      .then(r => r.blob())
-      .then(blob => {
-        const blobUrl = URL.createObjectURL(blob);
-        vid.querySelector('source').src = blobUrl;
-        vid.load();
-        vid.play().catch(() => {});
-      })
-      .catch(() => {
-        // Video unavailable — hero-demo background-color fallback shows
-      });
-  });
-})();
+/* ── FORM SUBMIT ── */
+function handleSubmit() {
+  const btn = event.target;
+  btn.textContent = 'Sending...';
+  btn.style.background = 'var(--blue)';
+  setTimeout(() => {
+    btn.textContent = "✓ We'll be in touch shortly!";
+    btn.style.background = '#2e7d52';
+    btn.disabled = true;
+  }, 1200);
+}
 </script>
 </body>
 </html>
