@@ -641,7 +641,7 @@ footer {
   position: relative;
   overflow: hidden;
   background: #ffffff;
-  min-height: calc(100vh - 52px - 42px); /* subtract nav + trust bar heights */
+  min-height: calc(100vh - 52px); /* subtract nav height */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -768,18 +768,6 @@ footer {
     <a class="nav-cta" href="#consult">Free Consultation</a>
   </div>
 </nav>
-
-<!-- ── TRUST BAR ── -->
-<div class="trust-bar">
-  <div class="trust-item">★★★★★ 900+ Reviews</div>
-  <div class="trust-dot"></div>
-  <div class="trust-item">30+ Years Experience</div>
-  <div class="trust-dot"></div>
-  <div class="trust-item">Rogers, Arkansas</div>
-  <div class="trust-dot"></div>
-  <div class="trust-item">One Surgeon · All-on-X Specialist</div>
-</div>
-
 
 <!-- ── HERO ── -->
 <section class="hero">
@@ -1384,11 +1372,11 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
   const ctx = canvas.getContext('2d');
 
   const ORBS = [
-    { px:0.12, py:0.42, pr:0.46, vx: 0.28, vy: 0.13, col:[165,191,211], a:0.55 },
-    { px:0.72, py:0.28, pr:0.38, vx:-0.20, vy: 0.18, col:[165,191,211], a:0.48 },
-    { px:0.88, py:0.80, pr:0.32, vx:-0.16, vy:-0.12, col:[103,149,189], a:0.40 },
-    { px:0.42, py:0.06, pr:0.28, vx: 0.22, vy: 0.20, col:[165,191,211], a:0.34 },
-    { px:0.55, py:0.90, pr:0.22, vx:-0.24, vy:-0.16, col:[103,149,189], a:0.30 },
+    { px:0.12, py:0.42, pr:0.46, vx: 0.28, vy: 0.13, col:[103,149,189], a:0.62 },
+    { px:0.72, py:0.28, pr:0.38, vx:-0.20, vy: 0.18, col:[103,149,189], a:0.55 },
+    { px:0.88, py:0.80, pr:0.32, vx:-0.16, vy:-0.12, col:[52,100,125],  a:0.48 },
+    { px:0.42, py:0.06, pr:0.28, vx: 0.22, vy: 0.20, col:[103,149,189], a:0.42 },
+    { px:0.55, py:0.90, pr:0.22, vx:-0.24, vy:-0.16, col:[52,100,125],  a:0.38 },
   ];
 
   let orbs = [], W = 0, H = 0;
