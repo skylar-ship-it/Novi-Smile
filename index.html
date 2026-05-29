@@ -675,6 +675,18 @@ footer {
   50%      { transform: translateY(-24px) scale(1.05); }
 }
 .hero-inner { position: relative; z-index: 2; }
+.hero-copy {
+  position: relative;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border-radius: 16px;
+  padding: clamp(20px,3vw,34px);
+  margin-left: calc(-1 * clamp(20px,3vw,34px));
+}
+@media (max-width: 800px) {
+  .hero-copy { margin-left: 0; }
+}
 .hero-h1 { color: var(--teal); }
 .hero-h1 em { color: var(--blue); }
 .hero-sub { color: var(--muted); }
@@ -777,7 +789,7 @@ footer {
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
-    <div>
+    <div class="hero-copy">
       <div class="hero-eyebrow fade">
         <span class="label" style="color:var(--blue);">Full Arch All-on-X · Rogers, AR</span>
       </div>
