@@ -126,7 +126,7 @@ img { display: block; max-width: 100%; }
   font-family: var(--h);
   font-size: clamp(38px, 5.5vw, 68px);
   font-weight: 400; line-height: 1.0;
-  color: var(--teal); margin-bottom: 20px;
+  color: #ffffff; margin-bottom: 20px;
   letter-spacing: -0.5px;
 }
 .hero-h1 em { font-style: italic; color: var(--blue); }
@@ -643,7 +643,11 @@ footer {
 }
 .hero-bg-wrap {
   position: absolute; inset: 0; z-index: 0;
-  pointer-events: none;
+  pointer-events: none; overflow: hidden;
+}
+.hero-bg-wrap canvas {
+  position: absolute; inset: 0;
+  width: 100% !important; height: 100% !important;
 }
 .hero-bg-wrap canvas {
   width: 100%; height: 100%;
@@ -651,7 +655,7 @@ footer {
 }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(135deg, rgba(26,40,96,0.78) 0%, rgba(52,100,125,0.65) 100%);
+  background: linear-gradient(160deg, rgba(26,40,96,0.72) 0%, rgba(52,100,125,0.60) 100%);
 }
 /* floating orbs */
 .hero-orb {
@@ -676,9 +680,9 @@ footer {
 }
 .hero-inner { position: relative; z-index: 2; }
 .hero-h1 { color: #fff; }
-.hero-h1 em { color: var(--lblue); }
+.hero-h1 em { color: #A5BFD3; }
 .hero-sub { color: rgba(255,255,255,0.78); }
-.hero-rule { background: rgba(255,255,255,0.35); }
+.hero-rule { background: rgba(255,255,255,0.45); }
 
 /* ── HERO SCROLL TICKER (bottom of hero) ── */
 .hero-ticker {
@@ -794,7 +798,7 @@ footer {
   <div class="hero-inner">
     <div>
       <div class="hero-eyebrow fade">
-        <span class="label">Full Arch All-on-X · Rogers, AR</span>
+        <span class="label" style="color:rgba(255,255,255,0.7);">Full Arch All-on-X · Rogers, AR</span>
       </div>
       <h1 class="hero-h1 fade d1">
         Don't settle<br><em>any longer.</em>
@@ -1385,62 +1389,62 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
   const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  let W, H, orbs, raf;
+
+  const ORBS = [
+    { px:0.12, py:0.42, pr:0.46, vx: 0.28, vy: 0.13, col:[165,191,211], a:0.38 },
+    { px:0.72, py:0.28, pr:0.36, vx:-0.20, vy: 0.18, col:[165,191,211], a:0.30 },
+    { px:0.88, py:0.80, pr:0.30, vx:-0.16, vy:-0.12, col:[103,149,189], a:0.24 },
+    { px:0.42, py:0.06, pr:0.26, vx: 0.22, vy: 0.20, col:[165,191,211], a:0.20 },
+    { px:0.55, py:0.90, pr:0.20, vx:-0.24, vy:-0.16, col:[103,149,189], a:0.18 },
+  ];
+
+  let orbs;
 
   function resize() {
     const wrap = canvas.parentElement;
-    W = canvas.width  = wrap.offsetWidth  || window.innerWidth;
-    H = canvas.height = wrap.offsetHeight || window.innerHeight;
-    initOrbs();
-  }
-
-  function initOrbs() {
-    orbs = [
-      { x: W * 0.15, y: H * 0.3,  r: W * 0.38, vx:  0.18, vy:  0.10, base: 230, range: 22 },
-      { x: W * 0.75, y: H * 0.6,  r: W * 0.32, vx: -0.14, vy: -0.08, base: 218, range: 18 },
-      { x: W * 0.5,  y: H * 0.15, r: W * 0.28, vx:  0.10, vy:  0.14, base: 240, range: 14 },
-      { x: W * 0.85, y: H * 0.2,  r: W * 0.22, vx: -0.20, vy:  0.12, base: 225, range: 20 },
-    ];
+    canvas.width  = wrap.offsetWidth  || window.innerWidth;
+    canvas.height = wrap.offsetHeight || 600;
+    const W = canvas.width, H = canvas.height;
+    orbs = ORBS.map(o => ({ ...o, x: o.px*W, y: o.py*H, r: o.pr*W }));
   }
 
   function draw(ts) {
-    ctx.clearRect(0, 0, W, H);
-
-    // base fill — very light cool white
-    ctx.fillStyle = 'rgb(240,244,248)';
+    const W = canvas.width, H = canvas.height;
+    ctx.fillStyle = '#F4F6F6';
     ctx.fillRect(0, 0, W, H);
 
     orbs.forEach((o, i) => {
-      // drift
       o.x += o.vx;
       o.y += o.vy;
-      // bounce
-      if (o.x < -o.r)  o.x = W + o.r;
+      if (o.x < -o.r)    o.x = W + o.r;
       if (o.x > W + o.r) o.x = -o.r;
-      if (o.y < -o.r)  o.y = H + o.r;
+      if (o.y < -o.r)    o.y = H + o.r;
       if (o.y > H + o.r) o.y = -o.r;
 
-      // pulsing luminance
-      const pulse = o.base + Math.sin(ts * 0.0004 + i * 1.4) * o.range;
-      const c = Math.round(pulse);
-
-      const grad = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, o.r);
-      grad.addColorStop(0,   `rgba(${c},${c+2},${c+4}, 0.55)`);
-      grad.addColorStop(0.5, `rgba(${c-4},${c-2},${c}, 0.25)`);
-      grad.addColorStop(1,   `rgba(${c-8},${c-6},${c-4}, 0)`);
-
-      ctx.fillStyle = grad;
+      const pulse = Math.sin(ts * 0.0007 + i * 1.4) * 0.10;
+      const [r, g, b] = o.col;
+      const gr = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, o.r);
+      gr.addColorStop(0,   `rgba(${r},${g},${b},${Math.min(0.9, o.a + pulse).toFixed(2)})`);
+      gr.addColorStop(0.5, `rgba(${r},${g},${b},${(o.a * 0.4).toFixed(2)})`);
+      gr.addColorStop(1,   `rgba(${r},${g},${b},0)`);
+      ctx.fillStyle = gr;
       ctx.beginPath();
       ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
       ctx.fill();
     });
 
-    raf = requestAnimationFrame(draw);
+    requestAnimationFrame(draw);
+  }
+
+  function init() {
+    const wrap = canvas.parentElement;
+    if (!wrap || wrap.offsetHeight < 10) { requestAnimationFrame(init); return; }
+    resize();
+    requestAnimationFrame(draw);
   }
 
   window.addEventListener('resize', resize);
-  resize();
-  raf = requestAnimationFrame(draw);
+  requestAnimationFrame(init);
 })();
 
 /* ── HERO MARQUEE PARALLAX ── */
