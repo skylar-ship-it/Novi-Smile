@@ -108,8 +108,15 @@ img { display: block; max-width: 100%; }
 
 /* ── HERO ────────────────────────────────────── */
 .hero {
-  background: var(--offwhite);
-  padding: clamp(50px, 8vw, 100px) var(--pad);
+  position: relative;
+  overflow: hidden;
+  background: #F4F6F6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(32px,4vw,56px) var(--pad) 0;
+  box-sizing: border-box;
 }
 .hero-inner {
   max-width: var(--max); margin: 0 auto;
@@ -633,7 +640,7 @@ footer {
 .hero {
   position: relative;
   overflow: hidden;
-  background: var(--teal);
+  background: #ffffff;
   min-height: calc(100vh - 52px - 42px); /* subtract nav + trust bar heights */
   display: flex;
   flex-direction: column;
@@ -642,12 +649,17 @@ footer {
   box-sizing: border-box;
 }
 .hero-bg-wrap {
-  position: absolute; inset: 0; z-index: 0;
-  pointer-events: none; overflow: hidden;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 .hero-bg-wrap canvas {
-  position: absolute; inset: 0;
-  width: 100% !important; height: 100% !important;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .hero-bg-wrap canvas {
   width: 100%; height: 100%;
@@ -655,34 +667,18 @@ footer {
 }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(160deg, rgba(26,40,96,0.72) 0%, rgba(52,100,125,0.60) 100%);
+  background: linear-gradient(160deg, rgba(255,255,255,0.28) 0%, rgba(244,246,246,0.10) 100%);
 }
-/* floating orbs */
-.hero-orb {
-  position: absolute; border-radius: 50%;
-  filter: blur(80px); pointer-events: none; z-index: 1;
-  animation: orb-float 8s ease-in-out infinite;
-}
-.hero-orb-1 {
-  width: clamp(200px,35vw,420px); height: clamp(200px,35vw,420px);
-  background: radial-gradient(circle, rgba(103,149,189,0.22) 0%, transparent 70%);
-  top: -80px; right: -60px;
-}
-.hero-orb-2 {
-  width: clamp(150px,25vw,300px); height: clamp(150px,25vw,300px);
-  background: radial-gradient(circle, rgba(165,191,211,0.15) 0%, transparent 70%);
-  bottom: -40px; left: 10%;
-  animation-delay: -4s;
-}
+
 @keyframes orb-float {
   0%,100% { transform: translateY(0) scale(1); }
   50%      { transform: translateY(-24px) scale(1.05); }
 }
 .hero-inner { position: relative; z-index: 2; }
-.hero-h1 { color: #fff; }
-.hero-h1 em { color: #A5BFD3; }
-.hero-sub { color: rgba(255,255,255,0.78); }
-.hero-rule { background: rgba(255,255,255,0.45); }
+.hero-h1 { color: var(--teal); }
+.hero-h1 em { color: var(--blue); }
+.hero-sub { color: var(--muted); }
+.hero-rule { background: var(--blue); }
 
 /* ── HERO SCROLL TICKER (bottom of hero) ── */
 .hero-ticker {
@@ -721,9 +717,8 @@ footer {
 /* ── PARALLAX MARQUEE ── */
 .hero-marquee-wrap {
   width: 100%;
-  background: rgba(0,0,0,0.25);
-  backdrop-filter: blur(4px);
-  border-top: 1px solid rgba(255,255,255,0.1);
+  background: var(--teal);
+  border-top: 1px solid rgba(255,255,255,0.12);
   overflow: hidden;
   padding: 13px 0;
   position: relative;
@@ -793,12 +788,10 @@ footer {
     <canvas id="heroCanvas" style="width:100%;height:100%;display:block;"></canvas>
   </div>
   <div class="hero-overlay"></div>
-  <div class="hero-orb hero-orb-1"></div>
-  <div class="hero-orb hero-orb-2"></div>
   <div class="hero-inner">
     <div>
       <div class="hero-eyebrow fade">
-        <span class="label" style="color:rgba(255,255,255,0.7);">Full Arch All-on-X · Rogers, AR</span>
+        <span class="label" style="color:var(--blue);">Full Arch All-on-X · Rogers, AR</span>
       </div>
       <h1 class="hero-h1 fade d1">
         Don't settle<br><em>any longer.</em>
@@ -1391,26 +1384,24 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
   const ctx = canvas.getContext('2d');
 
   const ORBS = [
-    { px:0.12, py:0.42, pr:0.46, vx: 0.28, vy: 0.13, col:[165,191,211], a:0.38 },
-    { px:0.72, py:0.28, pr:0.36, vx:-0.20, vy: 0.18, col:[165,191,211], a:0.30 },
-    { px:0.88, py:0.80, pr:0.30, vx:-0.16, vy:-0.12, col:[103,149,189], a:0.24 },
-    { px:0.42, py:0.06, pr:0.26, vx: 0.22, vy: 0.20, col:[165,191,211], a:0.20 },
-    { px:0.55, py:0.90, pr:0.20, vx:-0.24, vy:-0.16, col:[103,149,189], a:0.18 },
+    { px:0.12, py:0.42, pr:0.46, vx: 0.28, vy: 0.13, col:[165,191,211], a:0.55 },
+    { px:0.72, py:0.28, pr:0.38, vx:-0.20, vy: 0.18, col:[165,191,211], a:0.48 },
+    { px:0.88, py:0.80, pr:0.32, vx:-0.16, vy:-0.12, col:[103,149,189], a:0.40 },
+    { px:0.42, py:0.06, pr:0.28, vx: 0.22, vy: 0.20, col:[165,191,211], a:0.34 },
+    { px:0.55, py:0.90, pr:0.22, vx:-0.24, vy:-0.16, col:[103,149,189], a:0.30 },
   ];
 
-  let orbs;
+  let orbs = [], W = 0, H = 0;
 
   function resize() {
-    const wrap = canvas.parentElement;
-    canvas.width  = wrap.offsetWidth  || window.innerWidth;
-    canvas.height = wrap.offsetHeight || 600;
-    const W = canvas.width, H = canvas.height;
+    const hero = document.querySelector('.hero');
+    W = canvas.width  = hero ? hero.offsetWidth  : window.innerWidth;
+    H = canvas.height = hero ? hero.offsetHeight : window.innerHeight;
     orbs = ORBS.map(o => ({ ...o, x: o.px*W, y: o.py*H, r: o.pr*W }));
   }
 
   function draw(ts) {
-    const W = canvas.width, H = canvas.height;
-    ctx.fillStyle = '#F4F6F6';
+    ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, W, H);
 
     orbs.forEach((o, i) => {
@@ -1437,8 +1428,11 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
   }
 
   function init() {
-    const wrap = canvas.parentElement;
-    if (!wrap || wrap.offsetHeight < 10) { requestAnimationFrame(init); return; }
+    const hero = document.querySelector('.hero');
+    if (!hero || hero.offsetHeight < 50) {
+      requestAnimationFrame(init);
+      return;
+    }
     resize();
     requestAnimationFrame(draw);
   }
