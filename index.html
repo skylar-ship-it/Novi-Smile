@@ -412,6 +412,28 @@ img { display: block; max-width: 100%; }
   margin-bottom: 3px;
 }
 .ba-detail { font-size: 12px; color: var(--muted); }
+.ba-expand {
+  width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  background: transparent; border: none;
+  border-top: 1px solid rgba(201,168,76,0.35);
+  padding: 12px; cursor: pointer;
+  font-family: var(--b); font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase; color: #c9a84c;
+  transition: background .2s;
+}
+.ba-expand:hover { background: rgba(201,168,76,0.08); }
+.ba-expand-arrow { font-size: 16px; line-height: 1; transition: transform .3s; }
+.ba-expand.open .ba-expand-arrow { transform: rotate(90deg); }
+.ba-detail-panel {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s ease;
+}
+.ba-detail-panel.open { max-height: 640px; }
+.ba-detail-panel img {
+  width: 100%; display: block;
+  border-top: 1px solid rgba(201,168,76,0.35);
+}
 .ba-stars { color: var(--coral); font-size: 12px; margin-top: 8px; }
 
 /* placeholder cards */
@@ -1062,6 +1084,13 @@ footer {
         <div class="ba-detail">✦ Fully Customizable</div>
         <div class="ba-stars">★★★★★</div>
       </div>
+      <button class="ba-expand" onclick="toggleDetail(this)" aria-expanded="false">
+        <span>See Close-Up Detail</span>
+        <span class="ba-expand-arrow">›</span>
+      </button>
+      <div class="ba-detail-panel">
+        <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after6-2.webp" alt="Custom gold All-on-X close-up detail" loading="lazy">
+      </div>
     </div>
 
   </div>
@@ -1341,6 +1370,15 @@ function switchTab(tab, el) {
   document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
   el.classList.add('active');
   document.getElementById('panel-' + tab).classList.add('active');
+}
+
+/* ── BEFORE/AFTER CLOSE-UP EXPANDER ── */
+function toggleDetail(btn) {
+  const panel = btn.nextElementSibling;
+  const isOpen = btn.classList.toggle('open');
+  panel.classList.toggle('open', isOpen);
+  btn.setAttribute('aria-expanded', isOpen);
+  btn.querySelector('span').textContent = isOpen ? 'Hide Close-Up Detail' : 'See Close-Up Detail';
 }
 
 /* ── FAQ ── */
