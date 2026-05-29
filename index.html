@@ -66,25 +66,25 @@ img { display: block; max-width: 100%; }
 /* ── NAV ─────────────────────────────────────── */
 .nav {
   position: sticky; top: 0; z-index: 100;
-  background: var(--teal);
-  border-bottom: 1px solid rgba(0,0,0,0.12);
+  background: var(--lblue);
+  border-bottom: 1px solid rgba(52,100,125,0.18);
   padding: 14px var(--pad);
   display: flex; align-items: center; justify-content: space-between;
   gap: 16px;
 }
 .nav-logo img { height: 36px; width: auto; }
 .nav-cta {
-  background: #fff; color: var(--teal);
+  background: var(--teal); color: #fff;
   font-family: var(--b); font-size: 12px; font-weight: 700;
   letter-spacing: 0.5px; text-transform: uppercase;
   padding: 10px 20px; border: none; cursor: pointer;
   text-decoration: none; white-space: nowrap;
   transition: background .2s;
 }
-.nav-cta:hover { background: var(--offwhite); color: var(--teal); }
+.nav-cta:hover { background: var(--teal); color: #fff; opacity: 0.9; }
 .nav-phone {
   font-size: 13px; font-weight: 600;
-  color: rgba(255,255,255,0.85); text-decoration: none;
+  color: var(--teal); text-decoration: none;
   white-space: nowrap;
 }
 .nav-right { display: flex; align-items: center; gap: 16px; }
@@ -125,8 +125,8 @@ img { display: block; max-width: 100%; }
   gap: clamp(24px, 3.5vw, 52px);
   align-items: center;
   width: 100%;
-  flex: 1;
-  padding-bottom: clamp(24px,3vw,40px);
+  flex: 0 0 auto;
+  padding-bottom: 0;
 }
 .hero-eyebrow { margin-bottom: 16px; }
 .hero-h1 {
@@ -730,14 +730,17 @@ footer {
 
 /* ── PARALLAX MARQUEE ── */
 .hero-marquee-wrap {
-  width: 100%;
+  width: calc(100% + (2 * var(--pad)));
+  margin-left: calc(-1 * var(--pad));
+  margin-right: calc(-1 * var(--pad));
   background: var(--teal);
   border-top: 1px solid rgba(255,255,255,0.12);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
   overflow: hidden;
-  padding: 13px 0;
+  padding: 15px 0;
   position: relative;
   z-index: 3;
-  margin-top: auto;
+  margin-top: clamp(36px, 5vw, 64px);
   flex-shrink: 0;
 }
 .hero-marquee-track {
@@ -775,7 +778,7 @@ footer {
     <img src="https://github.com/skylar-ship-it/Novi-Smile/blob/main/logo.png.webp?raw=true" alt="NoviSmile">
   </div>
   <div class="nav-logo-center">
-    <img src="https://github.com/skylar-ship-it/Novi-Smile/blob/main/logo.png.webp?raw=true" alt="NoviSmile" style="filter:brightness(0) invert(1);">
+    <img src="https://github.com/skylar-ship-it/Novi-Smile/blob/main/logo.png.webp?raw=true" alt="NoviSmile">
   </div>
   <div class="nav-right">
     <a class="nav-phone" href="tel:8554589911">(855) 458-9911</a>
@@ -955,18 +958,18 @@ footer {
     <div class="ba-card fade d1">
       <div class="ba-images">
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before1.webp" alt="Before - Isidro M." loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before1.webp" alt="All-on-X patient - before" loading="lazy">
           <span class="ba-badge before">Before</span>
         </div>
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after1.webp" alt="After - Isidro M." loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after1.webp" alt="All-on-X patient - after" loading="lazy">
           <span class="ba-badge after">After</span>
         </div>
         <div class="ba-divider"></div>
       </div>
       <div class="ba-info">
-        <div class="ba-name">Isidro M.</div>
-        <div class="ba-detail">Upper & Lower All-on-X · Rogers, AR</div>
+        <div class="ba-name">All-on-X</div>
+        <div class="ba-detail">Rogers, AR</div>
         <div class="ba-stars">★★★★★</div>
       </div>
     </div>
@@ -974,18 +977,18 @@ footer {
     <div class="ba-card fade d2">
       <div class="ba-images">
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before2.webp" alt="Before - Melissa R." loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before2.webp" alt="All-on-X patient - before" loading="lazy">
           <span class="ba-badge before">Before</span>
         </div>
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after2.webp" alt="After - Melissa R." loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after2.webp" alt="All-on-X patient - after" loading="lazy">
           <span class="ba-badge after">After</span>
         </div>
         <div class="ba-divider"></div>
       </div>
       <div class="ba-info">
-        <div class="ba-name">Melissa R.</div>
-        <div class="ba-detail">Lower All-on-X · Rogers, AR</div>
+        <div class="ba-name">All-on-X</div>
+        <div class="ba-detail">Rogers, AR</div>
         <div class="ba-stars">★★★★★</div>
       </div>
     </div>
@@ -993,18 +996,18 @@ footer {
     <div class="ba-card fade d3">
       <div class="ba-images">
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before3.webp" alt="Before - Michael T." loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before3.webp" alt="All-on-X patient - before" loading="lazy">
           <span class="ba-badge before">Before</span>
         </div>
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after3.webp" alt="After - Michael T." loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after3.webp" alt="All-on-X patient - after" loading="lazy">
           <span class="ba-badge after">After</span>
         </div>
         <div class="ba-divider"></div>
       </div>
       <div class="ba-info">
-        <div class="ba-name">Michael T.</div>
-        <div class="ba-detail">Upper All-on-X · Rogers, AR</div>
+        <div class="ba-name">All-on-X</div>
+        <div class="ba-detail">Rogers, AR</div>
         <div class="ba-stars">★★★★★</div>
       </div>
     </div>
@@ -1012,18 +1015,18 @@ footer {
     <div class="ba-card fade d1">
       <div class="ba-images">
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before4.webp" alt="Before - Sandra K." loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before4.webp" alt="All-on-X patient - before" loading="lazy">
           <span class="ba-badge before">Before</span>
         </div>
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after4.webp" alt="After - Sandra K." loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after4.webp" alt="All-on-X patient - after" loading="lazy">
           <span class="ba-badge after">After</span>
         </div>
         <div class="ba-divider"></div>
       </div>
       <div class="ba-info">
-        <div class="ba-name">Sandra K.</div>
-        <div class="ba-detail">All-on-X Restoration · Rogers, AR</div>
+        <div class="ba-name">All-on-X</div>
+        <div class="ba-detail">Rogers, AR</div>
         <div class="ba-stars">★★★★★</div>
       </div>
     </div>
@@ -1031,18 +1034,18 @@ footer {
     <div class="ba-card fade d2">
       <div class="ba-images">
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before5.webp" alt="Before - James P." loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before5.webp" alt="All-on-X patient - before" loading="lazy">
           <span class="ba-badge before">Before</span>
         </div>
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after5.webp" alt="After - James P." loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after5.webp" alt="All-on-X patient - after" loading="lazy">
           <span class="ba-badge after">After</span>
         </div>
         <div class="ba-divider"></div>
       </div>
       <div class="ba-info">
-        <div class="ba-name">James P.</div>
-        <div class="ba-detail">Upper & Lower All-on-X · Rogers, AR</div>
+        <div class="ba-name">All-on-X</div>
+        <div class="ba-detail">Rogers, AR</div>
         <div class="ba-stars">★★★★★</div>
       </div>
     </div>
@@ -1050,17 +1053,17 @@ footer {
     <div class="ba-card gold-card fade d3">
       <div class="ba-images">
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before6.webp" alt="Before - Custom Gold All-on-X" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before6.webp" alt="All-on-X patient - before" loading="lazy">
           <span class="ba-badge before">Before</span>
         </div>
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after6.webp" alt="After - Custom Gold All-on-X" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after6.webp" alt="All-on-X patient - after" loading="lazy">
           <span class="ba-badge after">After</span>
         </div>
         <div class="ba-divider"></div>
       </div>
       <div class="ba-info">
-        <div class="ba-name">Custom Gold All-on-X</div>
+        <div class="ba-name">All-on-X</div>
         <div class="ba-detail">✦ Fully Customizable · Rogers, AR</div>
         <div class="ba-stars">★★★★★</div>
       </div>
@@ -1113,10 +1116,10 @@ footer {
     <div class="testi-card fade d1">
       <p class="testi-text">"I walked in without teeth and walked out with a new life. Dr. Frank treated me like family. I can eat a steak again."</p>
       <div class="testi-author">
-        <div class="testi-avatar" style="background:var(--teal);">I</div>
+        <div class="testi-avatar" style="background:var(--teal);">★</div>
         <div>
-          <div class="testi-name">Isidro M.</div>
-          <div class="testi-loc">Upper &amp; Lower All-on-X · Rogers, AR</div>
+          <div class="testi-name">All-on-X Patient</div>
+          <div class="testi-loc">Rogers, AR</div>
         </div>
       </div>
       <div class="testi-stars">★★★★★</div>
@@ -1124,10 +1127,10 @@ footer {
     <div class="testi-card fade d2">
       <p class="testi-text">"I had been suffering for 10 years. Every step was painless and I knew I was in expert hands the whole time."</p>
       <div class="testi-author">
-        <div class="testi-avatar" style="background:var(--blue);">M</div>
+        <div class="testi-avatar" style="background:var(--blue);">★</div>
         <div>
-          <div class="testi-name">Melissa R.</div>
-          <div class="testi-loc">Lower All-on-X · Rogers, AR</div>
+          <div class="testi-name">All-on-X Patient</div>
+          <div class="testi-loc">Rogers, AR</div>
         </div>
       </div>
       <div class="testi-stars">★★★★★</div>
@@ -1135,10 +1138,10 @@ footer {
     <div class="testi-card fade d3">
       <p class="testi-text">"One surgeon, one practice, one incredible outcome. The technology is unlike anything else in Arkansas."</p>
       <div class="testi-author">
-        <div class="testi-avatar" style="background:var(--lblue); color:var(--teal);">M</div>
+        <div class="testi-avatar" style="background:var(--lblue); color:var(--teal);">★</div>
         <div>
-          <div class="testi-name">Michael T.</div>
-          <div class="testi-loc">Upper All-on-X · Rogers, AR</div>
+          <div class="testi-name">All-on-X Patient</div>
+          <div class="testi-loc">Rogers, AR</div>
         </div>
       </div>
       <div class="testi-stars">★★★★★</div>
