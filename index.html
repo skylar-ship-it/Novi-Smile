@@ -66,25 +66,25 @@ img { display: block; max-width: 100%; }
 /* ── NAV ─────────────────────────────────────── */
 .nav {
   position: sticky; top: 0; z-index: 100;
-  background: var(--white);
-  border-bottom: 1px solid rgba(52,100,125,0.1);
+  background: var(--teal);
+  border-bottom: 1px solid rgba(0,0,0,0.12);
   padding: 14px var(--pad);
   display: flex; align-items: center; justify-content: space-between;
   gap: 16px;
 }
 .nav-logo img { height: 36px; width: auto; }
 .nav-cta {
-  background: var(--teal); color: #fff;
+  background: #fff; color: var(--teal);
   font-family: var(--b); font-size: 12px; font-weight: 700;
   letter-spacing: 0.5px; text-transform: uppercase;
   padding: 10px 20px; border: none; cursor: pointer;
   text-decoration: none; white-space: nowrap;
   transition: background .2s;
 }
-.nav-cta:hover { background: var(--blue); }
+.nav-cta:hover { background: var(--offwhite); color: var(--teal); }
 .nav-phone {
   font-size: 13px; font-weight: 600;
-  color: var(--teal); text-decoration: none;
+  color: rgba(255,255,255,0.85); text-decoration: none;
   white-space: nowrap;
 }
 .nav-right { display: flex; align-items: center; gap: 16px; }
