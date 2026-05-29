@@ -645,15 +645,13 @@ footer {
   position: absolute; inset: 0; z-index: 0;
   pointer-events: none;
 }
-.hero-bg-wrap video,
-.hero-bg-wrap img {
+.hero-bg-wrap canvas {
   width: 100%; height: 100%;
-  object-fit: cover;
-  opacity: 0.12;
+  display: block;
 }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(135deg, rgba(20,36,80,0.82) 0%, rgba(52,100,125,0.72) 100%);
+  background: linear-gradient(135deg, rgba(26,40,96,0.78) 0%, rgba(52,100,125,0.65) 100%);
 }
 /* floating orbs */
 .hero-orb {
@@ -788,10 +786,7 @@ footer {
 <section class="hero">
   <!-- background placeholder — swap src for abstract image/video -->
   <div class="hero-bg-wrap" id="heroBg">
-    <video id="heroBgVideo" autoplay muted loop playsinline
-      style="width:100%;height:100%;object-fit:cover;display:block;">
-      <source src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/hero-video.mp4" type="video/mp4">
-    </video>
+    <canvas id="heroCanvas" style="width:100%;height:100%;display:block;"></canvas>
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-orb hero-orb-1"></div>
@@ -1384,6 +1379,70 @@ const obs = new IntersectionObserver(entries => {
 document.querySelectorAll('.fade').forEach(el => obs.observe(el));
 
 
+
+/* ── HERO CANVAS BACKGROUND ── */
+(function() {
+  const canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, orbs, raf;
+
+  function resize() {
+    const wrap = canvas.parentElement;
+    W = canvas.width  = wrap.offsetWidth  || window.innerWidth;
+    H = canvas.height = wrap.offsetHeight || window.innerHeight;
+    initOrbs();
+  }
+
+  function initOrbs() {
+    orbs = [
+      { x: W * 0.15, y: H * 0.3,  r: W * 0.38, vx:  0.18, vy:  0.10, base: 230, range: 22 },
+      { x: W * 0.75, y: H * 0.6,  r: W * 0.32, vx: -0.14, vy: -0.08, base: 218, range: 18 },
+      { x: W * 0.5,  y: H * 0.15, r: W * 0.28, vx:  0.10, vy:  0.14, base: 240, range: 14 },
+      { x: W * 0.85, y: H * 0.2,  r: W * 0.22, vx: -0.20, vy:  0.12, base: 225, range: 20 },
+    ];
+  }
+
+  function draw(ts) {
+    ctx.clearRect(0, 0, W, H);
+
+    // base fill — very light cool white
+    ctx.fillStyle = 'rgb(240,244,248)';
+    ctx.fillRect(0, 0, W, H);
+
+    orbs.forEach((o, i) => {
+      // drift
+      o.x += o.vx;
+      o.y += o.vy;
+      // bounce
+      if (o.x < -o.r)  o.x = W + o.r;
+      if (o.x > W + o.r) o.x = -o.r;
+      if (o.y < -o.r)  o.y = H + o.r;
+      if (o.y > H + o.r) o.y = -o.r;
+
+      // pulsing luminance
+      const pulse = o.base + Math.sin(ts * 0.0004 + i * 1.4) * o.range;
+      const c = Math.round(pulse);
+
+      const grad = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, o.r);
+      grad.addColorStop(0,   `rgba(${c},${c+2},${c+4}, 0.55)`);
+      grad.addColorStop(0.5, `rgba(${c-4},${c-2},${c}, 0.25)`);
+      grad.addColorStop(1,   `rgba(${c-8},${c-6},${c-4}, 0)`);
+
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    raf = requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  raf = requestAnimationFrame(draw);
+})();
+
 /* ── HERO MARQUEE PARALLAX ── */
 (function() {
   const hero = document.querySelector('.hero');
@@ -1412,21 +1471,7 @@ function handleSubmit() {
   }, 1200);
 }
 
-/* ── HERO BG VIDEO BLOB LOADER ── */
-(function() {
-  const vid = document.getElementById('heroBgVideo');
-  if (!vid) return;
-  fetch('https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/hero-video.mp4')
-    .then(r => r.blob())
-    .then(blob => {
-      const url = URL.createObjectURL(blob);
-      vid.src = url;
-      vid.play().catch(() => {});
-    })
-    .catch(() => {
-      // fallback: hero teal bg-color shows cleanly
-    });
-})();
+
 
 </script>
 </body>
