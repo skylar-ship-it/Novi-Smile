@@ -380,6 +380,20 @@ img { display: block; max-width: 100%; }
   font-size: 11px; color: var(--muted);
   text-align: center; margin-top: 10px;
 }
+.f-consent {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 10.5px; line-height: 1.5; color: var(--muted);
+  margin: 10px 0; cursor: pointer;
+}
+.f-consent input[type="checkbox"] {
+  flex-shrink: 0; width: 16px; height: 16px; margin-top: 1px;
+  accent-color: var(--teal); cursor: pointer;
+}
+.f-agree {
+  font-size: 10px; line-height: 1.6; color: var(--muted);
+  text-align: center; margin-top: 8px;
+}
+.f-agree a { color: var(--blue); text-decoration: underline; }
 .form-tabs {
   display: flex; border-bottom: 1px solid rgba(52,100,125,0.12);
   margin-bottom: 18px;
@@ -1097,8 +1111,17 @@ footer {
             <label class="f-label">Phone Number</label>
             <input class="f-input" type="tel" placeholder="(855) 458-9911">
           </div>
+          <label class="f-consent">
+            <input type="checkbox" name="sms_consent">
+            <span>I consent to receive SMS Notifications &amp; Alerts from NoviSmile. These messages include appointment reminders and confirmations, and service updates. Message frequency varies. Message &amp; data rates may apply. Text HELP for assistance. Reply STOP to unsubscribe at any time.</span>
+          </label>
+          <label class="f-consent">
+            <input type="checkbox" name="marketing_consent">
+            <span>I consent to receive marketing text messages from NoviSmile about special offers, discounts, and new updates. Message frequency varies. Message &amp; data rates may apply. Reply HELP for help or STOP to opt-out.</span>
+          </label>
           <button class="f-submit" onclick="handleSubmit()">Check My Eligibility →</button>
           <p class="f-note">Free · 5 minutes · No commitment required</p>
+          <p class="f-agree">By continuing, I agree to the <a href="/terms-of-service">Terms of Service</a>, <a href="/privacy-policy">Privacy Policy</a>, and <a href="/legal-compliance">Legal Compliance</a> of NoviSmile.</p>
         </div>
 
         <!-- TAB: PRICING -->
@@ -1120,8 +1143,17 @@ footer {
               <option>Several missing teeth</option>
             </select>
           </div>
+          <label class="f-consent">
+            <input type="checkbox" name="sms_consent">
+            <span>I consent to receive SMS Notifications &amp; Alerts from NoviSmile. These messages include appointment reminders and confirmations, and service updates. Message frequency varies. Message &amp; data rates may apply. Text HELP for assistance. Reply STOP to unsubscribe at any time.</span>
+          </label>
+          <label class="f-consent">
+            <input type="checkbox" name="marketing_consent">
+            <span>I consent to receive marketing text messages from NoviSmile about special offers, discounts, and new updates. Message frequency varies. Message &amp; data rates may apply. Reply HELP for help or STOP to opt-out.</span>
+          </label>
           <button class="f-submit" onclick="handleSubmit()">Send Me Pricing →</button>
           <p class="f-note">No spam · Pricing info within 1 hour</p>
+          <p class="f-agree">By continuing, I agree to the <a href="/terms-of-service">Terms of Service</a>, <a href="/privacy-policy">Privacy Policy</a>, and <a href="/legal-compliance">Legal Compliance</a> of NoviSmile.</p>
         </div>
       </div>
     </div>
