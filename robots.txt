@@ -1,0 +1,6 @@
+# NoviSmile — robots.txt
+# Replace the domain below with your live domain.
+User-agent: *
+Allow: /
+
+Sitemap: https://novismilerogers.com/sitemap.xml
