@@ -550,6 +550,16 @@ img { display: block; max-width: 100%; }
   .intro-inner { grid-template-columns: 1fr; }
   .intro-image-block { order: -1; }
   .intro-accent { right: 0; }
+  /* Show the full doctor photo on mobile instead of cropping it into a 4:3 frame */
+  .intro-image-block img {
+    aspect-ratio: auto !important;
+    width: auto !important;
+    max-width: 100%;
+    height: auto !important;
+    max-height: 70vh;
+    margin: 0 auto;
+    object-fit: contain !important;
+  }
 }
 
 /* ── BEFORE/AFTER ────────────────────────────── */
