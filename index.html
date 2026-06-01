@@ -550,15 +550,12 @@ img { display: block; max-width: 100%; }
   .intro-inner { grid-template-columns: 1fr; }
   .intro-image-block { order: -1; }
   .intro-accent { right: 0; }
-  /* Show the full doctor photo on mobile instead of cropping it into a 4:3 frame */
+  /* Keep the doctor photo at its natural ratio on mobile; just cap the height */
   .intro-image-block img {
-    aspect-ratio: auto !important;
-    width: auto !important;
+    width: auto;
     max-width: 100%;
-    height: auto !important;
-    max-height: 70vh;
+    max-height: 75vh;
     margin: 0 auto;
-    object-fit: contain !important;
   }
 }
 
@@ -653,7 +650,7 @@ img { display: block; max-width: 100%; }
 }
 .ba-detail-panel.open { max-height: 640px; }
 .ba-detail-panel img {
-  width: 100%; display: block;
+  width: 100%; height: auto; display: block;   /* natural ratio — no stretch */
   border-top: 1px solid rgba(201,168,76,0.35);
 }
 .ba-stars { color: var(--coral); font-size: 12px; margin-top: 8px; }
@@ -1264,8 +1261,8 @@ footer {
       <img
         src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/dr_50.jpg.webp"
         alt="Dr. Scott Frank, oral surgeon at NoviSmile Rogers AR"
-        loading="lazy" width="800" height="600"
-        style="width:100%; aspect-ratio:4/3; object-fit:cover; object-position:center top; border-radius:var(--r);">
+        loading="lazy"
+        style="width:100%; height:auto; display:block; border-radius:var(--r);">
       <div class="intro-accent">
         <div class="intro-accent-num">1</div>
         <div class="intro-accent-txt">Surgeon.<br>Always.</div>
@@ -1396,7 +1393,7 @@ footer {
         <span class="ba-expand-arrow" aria-hidden="true">›</span>
       </button>
       <div class="ba-detail-panel" id="ba-detail-6">
-        <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after6-2.webp" alt="Close-up of a custom gold All-on-X prosthesis" loading="lazy" width="600" height="400">
+        <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after6-2.webp" alt="Close-up of a custom gold All-on-X prosthesis" loading="lazy" style="width:100%; height:auto; display:block;">
       </div>
     </div>
 
