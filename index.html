@@ -4,21 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NoviSmile — Full Arch All-on-X · Rogers, Arkansas</title>
-<meta name="description" content="Full Arch All-on-X in Rogers, Arkansas. One surgeon, no handoffs, permanent results. Free consultation available.">
+<!-- SEO: meta description lengthened to ~155 chars with keywords + CTA -->
+<meta name="description" content="Full-arch All-on-X dental implants in Rogers, AR. Dr. Scott Frank places permanent, fixed teeth in one practice — no handoffs. Book your free consultation today.">
 <!-- Favicons -->
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
-<link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#34647D">
 
-<!-- ════════════════════════════════════════════════════════════════
-     SEO  ·  IMPORTANT: replace https://novismilerogers.com everywhere
-     below (and in sitemap.xml, robots.txt, vercel.json) with your real
-     live domain. Also set the exact geo coordinates + review numbers.
-     ════════════════════════════════════════════════════════════════ -->
 <link rel="canonical" href="https://novismilerogers.com/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="NoviSmile">
@@ -47,7 +42,11 @@
 <meta name="twitter:description" content="Full Arch All-on-X in Rogers, AR. One surgeon, no handoffs, permanent results. Free consultation available.">
 <meta name="twitter:image" content="https://novismilerogers.com/og-image.png">
 
-<!-- Structured data -->
+<!-- Structured data
+     NOTE (SEO/compliance): the aggregateRating + review block below is self-hosted.
+     Google's guidelines discourage self-serving review markup on LocalBusiness and may
+     ignore it or issue a manual action. Keep ratingValue/reviewCount accurate and matched
+     to a verifiable source (e.g. your Google Business Profile), or remove the rating block. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -107,7 +106,7 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
-        "reviewCount": "600"
+        "reviewCount": "900"
       },
       "review": [
         {
@@ -188,6 +187,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Perf: preconnect to image host (consider self-hosting images on your domain/CDN) -->
+<link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <style>
 /* ── RESET ───────────────────────────────────── */
@@ -210,7 +211,7 @@ img { display: block; max-width: 100%; }
   --offwhite:  #F4F6F6;
   --grey:      #f0f0f0;
   --charcoal:  #2e2e2e;
-  --muted:     rgba(46,46,46,0.55);
+  --muted:     #5a5a5a;            /* A11Y: was rgba(46,46,46,0.55) ~3.4:1; now 6.9:1 on white */
   --white:     #ffffff;
   --coral:     #ED676D;
   --navy:      #1a2860;
@@ -221,16 +222,29 @@ img { display: block; max-width: 100%; }
   --r:         10px;
 }
 
+/* ── A11Y: visible focus + skip link ─────────── */
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 1000;
+  background: var(--teal); color: #fff;
+  padding: 10px 16px; font-family: var(--b); font-size: 14px; font-weight: 600;
+  border-radius: 0 0 6px 0; text-decoration: none;
+}
+.skip-link:focus { left: 0; }
+
 /* ── UTILITIES ───────────────────────────────── */
 .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
 .label {
   font-size: 10px; font-weight: 700;
   letter-spacing: 2.5px; text-transform: uppercase;
-  color: var(--blue); display: block;
+  color: var(--teal); display: block;     /* A11Y: was var(--blue) 3.18:1; teal is 6.43:1 */
 }
-.label.light { color: rgba(255,255,255,0.6); }
+.label.light { color: rgba(255,255,255,0.8); }   /* A11Y: was 0.6 (3.46:1); 0.8 is 4.79:1 */
 .rule { width: 48px; height: 2px; background: var(--blue); }
 .rule.white { background: rgba(255,255,255,0.4); }
+
+/* star ratings get an accessible name via aria-label; hide glyphs from being read char-by-char handled inline */
+.ba-stars, .testi-stars { }
 
 /* fade-up on scroll */
 .fade {
@@ -265,7 +279,7 @@ img { display: block; max-width: 100%; }
 .nav-cta:hover { background: var(--teal); color: #fff; opacity: 0.9; }
 .nav-phone {
   font-size: 13px; font-weight: 600;
-  color: var(--teal); text-decoration: none;
+  color: #123c4b; text-decoration: none;   /* A11Y: was var(--teal) 2.59:1 on nav bg; now 4.76:1 */
   white-space: nowrap;
 }
 .nav-right { display: flex; align-items: center; gap: 16px; }
@@ -306,7 +320,7 @@ img { display: block; max-width: 100%; }
   gap: clamp(24px, 3.5vw, 52px);
   align-items: center;
   width: 100%;
-  flex: 0 0 auto;
+  flex: 0 0 auto;        /* content + marquee center together so the marquee sits high, not at the bottom edge */
   padding-bottom: 0;
 }
 .hero-eyebrow { margin-bottom: 16px; }
@@ -338,7 +352,7 @@ img { display: block; max-width: 100%; }
   background: var(--teal);
   padding: 16px 20px;
 }
-.hero-form-header h3 {
+.hero-form-header h2 {
   font-family: var(--h);
   font-size: 20px; font-weight: 500; color: #fff;
   margin-top: 4px; line-height: 1.15;
@@ -353,12 +367,15 @@ img { display: block; max-width: 100%; }
 .f-input {
   width: 100%; font-family: var(--b); font-size: 14px;
   padding: 9px 12px;
-  border: 1.5px solid rgba(52,100,125,0.2);
+  border: 1.5px solid rgba(52,100,125,0.45);   /* A11Y: was 0.2 (<1.5:1); darker for 3:1 non-text contrast */
   background: var(--offwhite); color: var(--charcoal);
   border-radius: 0; outline: none;
-  transition: border-color .2s, background .2s;
+  transition: border-color .2s, background .2s, box-shadow .2s;
 }
-.f-input:focus { border-color: var(--blue); background: #fff; }
+.f-input:focus {
+  border-color: var(--teal); background: #fff;
+  outline: 2px solid var(--blue); outline-offset: 1px;   /* A11Y: visible focus on inputs */
+}
 .f-select {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236795BD' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
@@ -394,7 +411,7 @@ img { display: block; max-width: 100%; }
   font-size: 10px; line-height: 1.6; color: var(--muted);
   text-align: center; margin-top: 8px;
 }
-.f-agree a { color: var(--blue); text-decoration: underline; }
+.f-agree a { color: var(--teal); text-decoration: underline; }   /* A11Y: was --blue; teal passes AA */
 .form-tabs {
   display: flex; border-bottom: 1px solid rgba(52,100,125,0.12);
   margin-bottom: 18px;
@@ -403,7 +420,8 @@ img { display: block; max-width: 100%; }
   flex: 1; padding: 10px 8px; text-align: center;
   font-size: 12px; font-weight: 600;
   color: var(--muted); cursor: pointer;
-  border-bottom: 2px solid transparent;
+  background: none; font-family: var(--b);   /* A11Y: button reset (was a div) */
+  border: 0; border-bottom: 2px solid transparent;
   transition: color .2s, border-color .2s;
   user-select: none;
 }
@@ -458,7 +476,7 @@ img { display: block; max-width: 100%; }
 .stat-label {
   font-size: 11px; font-weight: 600;
   letter-spacing: 1px; text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.85);   /* A11Y: was 0.6 (3.46:1); 0.85 is 5.19:1 */
 }
 @media (max-width: 600px) {
   .stats-inner { grid-template-columns: 1fr 1fr; }
@@ -526,7 +544,7 @@ img { display: block; max-width: 100%; }
 .intro-accent-txt {
   font-size: 10px; font-weight: 600;
   letter-spacing: 1px; text-transform: uppercase;
-  color: rgba(255,255,255,0.65); margin-top: 4px;
+  color: rgba(255,255,255,0.85); margin-top: 4px;   /* A11Y: was 0.65 */
 }
 @media (max-width: 700px) {
   .intro-inner { grid-template-columns: 1fr; }
@@ -592,7 +610,7 @@ img { display: block; max-width: 100%; }
   text-transform: uppercase; padding: 3px 8px;
   border-radius: 3px; z-index: 1;
 }
-.ba-badge.before { background: rgba(0,0,0,0.55); color: #fff; }
+.ba-badge.before { background: rgba(0,0,0,0.65); color: #fff; }
 .ba-badge.after  { background: var(--teal); color: #fff; }
 .ba-divider {
   position: absolute; top: 0; bottom: 0;
@@ -613,7 +631,7 @@ img { display: block; max-width: 100%; }
   border-top: 1px solid rgba(201,168,76,0.35);
   padding: 12px; cursor: pointer;
   font-family: var(--b); font-size: 11px; font-weight: 700;
-  letter-spacing: 1px; text-transform: uppercase; color: #c9a84c;
+  letter-spacing: 1px; text-transform: uppercase; color: #8a6c20;
   transition: background .2s;
 }
 .ba-expand:hover { background: rgba(201,168,76,0.08); }
@@ -748,7 +766,7 @@ img { display: block; max-width: 100%; }
 }
 .fin-h2 em { color: var(--lblue); font-style: italic; }
 .fin-sub {
-  font-size: 14px; color: rgba(255,255,255,0.72);
+  font-size: 14px; color: rgba(255,255,255,0.85);   /* A11Y: was 0.72 (4.24:1); 0.85 is 5.19:1 */
   line-height: 1.7; margin: 16px 0 28px;
 }
 .fin-cards { display: flex; flex-direction: column; gap: 12px; }
@@ -767,7 +785,7 @@ img { display: block; max-width: 100%; }
   display: flex; align-items: center; justify-content: center;
 }
 .fin-card-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 3px; }
-.fin-card-sub { font-size: 12px; color: rgba(255,255,255,0.6); }
+.fin-card-sub { font-size: 12px; color: rgba(255,255,255,0.82); }   /* A11Y: was 0.6 (3.46:1); 0.82 is 4.94:1 */
 @media (max-width: 700px) {
   .financing-inner { grid-template-columns: 1fr; }
 }
@@ -786,6 +804,7 @@ img { display: block; max-width: 100%; }
 }
 .faq-item.open { border-color: var(--blue); }
 .faq-q {
+  width: 100%; text-align: left; background: none; border: 0;   /* A11Y: button reset (was a div) */
   display: flex; justify-content: space-between; align-items: center;
   padding: 16px 20px; cursor: pointer; gap: 12px;
   font-family: var(--h); font-size: clamp(15px, 2vw, 18px);
@@ -797,7 +816,7 @@ img { display: block; max-width: 100%; }
   font-size: 18px; color: var(--blue);
   flex-shrink: 0; transition: transform .3s;
 }
-.faq-item.open .faq-chevron { transform: rotate(90deg); }
+.faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(90deg); }
 .faq-a {
   max-height: 0; overflow: hidden;
   transition: max-height .35s ease, padding .3s;
@@ -838,15 +857,15 @@ footer {
 }
 .footer-logo img { height: 28px; width: auto; filter: brightness(0) invert(1); opacity: 0.7; }
 .footer-copy {
-  font-size: 11px; color: rgba(255,255,255,0.35);
+  font-size: 11px; color: rgba(255,255,255,0.62);
   letter-spacing: 0.5px;
 }
 .footer-links { display: flex; gap: 20px; }
 .footer-links a {
-  font-size: 11px; color: rgba(255,255,255,0.45);
+  font-size: 11px; color: rgba(255,255,255,0.7);
   text-decoration: none; transition: color .2s;
 }
-.footer-links a:hover { color: rgba(255,255,255,0.8); }
+.footer-links a:hover { color: rgba(255,255,255,0.95); }
 
 /* marquee keyframe used by hero-marquee-track */
 @keyframes marquee {
@@ -879,10 +898,6 @@ footer {
   height: 100%;
   display: block;
 }
-.hero-bg-wrap canvas {
-  width: 100%; height: 100%;
-  display: block;
-}
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
   pointer-events: none;
@@ -896,7 +911,7 @@ footer {
 .hero-inner { position: relative; z-index: 2; }
 .hero-copy {
   position: relative;
-  background: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.62);
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
   border-radius: 16px;
@@ -908,7 +923,7 @@ footer {
 }
 .hero-h1 { color: var(--teal); }
 .hero-h1 em { color: var(--blue); }
-.hero-sub { color: var(--muted); }
+.hero-sub { color: var(--charcoal); }   /* A11Y: was --muted-on-glass; charcoal for legibility over animated bg */
 .hero-rule { background: var(--blue); }
 
 /* ── HERO SCROLL TICKER (bottom of hero) ── */
@@ -944,7 +959,6 @@ footer {
   .nav-logo { display: flex; align-items: center; }
 }
 
-
 /* ── PARALLAX MARQUEE ── */
 .hero-marquee-wrap {
   width: calc(100% + (2 * var(--pad)));
@@ -957,7 +971,7 @@ footer {
   padding: 15px 0;
   position: relative;
   z-index: 3;
-  margin-top: clamp(36px, 5vw, 64px);
+  margin-top: clamp(14px, 2vw, 26px);   /* pulled up so it sits inside the first screen */
   flex-shrink: 0;
 }
 .hero-marquee-track {
@@ -980,10 +994,6 @@ footer {
   width: 5px; height: 5px; border-radius: 50%;
   background: var(--lblue); opacity: 0.6; flex-shrink: 0;
 }
-/* parallax effect — JS will update --scroll-y */
-.hero-marquee-track {
-  animation: marquee 40s linear infinite;
-}
 
 /* ── MOBILE HERO: first screen = copy + marquee, form drops below ── */
 @media (max-width: 800px) {
@@ -1000,11 +1010,11 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: calc(100vh - 165px);
-    min-height: calc(100svh - 165px);
-    margin: 12px 0 0;
+    min-height: calc(100vh - 200px);
+    min-height: calc(100svh - 200px);   /* shorter copy lifts the marquee up into the first screen */
+    margin: 8px 0 0;
     padding: clamp(28px, 7vw, 44px) clamp(22px, 6vw, 32px);
-    background: rgba(255,255,255,0.62);
+    background: rgba(255,255,255,0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(52,100,125,0.18);
@@ -1014,14 +1024,14 @@ footer {
   }
   .hero-marquee-wrap { order: 2; margin-top: 0; }
   .hero-h1 {
-    font-size: clamp(46px, 13vw, 80px);
-    line-height: 0.98;
-    margin-bottom: 22px;
+    font-size: clamp(38px, 10.5vw, 60px);
+    line-height: 1.0;
+    margin-bottom: 14px;
   }
   .hero-sub {
-    font-size: clamp(15px, 4.2vw, 19px);
+    font-size: clamp(14px, 3.8vw, 17px);
     max-width: 100%;
-    margin-bottom: 28px;
+    margin-bottom: 18px;
   }
   .hero-eyebrow .label { font-size: 12px; letter-spacing: 2px; }
   .hero-ctas .btn-primary,
@@ -1037,17 +1047,37 @@ footer {
   }
 }
 
+/* ── A11Y: respect reduced-motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .fade { opacity: 1 !important; transform: none !important; }
+  .hero-marquee-track, .hero-ticker-track { animation: none !important; }
+}
+
+@media (max-width: 700px) { .loc-grid { grid-template-columns: 1fr !important; } }
 </style>
 </head>
 <body>
 
+<!-- A11Y: skip link -->
+<a class="skip-link" href="#main">Skip to main content</a>
+
 <!-- ── NAV ── -->
-<nav class="nav">
+<nav class="nav" aria-label="Primary">
   <div class="nav-logo">
-    <img src="https://github.com/skylar-ship-it/Novi-Smile/blob/main/logo.png.webp?raw=true" alt="NoviSmile">
+    <a href="/" aria-label="NoviSmile home">
+      <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/logo.png.webp" alt="NoviSmile" width="160" height="46">
+    </a>
   </div>
   <div class="nav-logo-center">
-    <img src="https://github.com/skylar-ship-it/Novi-Smile/blob/main/logo.png.webp?raw=true" alt="NoviSmile">
+    <a href="/" aria-label="NoviSmile home">
+      <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/logo.png.webp" alt="NoviSmile" width="220" height="64">
+    </a>
   </div>
   <div class="nav-right">
     <a class="nav-phone" href="tel:8554589911">(855) 458-9911</a>
@@ -1055,20 +1085,22 @@ footer {
   </div>
 </nav>
 
+<main id="main">
+
 <!-- ── HERO ── -->
-<section class="hero">
-  <!-- background placeholder — swap src for abstract image/video -->
-  <div class="hero-bg-wrap" id="heroBg">
+<section class="hero" aria-labelledby="hero-h1">
+  <div class="hero-bg-wrap" id="heroBg" aria-hidden="true">
     <canvas id="heroCanvas" style="width:100%;height:100%;display:block;"></canvas>
   </div>
-  <div class="hero-overlay"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="hero-copy">
       <div class="hero-eyebrow fade">
-        <span class="label" style="color:var(--blue);">Full Arch All-on-X · Rogers, AR</span>
+        <span class="label">Full Arch All-on-X · Rogers, AR</span>
       </div>
-      <h1 class="hero-h1 fade d1">
-        Don't settle<br><em>any longer.</em>
+      <!-- SEO: H1 now leads with the primary keyword + location, keeps the brand hook in the accent line -->
+      <h1 class="hero-h1 fade d1" id="hero-h1">
+        All-On-X Dental Implants in Rogers, AR.<br><em>Don't settle any longer.</em>
       </h1>
       <div class="rule hero-rule fade d2"></div>
       <p class="hero-sub fade d2">
@@ -1084,19 +1116,20 @@ footer {
     <div class="hero-form fade d2" id="consult">
       <div class="hero-form-header">
         <span class="label light">Free · No commitment</span>
-        <h3>Start your smile<br>assessment today.</h3>
+        <h2>Start your smile<br>assessment today.</h2>
       </div>
       <div class="hero-form-body">
-        <div class="form-tabs">
-          <div class="form-tab active" onclick="switchTab('qualify', this)">See If I Qualify</div>
-          <div class="form-tab" onclick="switchTab('pricing', this)">Get Pricing</div>
+        <div class="form-tabs" role="tablist" aria-label="Choose what you want">
+          <button type="button" class="form-tab active" id="tab-qualify" role="tab" aria-selected="true" aria-controls="panel-qualify" onclick="switchTab('qualify', this)">See If I Qualify</button>
+          <button type="button" class="form-tab" id="tab-pricing" role="tab" aria-selected="false" aria-controls="panel-pricing" onclick="switchTab('pricing', this)">Get Pricing</button>
         </div>
 
         <!-- TAB: QUALIFY -->
-        <div class="form-panel active" id="panel-qualify">
+        <!-- NOTE: wire action to your form handler / CRM. As shipped this form does NOT send data anywhere. -->
+        <form class="form-panel active" id="panel-qualify" role="tabpanel" aria-labelledby="tab-qualify" onsubmit="return handleSubmit(event)">
           <div class="f-group">
-            <label class="f-label">How many teeth are you missing?</label>
-            <select class="f-input f-select">
+            <label class="f-label" for="q-teeth">How many teeth are you missing?</label>
+            <select class="f-input f-select" id="q-teeth" name="teeth_missing" required>
               <option value="">Select an option...</option>
               <option>All upper teeth — Full Arch All-on-X</option>
               <option>All lower teeth — Full Arch All-on-X</option>
@@ -1105,12 +1138,12 @@ footer {
             </select>
           </div>
           <div class="f-group">
-            <label class="f-label">Your Name</label>
-            <input class="f-input" type="text" placeholder="First and last name">
+            <label class="f-label" for="q-name">Your Name</label>
+            <input class="f-input" id="q-name" name="name" type="text" autocomplete="name" placeholder="First and last name" required>
           </div>
           <div class="f-group">
-            <label class="f-label">Phone Number</label>
-            <input class="f-input" type="tel" placeholder="(855) 458-9911">
+            <label class="f-label" for="q-phone">Phone Number</label>
+            <input class="f-input" id="q-phone" name="phone" type="tel" autocomplete="tel" placeholder="(855) 458-9911" required>
           </div>
           <label class="f-consent">
             <input type="checkbox" name="sms_consent">
@@ -1120,24 +1153,24 @@ footer {
             <input type="checkbox" name="marketing_consent">
             <span>I consent to receive marketing text messages from NoviSmile about special offers, discounts, and new updates. Message frequency varies. Message &amp; data rates may apply. Reply HELP for help or STOP to opt-out.</span>
           </label>
-          <button class="f-submit" onclick="handleSubmit()">Check My Eligibility →</button>
+          <button type="submit" class="f-submit">Check My Eligibility →</button>
           <p class="f-note">Free · 5 minutes · No commitment required</p>
           <p class="f-agree">By continuing, I agree to the <a href="/terms-of-service">Terms of Service</a>, <a href="/privacy-policy">Privacy Policy</a>, and <a href="/legal-compliance">Legal Compliance</a> of NoviSmile.</p>
-        </div>
+        </form>
 
         <!-- TAB: PRICING -->
-        <div class="form-panel" id="panel-pricing">
+        <form class="form-panel" id="panel-pricing" role="tabpanel" aria-labelledby="tab-pricing" onsubmit="return handleSubmit(event)">
           <div class="f-group">
-            <label class="f-label">First Name</label>
-            <input class="f-input" type="text" placeholder="Your first name">
+            <label class="f-label" for="p-name">First Name</label>
+            <input class="f-input" id="p-name" name="name" type="text" autocomplete="given-name" placeholder="Your first name" required>
           </div>
           <div class="f-group">
-            <label class="f-label">Phone Number</label>
-            <input class="f-input" type="tel" placeholder="(855) 458-9911">
+            <label class="f-label" for="p-phone">Phone Number</label>
+            <input class="f-input" id="p-phone" name="phone" type="tel" autocomplete="tel" placeholder="(855) 458-9911" required>
           </div>
           <div class="f-group">
-            <label class="f-label">Teeth missing?</label>
-            <select class="f-input f-select">
+            <label class="f-label" for="p-teeth">Teeth missing?</label>
+            <select class="f-input f-select" id="p-teeth" name="teeth_missing" required>
               <option value="">Select an option...</option>
               <option>Full arch All-on-X (upper or lower)</option>
               <option>Both arches — Full All-on-X</option>
@@ -1152,15 +1185,14 @@ footer {
             <input type="checkbox" name="marketing_consent">
             <span>I consent to receive marketing text messages from NoviSmile about special offers, discounts, and new updates. Message frequency varies. Message &amp; data rates may apply. Reply HELP for help or STOP to opt-out.</span>
           </label>
-          <button class="f-submit" onclick="handleSubmit()">Send Me Pricing →</button>
+          <button type="submit" class="f-submit">Send Me Pricing →</button>
           <p class="f-note">No spam · Pricing info within 1 hour</p>
           <p class="f-agree">By continuing, I agree to the <a href="/terms-of-service">Terms of Service</a>, <a href="/privacy-policy">Privacy Policy</a>, and <a href="/legal-compliance">Legal Compliance</a> of NoviSmile.</p>
-        </div>
+        </form>
       </div>
     </div>
   </div>
-  </div>
-  <div class="hero-marquee-wrap" id="heroMarquee">
+  <div class="hero-marquee-wrap" id="heroMarquee" aria-hidden="true">
     <div class="hero-marquee-track" id="heroMarqueeTrack"><span class="hero-marquee-item"><span>35+ Years Experience</span><span class="hero-marquee-sep"></span></span><span class="hero-marquee-item"><span>3,000+ Full-Arch Cases</span><span class="hero-marquee-sep"></span></span><span class="hero-marquee-item"><span>Full-Arch Reconstruction Expert</span><span class="hero-marquee-sep"></span></span><span class="hero-marquee-item"><span>24 Hour Smile</span><span class="hero-marquee-sep"></span></span><span class="hero-marquee-item"><span>35+ Years Experience</span><span class="hero-marquee-sep"></span></span><span class="hero-marquee-item"><span>3,000+ Full-Arch Cases</span><span class="hero-marquee-sep"></span></span><span class="hero-marquee-item"><span>Full-Arch Reconstruction Expert</span><span class="hero-marquee-sep"></span></span><span class="hero-marquee-item"><span>24 Hour Smile</span><span class="hero-marquee-sep"></span></span><span class="hero-marquee-item"><span>35+ Years Experience</span><span class="hero-marquee-sep"></span></span><span class="hero-marquee-item"><span>3,000+ Full-Arch Cases</span><span class="hero-marquee-sep"></span></span><span class="hero-marquee-item"><span>Full-Arch Reconstruction Expert</span><span class="hero-marquee-sep"></span></span><span class="hero-marquee-item"><span>24 Hour Smile</span><span class="hero-marquee-sep"></span></span></div>
   </div>
 
@@ -1182,7 +1214,7 @@ footer {
       <div class="stat-label">Success Rate</div>
     </div>
     <div class="fade d3">
-      <div class="stat-num">600+</div>
+      <div class="stat-num">900+</div>
       <div class="stat-label">5-Star Reviews</div>
     </div>
   </div>
@@ -1201,19 +1233,19 @@ footer {
       </p>
       <ul class="check-list fade d2">
         <li>
-          <span class="check-icon">✓</span>
+          <span class="check-icon" aria-hidden="true">✓</span>
           <span>3D-guided surgical planning for precision placement</span>
         </li>
         <li>
-          <span class="check-icon">✓</span>
+          <span class="check-icon" aria-hidden="true">✓</span>
           <span>Same-day All-on-X temporaries available</span>
         </li>
         <li>
-          <span class="check-icon">✓</span>
+          <span class="check-icon" aria-hidden="true">✓</span>
           <span>IV sedation — sleep comfortably through your procedure</span>
         </li>
         <li>
-          <span class="check-icon">✓</span>
+          <span class="check-icon" aria-hidden="true">✓</span>
           <span>CareCredit® &amp; Proceed Finance accepted</span>
         </li>
       </ul>
@@ -1221,8 +1253,8 @@ footer {
     <div class="intro-image-block fade d3">
       <img
         src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/dr_50.jpg.webp"
-        alt="Dr. Scott Frank — NoviSmile Rogers"
-        loading="lazy"
+        alt="Dr. Scott Frank, oral surgeon at NoviSmile Rogers AR"
+        loading="lazy" width="800" height="600"
         style="width:100%; aspect-ratio:4/3; object-fit:cover; object-position:center top; border-radius:var(--r);">
       <div class="intro-accent">
         <div class="intro-accent-num">1</div>
@@ -1245,101 +1277,101 @@ footer {
     <div class="ba-card fade d1">
       <div class="ba-images">
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before1.webp" alt="All-on-X patient - before" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before1.webp" alt="NoviSmile patient 1 before All-on-X full-arch implants" loading="lazy" width="600" height="600">
           <span class="ba-badge before">Before</span>
         </div>
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after1.webp" alt="All-on-X patient - after" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after1.webp" alt="NoviSmile patient 1 after All-on-X full-arch implants" loading="lazy" width="600" height="600">
           <span class="ba-badge after">After</span>
         </div>
         <div class="ba-divider"></div>
       </div>
       <div class="ba-info">
         <div class="ba-name">All-on-X</div>
-        <div class="ba-stars">★★★★★</div>
+        <div class="ba-stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</div>
       </div>
     </div>
 
     <div class="ba-card fade d2">
       <div class="ba-images">
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before2.webp" alt="All-on-X patient - before" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before2.webp" alt="NoviSmile patient 2 before All-on-X full-arch implants" loading="lazy" width="600" height="600">
           <span class="ba-badge before">Before</span>
         </div>
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after2.webp" alt="All-on-X patient - after" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after2.webp" alt="NoviSmile patient 2 after All-on-X full-arch implants" loading="lazy" width="600" height="600">
           <span class="ba-badge after">After</span>
         </div>
         <div class="ba-divider"></div>
       </div>
       <div class="ba-info">
         <div class="ba-name">All-on-X</div>
-        <div class="ba-stars">★★★★★</div>
+        <div class="ba-stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</div>
       </div>
     </div>
 
     <div class="ba-card fade d3">
       <div class="ba-images">
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before3.webp" alt="All-on-X patient - before" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before3.webp" alt="NoviSmile patient 3 before All-on-X full-arch implants" loading="lazy" width="600" height="600">
           <span class="ba-badge before">Before</span>
         </div>
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after3.webp" alt="All-on-X patient - after" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after3.webp" alt="NoviSmile patient 3 after All-on-X full-arch implants" loading="lazy" width="600" height="600">
           <span class="ba-badge after">After</span>
         </div>
         <div class="ba-divider"></div>
       </div>
       <div class="ba-info">
         <div class="ba-name">All-on-X</div>
-        <div class="ba-stars">★★★★★</div>
+        <div class="ba-stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</div>
       </div>
     </div>
 
     <div class="ba-card fade d1">
       <div class="ba-images">
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before4.webp" alt="All-on-X patient - before" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before4.webp" alt="NoviSmile patient 4 before All-on-X full-arch implants" loading="lazy" width="600" height="600">
           <span class="ba-badge before">Before</span>
         </div>
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after4.webp" alt="All-on-X patient - after" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after4.webp" alt="NoviSmile patient 4 after All-on-X full-arch implants" loading="lazy" width="600" height="600">
           <span class="ba-badge after">After</span>
         </div>
         <div class="ba-divider"></div>
       </div>
       <div class="ba-info">
         <div class="ba-name">All-on-X</div>
-        <div class="ba-stars">★★★★★</div>
+        <div class="ba-stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</div>
       </div>
     </div>
 
     <div class="ba-card fade d2">
       <div class="ba-images">
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before5.webp" alt="All-on-X patient - before" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before5.webp" alt="NoviSmile patient 5 before All-on-X full-arch implants" loading="lazy" width="600" height="600">
           <span class="ba-badge before">Before</span>
         </div>
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after5.webp" alt="All-on-X patient - after" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after5.webp" alt="NoviSmile patient 5 after All-on-X full-arch implants" loading="lazy" width="600" height="600">
           <span class="ba-badge after">After</span>
         </div>
         <div class="ba-divider"></div>
       </div>
       <div class="ba-info">
         <div class="ba-name">All-on-X</div>
-        <div class="ba-stars">★★★★★</div>
+        <div class="ba-stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</div>
       </div>
     </div>
 
     <div class="ba-card gold-card fade d3">
       <div class="ba-images">
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before6.webp" alt="All-on-X patient - before" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/before6.webp" alt="NoviSmile patient 6 before custom gold All-on-X implants" loading="lazy" width="600" height="600">
           <span class="ba-badge before">Before</span>
         </div>
         <div class="ba-img-wrap">
-          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after6.webp" alt="All-on-X patient - after" loading="lazy">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after6.webp" alt="NoviSmile patient 6 after custom gold All-on-X implants" loading="lazy" width="600" height="600">
           <span class="ba-badge after">After</span>
         </div>
         <div class="ba-divider"></div>
@@ -1347,14 +1379,14 @@ footer {
       <div class="ba-info">
         <div class="ba-name">All-on-X</div>
         <div class="ba-detail">✦ Fully Customizable</div>
-        <div class="ba-stars">★★★★★</div>
+        <div class="ba-stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</div>
       </div>
-      <button class="ba-expand" onclick="toggleDetail(this)" aria-expanded="false">
+      <button class="ba-expand" onclick="toggleDetail(this)" aria-expanded="false" aria-controls="ba-detail-6">
         <span>See Close-Up Detail</span>
-        <span class="ba-expand-arrow">›</span>
+        <span class="ba-expand-arrow" aria-hidden="true">›</span>
       </button>
-      <div class="ba-detail-panel">
-        <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after6-2.webp" alt="Custom gold All-on-X close-up detail" loading="lazy">
+      <div class="ba-detail-panel" id="ba-detail-6">
+        <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/after6-2.webp" alt="Close-up of a custom gold All-on-X prosthesis" loading="lazy" width="600" height="400">
       </div>
     </div>
 
@@ -1366,7 +1398,7 @@ footer {
   <div class="process-inner">
     <div class="section-header fade">
       <span class="label" style="text-align:center; display:block;">Simple Process</span>
-      <h2 class="section-h2">How it <em>works</em></h2>
+      <h2 class="section-h2">How All-on-X <em>works</em></h2>
       <div class="rule section-rule"></div>
     </div>
     <div class="process-steps">
@@ -1405,35 +1437,35 @@ footer {
     <div class="testi-card fade d1">
       <p class="testi-text">"One of the best experiences I have ever had. The team is so kind and attentive. Dr. Frank, Joe and Mickey are some of the kindest people I had the pleasure of working with. Having your mouth worked on is nerve wracking enough — they made it easy, were there for any questions, and picked up my calls whenever I needed anything. My teeth look amazing! So happy I went with them."</p>
       <div class="testi-author">
-        <div class="testi-avatar" style="background:var(--teal);">J</div>
+        <div class="testi-avatar" style="background:var(--teal);" aria-hidden="true">J</div>
         <div>
           <div class="testi-name">Jessi Smiley</div>
           <div class="testi-loc">Google Review</div>
         </div>
       </div>
-      <div class="testi-stars">★★★★★</div>
+      <div class="testi-stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</div>
     </div>
     <div class="testi-card fade d2">
       <p class="testi-text">"Dr. Frank is very professional and explains everything. He has a great crew — Mikey and Joe — always very helpful, explaining all the details about procedures, very responsive and available if I had any questions. The place is at the best standards, with a very friendly, professional atmosphere. I would highly recommend NoviSmile."</p>
       <div class="testi-author">
-        <div class="testi-avatar" style="background:var(--blue);">E</div>
+        <div class="testi-avatar" style="background:var(--blue);" aria-hidden="true">E</div>
         <div>
           <div class="testi-name">Eva Brzoz</div>
           <div class="testi-loc">Google Review</div>
         </div>
       </div>
-      <div class="testi-stars">★★★★★</div>
+      <div class="testi-stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</div>
     </div>
     <div class="testi-card fade d3">
       <p class="testi-text">"From my initial appointment all through the procedure, every one of the staff was very friendly, professional, and informative. They always told me what to expect — no surprises at all. I've always feared going to the dentist, but honestly the whole procedure, from start to finish, was quite pleasant. Dr. Frank and all of his staff were wonderful, and I'm very pleased with my new teeth. Thank you team for all of your help."</p>
       <div class="testi-author">
-        <div class="testi-avatar" style="background:var(--lblue); color:var(--teal);">K</div>
+        <div class="testi-avatar" style="background:var(--lblue); color:var(--teal);" aria-hidden="true">K</div>
         <div>
           <div class="testi-name">Ken Gray</div>
           <div class="testi-loc">Local Guide · Google Review</div>
         </div>
       </div>
-      <div class="testi-stars">★★★★★</div>
+      <div class="testi-stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</div>
     </div>
   </div>
 </section>
@@ -1449,21 +1481,21 @@ footer {
     </div>
     <div class="fin-cards fade d2">
       <div class="fin-card">
-        <div class="fin-icon">💳</div>
+        <div class="fin-icon" aria-hidden="true">💳</div>
         <div>
           <div class="fin-card-title">CareCredit®</div>
           <div class="fin-card-sub">0% interest promotional financing available. Apply in minutes.</div>
         </div>
       </div>
       <div class="fin-card">
-        <div class="fin-icon">📋</div>
+        <div class="fin-icon" aria-hidden="true">📋</div>
         <div>
           <div class="fin-card-title">Proceed Finance</div>
           <div class="fin-card-sub">Extended terms up to 96 months. Low monthly payments.</div>
         </div>
       </div>
       <div class="fin-card">
-        <div class="fin-icon">🤝</div>
+        <div class="fin-icon" aria-hidden="true">🤝</div>
         <div>
           <div class="fin-card-title">In-House Plans</div>
           <div class="fin-card-sub">Ask about our custom payment arrangements at your consultation.</div>
@@ -1483,39 +1515,39 @@ footer {
     </div>
     <div class="faq-list">
       <div class="faq-item fade">
-        <div class="faq-q" onclick="toggleFaq(this)">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-1" onclick="toggleFaq(this)">
           <span>What is All-on-X?</span>
-          <span class="faq-chevron">›</span>
-        </div>
-        <div class="faq-a">All-on-X is a full arch restoration that replaces an entire row of teeth with a fixed, permanent prosthesis anchored by 4 strategically placed titanium implants. Unlike dentures, they never slip, need no adhesives, and function exactly like natural teeth — permanently.</div>
+          <span class="faq-chevron" aria-hidden="true">›</span>
+        </button>
+        <div class="faq-a" id="faq-a-1">All-on-X is a full arch restoration that replaces an entire row of teeth with a fixed, permanent prosthesis anchored by 4 strategically placed titanium implants. Unlike dentures, they never slip, need no adhesives, and function exactly like natural teeth — permanently.</div>
       </div>
       <div class="faq-item fade d1">
-        <div class="faq-q" onclick="toggleFaq(this)">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-2" onclick="toggleFaq(this)">
           <span>Will the surgery be painful?</span>
-          <span class="faq-chevron">›</span>
-        </div>
-        <div class="faq-a">Surgery is performed under IV sedation — you'll feel no pain and most patients have no memory of the procedure at all. Post-op discomfort is manageable with prescribed medication.</div>
+          <span class="faq-chevron" aria-hidden="true">›</span>
+        </button>
+        <div class="faq-a" id="faq-a-2">Surgery is performed under IV sedation — you'll feel no pain and most patients have no memory of the procedure at all. Post-op discomfort is manageable with prescribed medication.</div>
       </div>
       <div class="faq-item fade d2">
-        <div class="faq-q" onclick="toggleFaq(this)">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-3" onclick="toggleFaq(this)">
           <span>How long does the full process take?</span>
-          <span class="faq-chevron">›</span>
-        </div>
-        <div class="faq-a">From consultation to final restoration, treatment typically takes 3–6 months. Many patients receive a temporary restoration the same day as surgery.</div>
+          <span class="faq-chevron" aria-hidden="true">›</span>
+        </button>
+        <div class="faq-a" id="faq-a-3">From consultation to final restoration, treatment typically takes 3–6 months. Many patients receive a temporary restoration the same day as surgery.</div>
       </div>
       <div class="faq-item fade d3">
-        <div class="faq-q" onclick="toggleFaq(this)">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-4" onclick="toggleFaq(this)">
           <span>How much does All-on-X cost?</span>
-          <span class="faq-chevron">›</span>
-        </div>
-        <div class="faq-a">All-on-X cost varies based on your unique case and whether you need one or both arches. The best way to get accurate pricing is a free consultation with Dr. Frank — no surprises. Flexible financing available through CareCredit® and Proceed Finance.</div>
+          <span class="faq-chevron" aria-hidden="true">›</span>
+        </button>
+        <div class="faq-a" id="faq-a-4">All-on-X cost varies based on your unique case and whether you need one or both arches. The best way to get accurate pricing is a free consultation with Dr. Frank — no surprises. Flexible financing available through CareCredit® and Proceed Finance.</div>
       </div>
       <div class="faq-item fade d4">
-        <div class="faq-q" onclick="toggleFaq(this)">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-5" onclick="toggleFaq(this)">
           <span>Am I a candidate for All-on-X?</span>
-          <span class="faq-chevron">›</span>
-        </div>
-        <div class="faq-a">Most adults with missing teeth are candidates. Bone density, gum health, and medical history are all reviewed at your free consultation. Dr. Frank will give you a clear answer — no surprises.</div>
+          <span class="faq-chevron" aria-hidden="true">›</span>
+        </button>
+        <div class="faq-a" id="faq-a-5">Most adults with missing teeth are candidates. Bone density, gum health, and medical history are all reviewed at your free consultation. Dr. Frank will give you a clear answer — no surprises.</div>
       </div>
     </div>
   </div>
@@ -1553,7 +1585,7 @@ footer {
     <!-- MAP -->
     <div style="border-radius:var(--r); overflow:hidden; border:1px solid rgba(52,100,125,0.12); min-height:360px;">
       <iframe
-        title="NoviSmile Rogers Location"
+        title="Map showing NoviSmile at 901 S Promenade Blvd, Suite 101, Rogers, AR"
         width="100%" height="100%"
         style="border:0; display:block; min-height:360px;"
         loading="lazy"
@@ -1570,13 +1602,13 @@ footer {
         <div style="display:flex; flex-direction:column; gap:18px; margin-top:8px;">
 
           <div style="display:flex; gap:14px; align-items:flex-start;">
-            <div style="width:36px;height:36px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;">📍</div>
+            <div style="width:36px;height:36px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;" aria-hidden="true">📍</div>
             <div>
               <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:4px;">Address</div>
               <div style="font-size:14px;color:var(--charcoal);line-height:1.7;">901 S Promenade Blvd<br>Suite 101<br>Rogers, AR 72758</div>
               <a href="https://maps.google.com/?q=901+S+Promenade+Blvd+Suite+101+Rogers+AR+72758"
                  target="_blank" rel="noopener"
-                 style="font-size:12px;color:var(--blue);font-weight:600;text-decoration:none;display:inline-block;margin-top:6px;">
+                 style="font-size:12px;color:var(--teal);font-weight:700;text-decoration:underline;display:inline-block;margin-top:6px;">
                 Get Directions →
               </a>
             </div>
@@ -1585,7 +1617,7 @@ footer {
           <div style="height:1px;background:rgba(52,100,125,0.1);"></div>
 
           <div style="display:flex; gap:14px; align-items:flex-start;">
-            <div style="width:36px;height:36px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;">📞</div>
+            <div style="width:36px;height:36px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;" aria-hidden="true">📞</div>
             <div>
               <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:4px;">Phone</div>
               <a href="tel:8554589911" style="font-family:var(--h);font-size:24px;font-weight:500;color:var(--charcoal);text-decoration:none;">(855) 458-9911</a>
@@ -1595,7 +1627,7 @@ footer {
           <div style="height:1px;background:rgba(52,100,125,0.1);"></div>
 
           <div style="display:flex; gap:14px; align-items:flex-start;">
-            <div style="width:36px;height:36px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;">🕐</div>
+            <div style="width:36px;height:36px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;" aria-hidden="true">🕐</div>
             <div>
               <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:4px;">Hours</div>
               <div style="font-size:13px;color:var(--muted);line-height:1.8;">Mon – Fri: 8:00 AM – 5:00 PM<br>Sat – Sun: Closed</div>
@@ -1610,21 +1642,19 @@ footer {
   </div>
 </div>
 
-<style>
-@media (max-width: 700px) { .loc-grid { grid-template-columns: 1fr !important; } }
-</style>
+</main>
 
 <!-- ── FOOTER ── -->
-<footer style="background:var(--navy); padding:clamp(28px,4vw,44px) var(--pad);">
+<footer>
   <div style="max-width:var(--max); margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-    <img src="https://github.com/skylar-ship-it/Novi-Smile/blob/main/logo.png.webp?raw=true" alt="NoviSmile" style="height:28px;width:auto;filter:brightness(0) invert(1);opacity:0.65;">
-    <div style="font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.5px;text-align:center;">
+    <img src="https://raw.githubusercontent.com/skylar-ship-it/Novi-Smile/main/logo.png.webp" alt="NoviSmile" width="160" height="28" style="height:28px;width:auto;filter:brightness(0) invert(1);opacity:0.8;">
+    <div style="font-size:11px;color:rgba(255,255,255,0.62);letter-spacing:0.5px;text-align:center;">
       © 2026 NoviSmile · 901 S Promenade Blvd, Ste 101, Rogers, AR 72758 · (855) 458-9911
     </div>
     <div style="display:flex;gap:20px;">
-      <a href="/privacy-policy" style="font-size:11px;color:rgba(255,255,255,0.4);text-decoration:none;">Privacy Policy</a>
-      <a href="/terms-of-service" style="font-size:11px;color:rgba(255,255,255,0.4);text-decoration:none;">Terms of Service</a>
-      <a href="/legal-compliance" style="font-size:11px;color:rgba(255,255,255,0.4);text-decoration:none;">Legal Compliance</a>
+      <a href="/privacy-policy" style="font-size:11px;color:rgba(255,255,255,0.7);text-decoration:none;">Privacy Policy</a>
+      <a href="/terms-of-service" style="font-size:11px;color:rgba(255,255,255,0.7);text-decoration:none;">Terms of Service</a>
+      <a href="/legal-compliance" style="font-size:11px;color:rgba(255,255,255,0.7);text-decoration:none;">Legal Compliance</a>
     </div>
   </div>
 </footer>
@@ -1632,9 +1662,13 @@ footer {
 <script>
 /* ── TABS ── */
 function switchTab(tab, el) {
-  document.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.form-tab').forEach(t => {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected', 'false');
+  });
   document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
   el.classList.add('active');
+  el.setAttribute('aria-selected', 'true');
   document.getElementById('panel-' + tab).classList.add('active');
 }
 
@@ -1647,16 +1681,21 @@ function toggleDetail(btn) {
   btn.querySelector('span').textContent = isOpen ? 'Hide Close-Up Detail' : 'See Close-Up Detail';
 }
 
-/* ── FAQ ── */
+/* ── FAQ (accessible accordion) ── */
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
   const ans  = item.querySelector('.faq-a');
-  const open = item.classList.contains('open');
+  const isOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item').forEach(i => {
     i.classList.remove('open');
     i.querySelector('.faq-a').classList.remove('open');
+    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
   });
-  if (!open) { item.classList.add('open'); ans.classList.add('open'); }
+  if (!isOpen) {
+    item.classList.add('open');
+    ans.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
 }
 
 /* ── SCROLL REVEAL ── */
@@ -1667,10 +1706,9 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.fade').forEach(el => obs.observe(el));
 
-
-
 /* ── HERO CANVAS BACKGROUND ── */
 (function() {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
@@ -1692,19 +1730,18 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
     orbs = ORBS.map(o => ({ ...o, x: o.px*W, y: o.py*H, r: o.pr*W }));
   }
 
-  function draw(ts) {
+  function paint(ts, animate) {
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, W, H);
-
     orbs.forEach((o, i) => {
-      o.x += o.vx;
-      o.y += o.vy;
-      if (o.x < -o.r)    o.x = W + o.r;
-      if (o.x > W + o.r) o.x = -o.r;
-      if (o.y < -o.r)    o.y = H + o.r;
-      if (o.y > H + o.r) o.y = -o.r;
-
-      const pulse = Math.sin(ts * 0.0007 + i * 1.4) * 0.10;
+      if (animate) {
+        o.x += o.vx; o.y += o.vy;
+        if (o.x < -o.r)    o.x = W + o.r;
+        if (o.x > W + o.r) o.x = -o.r;
+        if (o.y < -o.r)    o.y = H + o.r;
+        if (o.y > H + o.r) o.y = -o.r;
+      }
+      const pulse = animate ? Math.sin(ts * 0.0007 + i * 1.4) * 0.10 : 0;
       const [r, g, b] = o.col;
       const gr = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, o.r);
       gr.addColorStop(0,   `rgba(${r},${g},${b},${Math.min(0.9, o.a + pulse).toFixed(2)})`);
@@ -1715,8 +1752,7 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
       ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
       ctx.fill();
     });
-
-    requestAnimationFrame(draw);
+    if (animate) requestAnimationFrame(t => paint(t, true));
   }
 
   function init() {
@@ -1726,16 +1762,25 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
       return;
     }
     resize();
-    requestAnimationFrame(draw);
+    if (reduceMotion) {
+      paint(0, false);            /* A11Y: static frame, no animation */
+    } else {
+      requestAnimationFrame(t => paint(t, true));
+    }
   }
 
-  window.addEventListener('resize', resize);
+  window.addEventListener('resize', () => { resize(); if (reduceMotion) paint(0, false); });
   requestAnimationFrame(init);
 })();
 
-/* ── FORM SUBMIT ── */
-function handleSubmit() {
-  const btn = event.target;
+/* ── FORM SUBMIT ──
+   NOTE: This is a front-end stub. It does NOT deliver leads anywhere.
+   Connect each <form> to your CRM / form endpoint (e.g. action + POST, or a
+   service like Formspree/HubSpot) before launch, or you will lose every inquiry. */
+function handleSubmit(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  const form = e.target.closest('form');
+  const btn = form.querySelector('.f-submit');
   btn.textContent = 'Sending...';
   btn.style.background = 'var(--blue)';
   setTimeout(() => {
@@ -1743,10 +1788,8 @@ function handleSubmit() {
     btn.style.background = '#2e7d52';
     btn.disabled = true;
   }, 1200);
+  return false;
 }
-
-
-
 </script>
 </body>
 </html>
