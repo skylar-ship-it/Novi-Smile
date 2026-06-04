@@ -108,27 +108,7 @@
         "@type": "AggregateRating",
         "ratingValue": "4.9",
         "reviewCount": "600"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Jessi Smiley" },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "reviewBody": "One of the best experiences I have ever had. The team is so kind and attentive. Dr. Frank, Joe and Mickey are some of the kindest people I had the pleasure of working with. They made it easy and picked up my calls whenever I needed anything. My teeth look amazing!"
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Eva Brzoz" },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "reviewBody": "Dr. Frank is very professional and explains everything. Great crew, very responsive and available for any questions. The place is at the best standards, with a friendly, professional atmosphere. I would highly recommend NoviSmile."
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Ken Gray" },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "reviewBody": "From my initial appointment all through the procedure, every staff member was friendly, professional, and informative. No surprises at all. The whole procedure was quite pleasant and I'm very pleased with my new teeth."
-        }
-      ]
+      }
     },
     {
       "@type": "WebSite",
@@ -136,51 +116,6 @@
       "url": "https://novismilerogers.com/",
       "name": "NoviSmile",
       "publisher": { "@id": "https://novismilerogers.com/#business" }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Is All-on-4 my only option?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. All-on-4 is just one of several full-arch solutions. The right option depends on your bone, your goals, and your budget, which is exactly what your consultation is for. We walk you through everything available to you."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Will treatment be painful?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Surgical treatment is performed under IV sedation, so you'll feel no pain and most patients have no memory of the procedure. Post-op discomfort is manageable with prescribed medication."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long does the process take?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It depends on the treatment that's right for you. From consultation to final restoration, full-arch reconstruction typically takes 3 to 6 months, and many patients receive a temporary restoration the same day as surgery."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much does reconstruction cost?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Cost varies based on the option that best fits you and whether you need one or both arches. We focus on the right treatment, not the most expensive. The best way to get accurate pricing is a free consultation. Flexible financing is available through CareCredit and Proceed Finance."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Am I a candidate?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Most adults with missing or failing teeth are candidates for some form of reconstruction. Bone density, gum health, and medical history are all reviewed at your free consultation, where you'll get a clear, honest answer."
-          }
-        }
-      ]
     }
   ]
 }
@@ -224,7 +159,7 @@ img { display: block; max-width: 100%; }
 /* ── UTILITIES ───────────────────────────────── */
 .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
 .label {
-  font-size: 10px; font-weight: 700;
+  font-size: 12px; font-weight: 700;
   letter-spacing: 2.5px; text-transform: uppercase;
   color: var(--blue); display: block;
 }
@@ -321,14 +256,14 @@ img { display: block; max-width: 100%; }
 .hero-rule { margin-bottom: 22px; }
 .hero-lead {
   font-family: var(--h);
-  font-size: clamp(20px, 2.4vw, 28px);
+  font-size: clamp(26px, 3.4vw, 38px);
   font-weight: 500; font-style: italic;
-  line-height: 1.2; margin-bottom: 18px;
+  line-height: 1.18; margin-bottom: 18px;
 }
 .hero-sub {
-  font-size: clamp(13px, 1.5vw, 15px);
-  color: rgba(255,255,255,0.78); line-height: 1.65;
-  max-width: 460px; margin-bottom: 24px;
+  font-size: clamp(17px, 2.1vw, 21px);
+  color: rgba(255,255,255,0.78); line-height: 1.6;
+  max-width: 400px; margin-bottom: 26px;
 }
 .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
 
@@ -462,7 +397,7 @@ img { display: block; max-width: 100%; }
   margin-bottom: 6px;
 }
 .stat-label {
-  font-size: 11px; font-weight: 600;
+  font-size: 13px; font-weight: 600;
   letter-spacing: 1px; text-transform: uppercase;
   color: rgba(255,255,255,0.6);
 }
@@ -485,19 +420,19 @@ img { display: block; max-width: 100%; }
 .intro-eyebrow { margin-bottom: 16px; }
 .intro-h2 {
   font-family: var(--h);
-  font-size: clamp(30px, 4.5vw, 52px);
+  font-size: clamp(36px, 5.2vw, 62px);
   font-weight: 400; line-height: 1.05;
   color: var(--teal); margin-bottom: 20px;
 }
 .intro-h2 em { font-style: italic; color: var(--blue); }
 .intro-body {
-  font-size: 14px; color: var(--muted);
-  line-height: 1.75; margin-bottom: 24px;
+  font-size: clamp(17px, 1.8vw, 20px); color: var(--muted);
+  line-height: 1.7; margin-bottom: 26px; max-width: 440px;
 }
 .check-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .check-list li {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 14px; color: var(--charcoal); line-height: 1.5;
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: clamp(16px, 1.7vw, 18px); color: var(--charcoal); line-height: 1.5;
 }
 .check-icon {
   width: 20px; height: 20px; border-radius: 50%;
@@ -548,7 +483,7 @@ img { display: block; max-width: 100%; }
 .section-header { text-align: center; margin-bottom: clamp(32px, 5vw, 52px); }
 .section-h2 {
   font-family: var(--h);
-  font-size: clamp(28px, 4vw, 50px);
+  font-size: clamp(34px, 5vw, 60px);
   font-weight: 400; line-height: 1.05;
   color: var(--teal); margin-top: 12px;
 }
@@ -681,10 +616,10 @@ img { display: block; max-width: 100%; }
 }
 .step-title {
   font-family: var(--h);
-  font-size: 18px; font-weight: 500;
-  color: var(--teal); margin-bottom: 8px;
+  font-size: clamp(22px, 2.4vw, 28px); font-weight: 500;
+  color: var(--teal); margin-bottom: 10px;
 }
-.step-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.step-body { font-size: clamp(15px, 1.6vw, 17px); color: var(--muted); line-height: 1.6; }
 @media (max-width: 700px) {
   .process-steps { grid-template-columns: 1fr 1fr; }
   .process-steps::before { display: none; }
@@ -821,14 +756,14 @@ img { display: block; max-width: 100%; }
 .final-cta-inner { max-width: 620px; margin: 0 auto; }
 .final-cta-h2 {
   font-family: var(--h);
-  font-size: clamp(30px, 5vw, 58px);
+  font-size: clamp(38px, 6vw, 72px);
   font-weight: 400; color: var(--teal);
   line-height: 1.05; margin-top: 12px; margin-bottom: 16px;
 }
 .final-cta-h2 em { color: var(--blue); font-style: italic; }
 .final-cta-sub {
-  font-size: 14px; color: var(--muted);
-  line-height: 1.7; margin-bottom: 32px;
+  font-size: clamp(17px, 1.9vw, 21px); color: var(--muted);
+  line-height: 1.65; margin-bottom: 34px; max-width: 520px; margin-left:auto; margin-right:auto;
 }
 .cta-pair { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
@@ -869,7 +804,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(32px,4vw,56px) var(--pad) 0;
+  padding: clamp(18px,2.5vw,36px) var(--pad) 0;
   box-sizing: border-box;
 }
 .hero-bg-wrap {
@@ -964,7 +899,7 @@ footer {
   padding: 15px 0;
   position: relative;
   z-index: 3;
-  margin-top: clamp(36px, 5vw, 64px);
+  margin-top: clamp(14px, 2vw, 28px);
   flex-shrink: 0;
 }
 .hero-marquee-track {
@@ -1026,7 +961,7 @@ footer {
     margin-bottom: 14px;
   }
   .hero-sub {
-    font-size: clamp(15px, 4.2vw, 19px);
+    font-size: clamp(18px, 4.6vw, 22px);
     max-width: 100%;
     margin-bottom: 28px;
   }
@@ -1242,33 +1177,6 @@ footer {
   </div>
 </section>
 
-<!-- ── SPECTRUM OF SOLUTIONS ── -->
-<section style="background:var(--offwhite); padding:clamp(56px,8vw,90px) var(--pad);">
-  <div style="max-width:820px; margin:0 auto; text-align:center;">
-    <span class="label fade" style="display:block; margin-bottom:12px;">Full Spectrum of Care</span>
-    <h2 class="section-h2 fade" style="margin-top:0;">Reconstruction is a category,<br><em>not a single procedure.</em></h2>
-    <p class="fade" style="font-size:15px; color:var(--muted); line-height:1.75; max-width:620px; margin:18px auto 0;">
-      From a few missing teeth to full-arch restoration, the right path is different for everyone. We guide you through the options and help you choose what fits your anatomy, goals, and budget.
-    </p>
-    <div class="spectrum-pills fade" style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:28px;">
-      <span class="spill">Single &amp; Multiple Implants</span>
-      <span class="spill">Implant-Supported Bridges</span>
-      <span class="spill">All-on-4 / All-on-X</span>
-      <span class="spill">Full-Arch Fixed</span>
-      <span class="spill">Zygomatic Implants</span>
-    </div>
-  </div>
-</section>
-
-<style>
-  .spill {
-    font-size: 13px; font-weight: 600; letter-spacing: .3px;
-    color: var(--teal); background: #fff;
-    border: 1px solid rgba(52,100,125,0.18); border-radius: 999px;
-    padding: 9px 18px;
-  }
-</style>
-
 <!-- ── BEFORE / AFTER ── -->
 <section class="ba-section" id="ba">
   <div class="section-header fade">
@@ -1426,133 +1334,6 @@ footer {
         <div class="step-num">4</div>
         <div class="step-title">Lasting Results</div>
         <div class="step-body">We restore your smile and support you with long-term care, built to last a lifetime.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── TESTIMONIALS ── -->
-<section class="testimonials">
-  <div class="section-header fade">
-    <span class="label" style="text-align:center; display:block;">Patient Stories</span>
-    <h2 class="section-h2">Real people.<br><em>Real results.</em></h2>
-    <div class="rule section-rule"></div>
-  </div>
-  <div class="testi-grid">
-    <div class="testi-card fade d1">
-      <p class="testi-text">"One of the best experiences I have ever had. The team is so kind and attentive. Dr. Frank, Joe and Mickey are some of the kindest people I had the pleasure of working with. Having your mouth worked on is nerve wracking enough — they made it easy, were there for any questions, and picked up my calls whenever I needed anything. My teeth look amazing! So happy I went with them."</p>
-      <div class="testi-author">
-        <div class="testi-avatar" style="background:var(--teal);">J</div>
-        <div>
-          <div class="testi-name">Jessi Smiley</div>
-          <div class="testi-loc">Google Review</div>
-        </div>
-      </div>
-      <div class="testi-stars">★★★★★</div>
-    </div>
-    <div class="testi-card fade d2">
-      <p class="testi-text">"Dr. Frank is very professional and explains everything. He has a great crew — Mikey and Joe — always very helpful, explaining all the details about procedures, very responsive and available if I had any questions. The place is at the best standards, with a very friendly, professional atmosphere. I would highly recommend NoviSmile."</p>
-      <div class="testi-author">
-        <div class="testi-avatar" style="background:var(--blue);">E</div>
-        <div>
-          <div class="testi-name">Eva Brzoz</div>
-          <div class="testi-loc">Google Review</div>
-        </div>
-      </div>
-      <div class="testi-stars">★★★★★</div>
-    </div>
-    <div class="testi-card fade d3">
-      <p class="testi-text">"From my initial appointment all through the procedure, every one of the staff was very friendly, professional, and informative. They always told me what to expect — no surprises at all. I've always feared going to the dentist, but honestly the whole procedure, from start to finish, was quite pleasant. Dr. Frank and all of his staff were wonderful, and I'm very pleased with my new teeth. Thank you team for all of your help."</p>
-      <div class="testi-author">
-        <div class="testi-avatar" style="background:var(--lblue); color:var(--teal);">K</div>
-        <div>
-          <div class="testi-name">Ken Gray</div>
-          <div class="testi-loc">Local Guide · Google Review</div>
-        </div>
-      </div>
-      <div class="testi-stars">★★★★★</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FINANCING ── -->
-<section class="financing">
-  <div class="financing-inner">
-    <div class="fade">
-      <span class="label light">Flexible Options</span>
-      <h2 class="fin-h2">Care that fits<br>your <em>budget.</em></h2>
-      <p class="fin-sub">The right treatment shouldn't be out of reach. We offer flexible financing so the best option for you is also one you can afford.</p>
-      <a href="#consult" class="btn-primary" style="background:#fff; color:var(--teal);">Explore My Options →</a>
-    </div>
-    <div class="fin-cards fade d2">
-      <div class="fin-card">
-        <div class="fin-icon">💳</div>
-        <div>
-          <div class="fin-card-title">CareCredit®</div>
-          <div class="fin-card-sub">0% interest promotional financing available. Apply in minutes.</div>
-        </div>
-      </div>
-      <div class="fin-card">
-        <div class="fin-icon">📋</div>
-        <div>
-          <div class="fin-card-title">Proceed Finance</div>
-          <div class="fin-card-sub">Extended terms up to 96 months. Low monthly payments.</div>
-        </div>
-      </div>
-      <div class="fin-card">
-        <div class="fin-icon">🤝</div>
-        <div>
-          <div class="fin-card-title">In-House Plans</div>
-          <div class="fin-card-sub">Ask about our custom payment arrangements at your consultation.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FAQ ── -->
-<section class="faq-section">
-  <div class="faq-inner">
-    <div class="section-header fade">
-      <span class="label" style="text-align:center; display:block;">Common Questions</span>
-      <h2 class="section-h2">You asked.<br><em>We answered.</em></h2>
-      <div class="rule section-rule"></div>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item fade">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Is All-on-4 my only option?</span>
-          <span class="faq-chevron">›</span>
-        </div>
-        <div class="faq-a">No. All-on-4 is just one of several full-arch solutions. The right option depends on your bone, your goals, and your budget — which is exactly what your consultation is for. We'll walk you through everything available to you.</div>
-      </div>
-      <div class="faq-item fade d1">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Will treatment be painful?</span>
-          <span class="faq-chevron">›</span>
-        </div>
-        <div class="faq-a">Surgical treatment is performed under IV sedation — you'll feel no pain and most patients have no memory of the procedure at all. Post-op discomfort is manageable with prescribed medication.</div>
-      </div>
-      <div class="faq-item fade d2">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>How long does the process take?</span>
-          <span class="faq-chevron">›</span>
-        </div>
-        <div class="faq-a">It depends on the treatment that's right for you. From consultation to final restoration, full-arch reconstruction typically takes 3–6 months, and many patients receive a temporary restoration the same day as surgery.</div>
-      </div>
-      <div class="faq-item fade d3">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>How much does reconstruction cost?</span>
-          <span class="faq-chevron">›</span>
-        </div>
-        <div class="faq-a">Cost varies based on the option that best fits you and whether you need one or both arches. We focus on the right treatment, not the most expensive — and the best way to get accurate pricing is a free consultation. Flexible financing is available through CareCredit® and Proceed Finance.</div>
-      </div>
-      <div class="faq-item fade d4">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Am I a candidate?</span>
-          <span class="faq-chevron">›</span>
-        </div>
-        <div class="faq-a">Most adults with missing or failing teeth are candidates for some form of reconstruction. Bone density, gum health, and medical history are all reviewed at your free consultation, where you'll get a clear, honest answer.</div>
       </div>
     </div>
   </div>
