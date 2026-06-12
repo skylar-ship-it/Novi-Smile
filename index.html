@@ -33,8 +33,8 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="NoviSmile">
-<meta property="og:title" content="NoviSmile — The Right Reconstruction · Rogers, AR">
-<meta property="og:description" content="Not every patient needs All-on-4. Every patient deserves the right reconstruction. The full spectrum of full-arch solutions in Rogers, AR.">
+<meta property="og:title" content="NoviSmile — Every Smile Is Different · Rogers, AR">
+<meta property="og:description" content="Every smile is different. Your treatment should be too. Personalized full-arch dental implant reconstruction in Rogers, AR.">
 <meta property="og:url" content="https://novismilerogers.com/">
 <meta property="og:image" content="https://novismilerogers.com/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -43,8 +43,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NoviSmile — The Right Reconstruction · Rogers, AR">
-<meta name="twitter:description" content="Not every patient needs All-on-4. Every patient deserves the right reconstruction. Full-arch solutions in Rogers, AR.">
+<meta name="twitter:title" content="NoviSmile — Every Smile Is Different · Rogers, AR">
+<meta name="twitter:description" content="Every smile is different. Your treatment should be too. Personalized full-arch reconstruction in Rogers, AR.">
 <meta name="twitter:image" content="https://novismilerogers.com/og-image.png">
 
 <!-- Structured data -->
@@ -103,11 +103,6 @@
           "name": "Full Arch All-on-X Dental Implants",
           "procedureType": "https://schema.org/SurgicalProcedure"
         }
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "600"
       }
     },
     {
@@ -340,6 +335,10 @@ img { display: block; max-width: 100%; }
   display: flex; border-bottom: 1px solid rgba(52,100,125,0.12);
   margin-bottom: 18px;
 }
+.f-intro {
+  font-size: 13px; line-height: 1.55; color: var(--muted);
+  margin-bottom: 16px;
+}
 .form-tab {
   flex: 1; padding: 10px 8px; text-align: center;
   font-size: 12px; font-weight: 600;
@@ -386,7 +385,7 @@ img { display: block; max-width: 100%; }
 .stats-inner {
   max-width: var(--max); margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   text-align: center;
 }
@@ -402,7 +401,7 @@ img { display: block; max-width: 100%; }
   color: rgba(255,255,255,0.6);
 }
 @media (max-width: 600px) {
-  .stats-inner { grid-template-columns: 1fr 1fr; }
+  .stats-inner { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* ── INTRO ───────────────────────────────────── */
@@ -1010,9 +1009,9 @@ footer {
         <span class="label" style="color:var(--blue);">Full-Arch Reconstruction · Rogers, AR</span>
       </div>
       <h1 class="hero-h1 fade d1">
-        Not every patient needs <em>All-on-4.</em>
+        Every smile is <em>different.</em>
       </h1>
-      <p class="hero-lead fade d2">Every patient deserves the right reconstruction.</p>
+      <p class="hero-lead fade d2">Your treatment should be too.</p>
       <div class="rule hero-rule fade d2"></div>
       <div class="hero-ctas fade d3">
         <a href="#consult" class="btn-primary">Schedule a Consultation</a>
@@ -1024,15 +1023,10 @@ footer {
     <div class="hero-form fade d2" id="consult">
       <div class="hero-form-header">
         <span class="label light">Free · No pressure</span>
-        <h3>Schedule your<br>consultation.</h3>
+        <h3>Find the right<br>option for you.</h3>
       </div>
       <div class="hero-form-body">
-        <div class="form-tabs">
-          <div class="form-tab active" onclick="switchTab('qualify', this)">Book Consultation</div>
-          <div class="form-tab" onclick="switchTab('pricing', this)">Pricing &amp; Options</div>
-        </div>
-
-        <!-- TAB: QUALIFY -->
+        <p class="f-intro">A personal consultation is the only way to know which treatment — and what it costs — truly fits you. Let's start there.</p>
         <div class="form-panel active" id="panel-qualify">
           <div class="f-group">
             <label class="f-label">What are you looking to restore?</label>
@@ -1065,39 +1059,6 @@ footer {
           <p class="f-note">Free · No pressure · A real conversation about your options</p>
           <p class="f-agree">By continuing, I agree to the <a href="/terms-of-service">Terms of Service</a>, <a href="/privacy-policy">Privacy Policy</a>, and <a href="/legal-compliance">Legal Compliance</a> of NoviSmile.</p>
         </div>
-
-        <!-- TAB: PRICING -->
-        <div class="form-panel" id="panel-pricing">
-          <div class="f-group">
-            <label class="f-label">First Name</label>
-            <input class="f-input" type="text" placeholder="Your first name">
-          </div>
-          <div class="f-group">
-            <label class="f-label">Phone Number</label>
-            <input class="f-input" type="tel" placeholder="(855) 458-9911">
-          </div>
-          <div class="f-group">
-            <label class="f-label">What are you looking to restore?</label>
-            <select class="f-input f-select">
-              <option value="">Select an option...</option>
-              <option>An upper or lower arch</option>
-              <option>Both upper and lower</option>
-              <option>A few missing teeth</option>
-              <option>Not sure — I'd like guidance</option>
-            </select>
-          </div>
-          <label class="f-consent">
-            <input type="checkbox" name="sms_consent">
-            <span>I consent to receive SMS Notifications &amp; Alerts from NoviSmile. These messages include appointment reminders and confirmations, and service updates. Message frequency varies. Message &amp; data rates may apply. Text HELP for assistance. Reply STOP to unsubscribe at any time.</span>
-          </label>
-          <label class="f-consent">
-            <input type="checkbox" name="marketing_consent">
-            <span>I consent to receive marketing text messages from NoviSmile about special offers, discounts, and new updates. Message frequency varies. Message &amp; data rates may apply. Reply HELP for help or STOP to opt-out.</span>
-          </label>
-          <button class="f-submit" onclick="handleSubmit()">Send Me Options &amp; Pricing →</button>
-          <p class="f-note">No spam · We'll follow up personally</p>
-          <p class="f-agree">By continuing, I agree to the <a href="/terms-of-service">Terms of Service</a>, <a href="/privacy-policy">Privacy Policy</a>, and <a href="/legal-compliance">Legal Compliance</a> of NoviSmile.</p>
-        </div>
       </div>
     </div>
   </div>
@@ -1122,10 +1083,6 @@ footer {
     <div class="fade d2">
       <div class="stat-num">95%+</div>
       <div class="stat-label">Success Rate</div>
-    </div>
-    <div class="fade d3">
-      <div class="stat-num">600+</div>
-      <div class="stat-label">5-Star Reviews</div>
     </div>
   </div>
 </div>
