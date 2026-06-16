@@ -339,6 +339,55 @@ img { display: block; max-width: 100%; }
   font-size: 13px; line-height: 1.55; color: var(--muted);
   margin-bottom: 16px;
 }
+/* ── FORM WIZARD ── */
+.wiz-progress {
+  height: 5px; background: rgba(52,100,125,0.12);
+  border-radius: 99px; overflow: hidden; margin-bottom: 12px;
+}
+.wiz-progress-bar {
+  height: 100%; width: 14%; background: var(--teal);
+  border-radius: 99px; transition: width .35s ease;
+}
+.wiz-meta {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 18px; margin-bottom: 16px;
+}
+.wiz-back {
+  background: none; border: none; cursor: pointer; padding: 0;
+  font-family: var(--b); font-size: 12px; font-weight: 600; color: var(--muted);
+  transition: color .2s;
+}
+.wiz-back:hover { color: var(--teal); }
+.wiz-back.hidden { visibility: hidden; }
+.wiz-step {
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--blue);
+}
+.wiz-panel { display: none; }
+.wiz-panel.active { display: block; animation: wizIn .3s ease; }
+@keyframes wizIn {
+  from { opacity: 0; transform: translateX(10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.wiz-q {
+  font-family: var(--h); font-size: 21px; font-weight: 500;
+  color: var(--teal); line-height: 1.2; margin-bottom: 14px;
+}
+.wiz-note {
+  font-size: 12.5px; line-height: 1.55; color: var(--muted);
+  margin: -4px 0 14px;
+}
+.wiz-options { display: flex; flex-direction: column; gap: 8px; }
+.wiz-opt {
+  width: 100%; text-align: left; cursor: pointer;
+  font-family: var(--b); font-size: 14px; color: var(--charcoal);
+  background: var(--offwhite); border: 1.5px solid rgba(52,100,125,0.18);
+  border-radius: 8px; padding: 13px 16px; line-height: 1.35;
+  transition: border-color .15s, background .15s, transform .08s;
+}
+.wiz-opt:hover { border-color: var(--blue); background: #fff; }
+.wiz-opt:active { transform: scale(0.99); }
+.wiz-opt.sel { border-color: var(--teal); background: #fff; }
 .form-tab {
   flex: 1; padding: 10px 8px; text-align: center;
   font-size: 12px; font-weight: 600;
@@ -1026,38 +1075,104 @@ footer {
         <h3>Find the right<br>option for you.</h3>
       </div>
       <div class="hero-form-body">
-        <p class="f-intro">A personal consultation is the only way to know which treatment — and what it costs — truly fits you. Let's start there.</p>
-        <div class="form-panel active" id="panel-qualify">
-          <div class="f-group">
-            <label class="f-label">What are you looking to restore?</label>
-            <select class="f-input f-select">
-              <option value="">Select an option...</option>
-              <option>All of my upper teeth</option>
-              <option>All of my lower teeth</option>
-              <option>Both upper and lower</option>
-              <option>A few missing teeth</option>
-              <option>Not sure — I'd like guidance</option>
-            </select>
+        <div class="wiz" id="wiz">
+          <div class="wiz-progress"><div class="wiz-progress-bar" id="wizBar"></div></div>
+          <div class="wiz-meta">
+            <button type="button" class="wiz-back" id="wizBack" onclick="wizPrev()">← Back</button>
+            <span class="wiz-step" id="wizStep">Step 1 of 7</span>
           </div>
-          <div class="f-group">
-            <label class="f-label">Your Name</label>
-            <input class="f-input" type="text" placeholder="First and last name">
+
+          <!-- STEP 1 -->
+          <div class="wiz-panel active" data-step="1">
+            <h4 class="wiz-q">What best describes your condition?</h4>
+            <div class="wiz-options">
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">I'm not missing any teeth</button>
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">I'm missing one tooth</button>
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">I'm missing multiple teeth</button>
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">I'm missing all my teeth</button>
+            </div>
           </div>
-          <div class="f-group">
-            <label class="f-label">Phone Number</label>
-            <input class="f-input" type="tel" placeholder="(855) 458-9911">
+
+          <!-- STEP 2 -->
+          <div class="wiz-panel" data-step="2">
+            <h4 class="wiz-q">Are you currently wearing any partials or dentures?</h4>
+            <div class="wiz-options">
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">Yes</button>
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">No</button>
+            </div>
           </div>
-          <label class="f-consent">
-            <input type="checkbox" name="sms_consent">
-            <span>I consent to receive SMS Notifications &amp; Alerts from NoviSmile. These messages include appointment reminders and confirmations, and service updates. Message frequency varies. Message &amp; data rates may apply. Text HELP for assistance. Reply STOP to unsubscribe at any time.</span>
-          </label>
-          <label class="f-consent">
-            <input type="checkbox" name="marketing_consent">
-            <span>I consent to receive marketing text messages from NoviSmile about special offers, discounts, and new updates. Message frequency varies. Message &amp; data rates may apply. Reply HELP for help or STOP to opt-out.</span>
-          </label>
-          <button class="f-submit" onclick="handleSubmit()">Request My Consultation →</button>
-          <p class="f-note">Free · No pressure · A real conversation about your options</p>
-          <p class="f-agree">By continuing, I agree to the <a href="/terms-of-service">Terms of Service</a>, <a href="/privacy-policy">Privacy Policy</a>, and <a href="/legal-compliance">Legal Compliance</a> of NoviSmile.</p>
+
+          <!-- STEP 3 -->
+          <div class="wiz-panel" data-step="3">
+            <h4 class="wiz-q">What is the primary issue you're having with your teeth?</h4>
+            <div class="wiz-options">
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">Pain</button>
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">Insecure with my smile</button>
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">Can't chew well</button>
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">All of the above</button>
+            </div>
+          </div>
+
+          <!-- STEP 4 -->
+          <div class="wiz-panel" data-step="4">
+            <h4 class="wiz-q">Have you been evaluated for dental implants?</h4>
+            <div class="wiz-options">
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">No, I've never been evaluated for implants</button>
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">Yes, but I wanted a second opinion</button>
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">Yes, but I didn't feel comfortable with the practice</button>
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">Yes, but it was too expensive at that practice</button>
+            </div>
+          </div>
+
+          <!-- STEP 5 -->
+          <div class="wiz-panel" data-step="5">
+            <h4 class="wiz-q">A note on financing</h4>
+            <p class="wiz-note">Medicare, Medicaid, and most dental insurance plans typically don't cover full-mouth dental implants. The good news is we offer flexible financing that can make treatment more affordable. Would you like to hear more?</p>
+            <div class="wiz-options">
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">Yes, tell me more</button>
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">No, I don't need financing</button>
+            </div>
+          </div>
+
+          <!-- STEP 6 -->
+          <div class="wiz-panel" data-step="6">
+            <h4 class="wiz-q">A rough idea of your credit?</h4>
+            <p class="wiz-note">Payment plans depend on credit approval — generally 650 or above. If you're close or unsure, a co-signer can help. No exact number needed.</p>
+            <div class="wiz-options">
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">500–600</button>
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">600–700</button>
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">700+</button>
+              <button type="button" class="wiz-opt" onclick="wizSelect(this)">I have a co-signer</button>
+            </div>
+          </div>
+
+          <!-- STEP 7 — CONTACT -->
+          <div class="wiz-panel" data-step="7">
+            <h4 class="wiz-q">Almost there — where should we reach you?</h4>
+            <div class="f-group">
+              <label class="f-label">Your Name</label>
+              <input class="f-input" type="text" placeholder="First and last name">
+            </div>
+            <div class="f-group">
+              <label class="f-label">Email</label>
+              <input class="f-input" type="email" placeholder="you@email.com">
+            </div>
+            <div class="f-group">
+              <label class="f-label">Phone Number</label>
+              <input class="f-input" type="tel" placeholder="(855) 458-9911">
+            </div>
+            <label class="f-consent">
+              <input type="checkbox" name="sms_consent">
+              <span>I consent to receive SMS Notifications &amp; Alerts from NoviSmile. These messages include appointment reminders and confirmations, and service updates. Message frequency varies. Message &amp; data rates may apply. Text HELP for assistance. Reply STOP to unsubscribe at any time.</span>
+            </label>
+            <label class="f-consent">
+              <input type="checkbox" name="marketing_consent">
+              <span>I consent to receive marketing text messages from NoviSmile about special offers, discounts, and new updates. Message frequency varies. Message &amp; data rates may apply. Reply HELP for help or STOP to opt-out.</span>
+            </label>
+            <button class="f-submit" onclick="handleSubmit()">Request My Consultation →</button>
+            <p class="f-note">Free · No pressure · A real conversation about your options</p>
+            <p class="f-agree">By continuing, I agree to the <a href="/terms-of-service">Terms of Service</a>, <a href="/privacy-policy">Privacy Policy</a>, and <a href="/legal-compliance">Legal Compliance</a> of NoviSmile.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1503,6 +1618,41 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
 
   window.addEventListener('resize', resize);
   requestAnimationFrame(init);
+})();
+
+/* ── FORM WIZARD ── */
+(function () {
+  const TOTAL = 7;
+  let cur = 1;
+  const answers = {};
+
+  function render() {
+    document.querySelectorAll('.wiz-panel').forEach(p => {
+      p.classList.toggle('active', +p.dataset.step === cur);
+    });
+    const bar = document.getElementById('wizBar');
+    if (bar) bar.style.width = Math.round((cur / TOTAL) * 100) + '%';
+    const step = document.getElementById('wizStep');
+    if (step) step.textContent = 'Step ' + cur + ' of ' + TOTAL;
+    const back = document.getElementById('wizBack');
+    if (back) back.classList.toggle('hidden', cur === 1);
+  }
+
+  window.wizSelect = function (btn) {
+    const panel = btn.closest('.wiz-panel');
+    panel.querySelectorAll('.wiz-opt').forEach(o => o.classList.remove('sel'));
+    btn.classList.add('sel');
+    answers['step' + panel.dataset.step] = btn.textContent.trim();
+    if (cur < TOTAL) {
+      setTimeout(() => { cur++; render(); }, 180);
+    }
+  };
+
+  window.wizPrev = function () {
+    if (cur > 1) { cur--; render(); }
+  };
+
+  if (document.getElementById('wiz')) render();
 })();
 
 /* ── FORM SUBMIT ── */
