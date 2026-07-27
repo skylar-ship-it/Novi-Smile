@@ -1091,6 +1091,15 @@ footer {
               <button type="button" class="wiz-opt" onclick="wizSelect(this)">I'm missing multiple teeth</button>
               <button type="button" class="wiz-opt" onclick="wizSelect(this)">I'm missing all my teeth</button>
             </div>
+            <label class="f-consent">
+              <input type="checkbox" name="sms_consent">
+              <span>I consent to receive SMS Notifications &amp; Alerts from Dr. Scott Frank, Ltd DBA North Shore Smile Surgery. These messages include appointment reminders and confirmations, and service updates. Message frequency varies. Message &amp; data rates may apply. Text HELP for assistance. Reply STOP to unsubscribe at any time.</span>
+            </label>
+            <label class="f-consent">
+              <input type="checkbox" name="marketing_consent">
+              <span>I consent to receive marketing text messages from Dr. Scott Frank, Ltd DBA North Shore Smile Surgery about special offers, discounts, and new updates. Message frequency varies. Message &amp; data rates may apply. Reply HELP for help or STOP to opt-out.</span>
+            </label>
+            <p class="f-agree">By continuing, I agree to the <a href="/terms-of-service">Terms of Service</a>, <a href="/privacy-policy">Privacy Policy</a>, and <a href="/legal-compliance">Legal Compliance</a> of Dr. Scott Frank, Ltd DBA North Shore Smile Surgery.</p>
           </div>
 
           <!-- STEP 2 -->
@@ -1151,27 +1160,19 @@ footer {
             <h4 class="wiz-q">Almost there — where should we reach you?</h4>
             <div class="f-group">
               <label class="f-label">Your Name</label>
-              <input class="f-input" type="text" placeholder="First and last name">
+              <input class="f-input" id="leadName" type="text" placeholder="First and last name">
             </div>
             <div class="f-group">
               <label class="f-label">Email</label>
-              <input class="f-input" type="email" placeholder="you@email.com">
+              <input class="f-input" id="leadEmail" type="email" placeholder="you@email.com">
             </div>
             <div class="f-group">
               <label class="f-label">Phone Number</label>
-              <input class="f-input" type="tel" placeholder="(855) 458-9911">
+              <input class="f-input" id="leadPhone" type="tel" placeholder="(855) 458-9911">
             </div>
-            <label class="f-consent">
-              <input type="checkbox" name="sms_consent">
-              <span>I consent to receive SMS Notifications &amp; Alerts from NoviSmile. These messages include appointment reminders and confirmations, and service updates. Message frequency varies. Message &amp; data rates may apply. Text HELP for assistance. Reply STOP to unsubscribe at any time.</span>
-            </label>
-            <label class="f-consent">
-              <input type="checkbox" name="marketing_consent">
-              <span>I consent to receive marketing text messages from NoviSmile about special offers, discounts, and new updates. Message frequency varies. Message &amp; data rates may apply. Reply HELP for help or STOP to opt-out.</span>
-            </label>
             <button class="f-submit" onclick="handleSubmit()">Request My Consultation →</button>
             <p class="f-note">Free · No pressure · A real conversation about your options</p>
-            <p class="f-agree">By continuing, I agree to the <a href="/terms-of-service">Terms of Service</a>, <a href="/privacy-policy">Privacy Policy</a>, and <a href="/legal-compliance">Legal Compliance</a> of NoviSmile.</p>
+            <p class="f-agree">By continuing, I agree to the <a href="/terms-of-service">Terms of Service</a>, <a href="/privacy-policy">Privacy Policy</a>, and <a href="/legal-compliance">Legal Compliance</a> of Dr. Scott Frank, Ltd DBA North Shore Smile Surgery.</p>
           </div>
         </div>
       </div>
@@ -1653,19 +1654,71 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
   };
 
   if (document.getElementById('wiz')) render();
-})();
 
-/* ── FORM SUBMIT ── */
-function handleSubmit() {
-  const btn = event.target;
-  btn.textContent = 'Sending...';
-  btn.style.background = 'var(--blue)';
-  setTimeout(() => {
-    btn.textContent = "✓ We'll be in touch shortly!";
-    btn.style.background = '#2e7d52';
+  /* ── FORM SUBMIT ── */
+  const ZAPIER_WEBHOOK_URL = 'PASTE_YOUR_ZAPIER_WEBHOOK_URL_HERE';
+
+  window.handleSubmit = async function () {
+    const btn = event.target;
+    const name  = (document.getElementById('leadName')?.value  || '').trim();
+    const email = (document.getElementById('leadEmail')?.value || '').trim();
+    const phone = (document.getElementById('leadPhone')?.value || '').trim();
+
+    // Basic validation
+    if (!name || !email || !phone) {
+      btn.textContent = 'Please fill in name, email & phone';
+      setTimeout(() => { btn.textContent = 'Request My Consultation →'; }, 2200);
+      return;
+    }
+
+    const nameParts = name.split(/\s+/);
+    const smsChecked = document.querySelector('input[name="sms_consent"]')?.checked || false;
+    const mktChecked = document.querySelector('input[name="marketing_consent"]')?.checked || false;
+    const smsText = document.querySelector('input[name="sms_consent"]')?.closest('label')?.querySelector('span')?.textContent.trim() || '';
+    const mktText = document.querySelector('input[name="marketing_consent"]')?.closest('label')?.querySelector('span')?.textContent.trim() || '';
+
+    const payload = {
+      firstName: nameParts[0] || '',
+      lastName: nameParts.slice(1).join(' ') || '',
+      fullName: name,
+      email: email,
+      phone: phone,
+      condition: answers.step1 || '',
+      wearing_dentures: answers.step2 || '',
+      primary_issue: answers.step3 || '',
+      implant_evaluation: answers.step4 || '',
+      financing_interest: answers.step5 || '',
+      credit_range: answers.step6 || '',
+      sms_consent: smsChecked ? 'Yes' : 'No',
+      marketing_consent: mktChecked ? 'Yes' : 'No',
+      sms_consent_language: smsChecked ? smsText : '',
+      marketing_consent_language: mktChecked ? mktText : '',
+      consent_timestamp: new Date().toISOString(),
+      consent_page_url: window.location.href,
+      consent_method: 'Website form — optional checkbox, unchecked by default',
+      source: 'novismilerogers.com',
+      submitted_at: new Date().toISOString()
+    };
+
+    btn.textContent = 'Sending...';
+    btn.style.background = 'var(--blue)';
     btn.disabled = true;
-  }, 1200);
-}
+
+    try {
+      await fetch(ZAPIER_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      btn.textContent = "✓ We'll be in touch shortly!";
+      btn.style.background = '#2e7d52';
+    } catch (err) {
+      btn.textContent = 'Something went wrong — please call us';
+      btn.style.background = '#b04a4a';
+      btn.disabled = false;
+    }
+  };
+})();
 
 
 
