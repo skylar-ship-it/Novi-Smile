@@ -1707,8 +1707,8 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
     try {
       await fetch(ZAPIER_WEBHOOK_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        mode: 'no-cors',
+        body: new URLSearchParams(payload)
       });
       btn.textContent = "✓ We'll be in touch shortly!";
       btn.style.background = '#2e7d52';
