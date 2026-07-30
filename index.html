@@ -313,6 +313,7 @@ img { display: block; max-width: 100%; }
 }
 .f-submit:hover { background: var(--blue); }
 .f-submit:active { transform: scale(0.99); }
+.f-submit:disabled { opacity: .45; cursor: not-allowed; }
 .f-note {
   font-size: 11px; color: var(--muted);
   text-align: center; margin-top: 10px;
@@ -1100,6 +1101,7 @@ footer {
               <span>I consent to receive marketing text messages from Dr. Scott Frank, Ltd DBA North Shore Smile Surgery about special offers, discounts, and new updates. Message frequency varies. Message &amp; data rates may apply. Reply HELP for help or STOP to opt-out.</span>
             </label>
             <p class="f-agree">By continuing, I agree to the <a href="/terms-of-service">Terms of Service</a>, <a href="/privacy-policy">Privacy Policy</a>, and <a href="/legal-compliance">Legal Compliance</a> of Dr. Scott Frank, Ltd DBA North Shore Smile Surgery.</p>
+            <button type="button" class="f-submit" id="wizStep1Next" onclick="wizStep1Continue()" disabled>Continue →</button>
           </div>
 
           <!-- STEP 2 -->
@@ -1644,9 +1646,20 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
     panel.querySelectorAll('.wiz-opt').forEach(o => o.classList.remove('sel'));
     btn.classList.add('sel');
     answers['step' + panel.dataset.step] = btn.textContent.trim();
+    if (panel.dataset.step === '1') {
+      // Step 1: don't auto-advance — let them read/check the consent boxes.
+      const nextBtn = document.getElementById('wizStep1Next');
+      if (nextBtn) nextBtn.disabled = false;
+      return;
+    }
     if (cur < TOTAL) {
       setTimeout(() => { cur++; render(); }, 180);
     }
+  };
+
+  window.wizStep1Continue = function () {
+    if (!answers.step1) return;
+    if (cur < TOTAL) { cur++; render(); }
   };
 
   window.wizPrev = function () {
