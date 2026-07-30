@@ -1736,19 +1736,21 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
     btn.style.background = 'var(--blue)';
     btn.disabled = true;
 
+    // Fire-and-forget: sendBeacon delivers in the background (even if the tab
+    // closes) so the user isn't stuck waiting on Zapier's slow acknowledgment.
+    const params = new URLSearchParams(payload);
+    let queued = false;
     try {
-      await fetch(ZAPIER_WEBHOOK_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: new URLSearchParams(payload)
-      });
+      if (navigator.sendBeacon) queued = navigator.sendBeacon(ZAPIER_WEBHOOK_URL, params);
+    } catch (e) { queued = false; }
+    if (!queued) {
+      fetch(ZAPIER_WEBHOOK_URL, { method: 'POST', mode: 'no-cors', body: params, keepalive: true }).catch(() => {});
+    }
+
+    setTimeout(() => {
       btn.textContent = "✓ We'll be in touch shortly!";
       btn.style.background = '#2e7d52';
-    } catch (err) {
-      btn.textContent = 'Something went wrong — please call us';
-      btn.style.background = '#b04a4a';
-      btn.disabled = false;
-    }
+    }, 500);
   };
 })();
 
