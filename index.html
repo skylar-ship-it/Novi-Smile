@@ -1170,7 +1170,7 @@ footer {
             </div>
             <div class="f-group">
               <label class="f-label">Phone Number</label>
-              <input class="f-input" id="leadPhone" type="tel" placeholder="(855) 458-9911">
+              <input class="f-input" id="leadPhone" type="tel" inputmode="tel" autocomplete="tel" maxlength="14" placeholder="(855) 458-9911">
             </div>
             <button class="f-submit" onclick="handleSubmit()">Request My Consultation →</button>
             <p class="f-note">Free · No pressure · A real conversation about your options</p>
@@ -1671,6 +1671,20 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
   /* ── FORM SUBMIT ── */
   const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/27049401/440p31s/';
 
+  /* ── PHONE FORMATTING ── */
+  document.addEventListener('input', function (e) {
+    if (e.target && e.target.id === 'leadPhone') {
+      let d = e.target.value.replace(/\D/g, '');
+      if (d.startsWith('1')) d = d.slice(1);   // drop leading country code
+      d = d.slice(0, 10);
+      let out = '';
+      if (d.length > 0) out = '(' + d.slice(0, 3);
+      if (d.length >= 4) out += ') ' + d.slice(3, 6);
+      if (d.length >= 7) out += '-' + d.slice(6);
+      e.target.value = out;
+    }
+  });
+
   window.handleSubmit = async function () {
     const btn = event.target;
     const name  = (document.getElementById('leadName')?.value  || '').trim();
@@ -1680,6 +1694,11 @@ document.querySelectorAll('.fade').forEach(el => obs.observe(el));
     // Basic validation
     if (!name || !email || !phone) {
       btn.textContent = 'Please fill in name, email & phone';
+      setTimeout(() => { btn.textContent = 'Request My Consultation →'; }, 2200);
+      return;
+    }
+    if (phone.replace(/\D/g, '').length < 10) {
+      btn.textContent = 'Please enter a complete phone number';
       setTimeout(() => { btn.textContent = 'Request My Consultation →'; }, 2200);
       return;
     }
